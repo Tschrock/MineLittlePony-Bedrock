@@ -1,0 +1,188 @@
+{
+	"format_version" : "1.8.0",
+	"animations" : {
+		"animation.zombie_pony.big_head" : {
+			"bones" : {
+				"head" : {
+					"scale" : 1.399999976158142
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.look_at_target.default" : {
+			"bones" : {
+				"head" : {
+					"rotation" : [ "query.target_x_rotation", "query.target_y_rotation", 0.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.look_at_target.gliding" : {
+			"bones" : {
+				"head" : {
+					"rotation" : [ -45.0, "query.target_y_rotation", 0.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.look_at_target.swimming" : {
+			"bones" : {
+				"head" : {
+					"rotation" : [ "math.lerp(query.target_x_rotation, -45.0, variable.swim_amount)", "query.target_y_rotation", 0.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.bob_left_hoof" : {
+			"bones" : {
+				"leftArm" : {
+					"rotation" : [ "-variable.x_bob - 90", 0.0, "variable.z_bob" ],
+					"position" : [ -0.5, 2.5, 0.5 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.bob_right_hoof" : {
+			"bones" : {
+				"rightArm" : {
+					"rotation" : [ "-variable.x_bob - 90", 0.0, "variable.z_bob" ],
+					"position" : [ 0.5, 2.5, 0.5 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.move" : {
+			"bones" : {
+				"leftArm" : {
+					"rotation" : [ "variable.is_holding_right ? (variable.tcos0 * 0.4) : 0.0", 0.0, 0.0 ]
+				},
+				"leftLeg" : {
+					"rotation" : [ "variable.tcos1 * 0.4", 0.0, 0.0 ]
+				},
+				"rightArm" : {
+					"rotation" : [ "variable.is_holding_right ? 0.0 : (variable.tcos1 * 0.4)", 0.0, 0.0 ]
+				},
+				"rightLeg" : {
+					"rotation" : [ "variable.tcos0 * 0.4", 0.0, 0.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.riding" : {
+			"bones" : {
+				"leftArm" : {
+					"rotation" : [ -36.0, 0.0, 0.0 ]
+				},
+				"rightArm" : {
+					"rotation" : [ -36.0, 0.0, 0.0 ]
+				},
+				"leftLeg" : {
+					"rotation" : [ "-72.0 - this", "-18.0 - this", "-this" ]
+				},
+				"rightLeg" : {
+					"rotation" : [ "-72.0 - this", "18.0 - this", "-this" ]
+				},
+				"body" : {
+					"rotation" : [ -45, 0.0, 0.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.swimming" : {
+			"animation_length" : 1.299999952316284,
+			"bones" : {
+				"leftArm" : {
+					"rotation" : [ "math.lerprotate(this, -180.0, variable.swim_amount) - (variable.swim_amount * (variable.attack2 * 1.2 - variable.attack * 0.4)) - (variable.swim_amount * variable.x_bob) - this", "math.lerprotate(this, 14.325, variable.swim_amount) - this", "math.lerprotate(this, 14.325, variable.swim_amount) - (variable.swim_amount * variable.z_bob) - this" ]
+				},
+				"rightArm" : {
+					"rotation" : [ "math.lerprotate(this, -180.0, variable.swim_amount) - (variable.swim_amount * (variable.attack2 * 1.2 - variable.attack * 0.4)) + (variable.swim_amount * variable.x_bob) - this", "math.lerprotate(this, 14.325, variable.swim_amount) - this", "math.lerprotate(this, -14.325, variable.swim_amount) + (variable.swim_amount * variable.z_bob) - this" ]
+				},
+				"leftLeg" : {
+					"rotation" : [ "math.lerp(this, math.cos(query.modified_distance_moved * 19.5 + 180.0) * 17.2, variable.leftarmswim_amount) - this", 0.0, 0.0 ]
+				},
+				"rightLeg" : {
+					"rotation" : [ "math.lerp(this, math.cos(query.modified_distance_moved * 19.5) * 17.2, variable.leftarmswim_amount) - this", 0.0, 0.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.attack.rotations" : {
+			"bones" : {
+				"body" : {
+					"rotation" : [ 0.0, "variable.attack_body_rot_y - this", 0.0 ]
+				},
+				"leftArm" : {
+					"rotation" : [ "variable.attack_body_rot_y", 0.0, 0.0 ]
+				},
+				"rightArm" : {
+					"rotation" : [ "math.sin(1.0 - math.pow(1.0 - variable.attack_time, 3.0) * 180.0) * (variable.is_brandishing_spear ? -1.0 : 1.0 )", "variable.is_brandishing_spear ? 0.0 : variable.attack_body_rot_y * 2.0", 0.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.brandish_spear" : {
+			"bones" : {
+				"rightArm" : {
+					"rotation" : [ "this * -0.5 - 157.5 - 22.5 * variable.charge_amount", "-this", 0.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.charging" : {
+			"bones" : {
+				"leftArm" : {
+					"rotation" : [ "22.5 * variable.charge_amount - this", "-this", 0.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.damage_nearby_mobs" : {
+			"bones" : {
+				"leftArm" : {
+					"rotation" : [ "-45.0-this", "-this", "-this" ]
+				},
+				"leftLeg" : {
+					"rotation" : [ "45.0-this", "-this", "-this" ]
+				},
+				"rightArm" : {
+					"rotation" : [ "45.0-this", "-this", "-this" ]
+				},
+				"rightLeg" : {
+					"rotation" : [ "-45.0-this", "-this", "-this" ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.sneaking" : {
+			"bones" : {
+				"body" : {
+					"rotation" : [ "0.5 - this", 0.0, 0.0 ]
+				},
+				"head" : {
+					"position" : [ 0.0, 1.0, 0.0 ]
+				},
+				"leftArm" : {
+					"rotation" : [ 72.0, 0.0, 0.0 ]
+				},
+				"leftLeg" : {
+					"position" : [ 0.0, -3.0, 4.0 ]
+				},
+				"rightArm" : {
+					"rotation" : [ 72.0, 0.0, 0.0 ]
+				},
+				"rightLeg" : {
+					"position" : [ 0.0, -3.0, 4.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.use_item_progress" : {
+			"bones" : {
+				"rightArm" : {
+					"rotation" : [ "variable.useitemstartupprogress * -60.0 + variable.useitemintervalprogress * 11.25", "variable.useitemstartupprogress * -22.5 + variable.useitemintervalprogress * 11.25", "variable.useitemstartupprogress * -5.625 + variable.useitemintervalprogress * 11.25" ]
+				}
+			},
+			"loop" : true
+		}
+	}
+}

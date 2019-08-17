@@ -1,0 +1,23 @@
+{
+    "format_version": 1,
+    "header": {
+        "description": "Turns mobs into ponies!",
+        "name": "Mine Little Pony Mobs",
+        "uuid": "571ec626-7915-4b36-8897-47f793a77643",
+        "version": [0, 0, 1],
+        "min_engine_version": [1, 12, 0]
+    },
+    "modules": [
+        {
+            "description": "Turns mobs into ponies!",
+            "type": "resources",
+            "uuid": "b81d5c84-a207-4025-a522-daa2caa26156",
+            "version": [0, 0, 1]
+        }
+    ],
+    "metadata": {
+        "authors": [ "CyberPon3" ],
+        "license": "MPL-2.0",
+        "url": "https://minelittlepony-mod.com"
+    }
+}
