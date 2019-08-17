@@ -1,7 +1,41 @@
 {
   "format_version": "1.8.0",
   "animation_controllers": {
-    "controller.animation.zombie_pony.baby_big_head": {
+    "controller.animation.zombie_pony.default": {
+      "states": {
+        "default": {
+          "animations": [
+            { "look_at_target": [] },
+            { "show_movement.legs": [] },
+            { "show_movement.tail": [] },
+            { "bob.tail": [] }
+          ]
+        }
+      }
+    },
+    "controller.animation.zombie_pony.default.arms": {
+      "states": {
+        "default": {
+          "animations": [
+            { "bob.leftArm": [] },
+            { "show_movement.rightArm": [] }
+          ],
+          "transitions": [ 
+            { "is_holding_right": "variable.is_holding_right == 1.0" }
+          ]
+        },
+        "is_holding_right": {
+          "animations": [
+            { "show_movement.leftArm": [] },
+            { "bob.rightArm": [] }
+          ],
+          "transitions": [ 
+            { "default": "variable.is_holding_right != 1.0" }
+          ]
+        }
+      }
+    },
+    "controller.animation.zombie_pony.baby": {
       "states": {
         "default": {
           "transitions": [
@@ -9,58 +43,12 @@
           ]
         },
         "baby": {
-          "animations": [ { "big_head": [] } ],
+          "animations": [
+            { "big_head": [] }
+          ],
           "transitions": [
             { "default": "!query.is_baby" }
           ]
-        }
-      }
-    },
-    "controller.animation.zombie_pony.look_at_target": {
-      "states": {
-        "default": {
-          "animations": [ { "look_at_target_default": [] } ],
-          "transitions": [
-            { "gliding": "query.is_gliding" },
-            { "swimming": "query.is_swimming" }
-          ]
-        },
-        "gliding": {
-          "animations": [ { "look_at_target_gliding": [] } ],
-          "transitions": [
-            { "swimming": "query.is_swimming" },
-            { "default": "!query.is_gliding" }
-          ]
-        },
-        "swimming": {
-          "animations": [ { "look_at_target_swimming": [] } ],
-          "transitions": [
-            { "gliding": "query.is_gliding" },
-            { "default": "!query.is_swimming" }
-          ]
-        }
-      }
-    },
-    "controller.animation.zombie_pony.bob_hoof": {
-      "states": {
-        "default": {
-          "animations": [ { "bob_left_hoof": [] } ],
-          "transitions": [ 
-            { "is_holding_right": "variable.is_holding_right == 1.0" }
-          ]
-        },
-        "is_holding_right": {
-          "animations": [ { "bob_right_hoof": [] } ],
-          "transitions": [ 
-            { "default": "variable.is_holding_right != 1.0" }
-          ]
-        }
-      }
-    },
-    "controller.animation.zombie_pony.move": {
-      "states": {
-        "default": {
-          "animations": [ { "move": [] } ]
         }
       }
     },
@@ -78,93 +66,6 @@
           "transitions": [
             { "default": "!query.is_riding" }
           ]
-        }
-      }
-    },
-    "controller.animation.zombie_pony.swimming": {
-      "states": {
-        "default": {
-          "transitions": [ 
-            { "is_swimming": "variable.swim_amount > 0.0" }
-          ]
-        },
-        "is_swimming": {
-          "animations": [ { "swimming": [] } ],
-          "transitions": [ 
-            { "default": "variable.swim_amount <= 0.0" }
-          ]      
-        }
-      }
-    },
-    "controller.animation.zombie_pony.brandish_spear": {
-      "states": {
-        "default": {
-          "transitions": [ { "brandish_spear": "variable.is_brandishing_spear" } ]
-        },
-        "brandish_spear": {
-          "animations": [ { "brandish_spear": [] } ],
-          "transitions": [ { "default": "!variable.is_brandishing_spear" } ]
-        }
-      }
-    },
-    "controller.animation.zombie_pony.charging": {
-      "states": {
-        "default": {
-          "transitions": [ { "charging": "query.is_charging" } ]
-        },
-        "charging": {
-          "animations": [ { "charging": [] } ],
-          "transitions": [ { "default": "!query.is_charging" } ]
-        }
-      }
-    },
-    "controller.animation.zombie_pony.attack": {
-      "states": {
-        "default": {
-          "transitions": [
-            { "attacking": "variable.attack_time >= 0.0" }
-          ]
-        },
-        "attacking": {
-          "animations": [
-            { "attack.rotations": [] }
-          ],
-          "transitions": [
-            { "default": "variable.attack_time < 0.0" }
-          ]
-        }
-      }
-    },
-    "controller.animation.zombie_pony.sneaking": {
-      "states": {
-        "default": {
-          "transitions": [ { "sneaking": "query.is_sneaking" } ]
-        },
-        "sneaking": {
-          "animations": [ { "sneaking": [] } ],
-          "transitions": [ { "default": "!query.is_sneaking" } ]
-        }
-      }
-    },
-    "controller.animation.zombie_pony.damage_nearby_mobs": {
-      "states": {
-        "default": {
-          "transitions": [ { "damage_nearby_mobs": "variable.damage_nearby_mobs" } ]
-        },
-        "damage_nearby_mobs": {
-          "animations": [ { "damage_nearby_mobs": [] } ],
-          "transitions": [ { "default": "!variable.damage_nearby_mobs" } ]
-        }
-      }
-    },
-    "controller.animation.zombie_pony.use_item_progress": {
-      "states": {
-        "default": {
-          "transitions": [ { "use_item_progress": "( variable.use_item_interval_progress > 0.0 ) || ( variable.use_item_startup_progress > 0.0 )" } ]
-        },
-        "use_item_progress": {
-          "animations": [ { "use_item_progress": [] } ],
-          "transitions": [ { "default": "( variable.use_item_interval_progress <= 0.0 ) && ( variable.use_item_startup_progress <= 0.0 )" } ]
         }
       }
     }
