@@ -81,19 +81,24 @@
 		"animation.zombie_pony.riding" : {
 			"bones" : {
 				"leftArm" : {
-					"rotation" : [ -36.0, 0.0, 0.0 ]
+					"rotation" : [ 0.0, 0.0, "variable.is_holding_right == 1.0 ? -10.0 : 0.0" ]
 				},
 				"rightArm" : {
-					"rotation" : [ -36.0, 0.0, 0.0 ]
+					"rotation" : [ 0.0, 0.0, "variable.is_holding_right != 1.0 ? 10.0 : 0.0" ]
 				},
 				"leftLeg" : {
-					"rotation" : [ "-72.0 - this", "-18.0 - this", "-this" ]
+					"rotation" : [ "-42.0 - this", "-28.0 - this", "-this" ],
+					"position" : [ 1.0, 0.0, 5.0 ]
 				},
 				"rightLeg" : {
-					"rotation" : [ "-72.0 - this", "18.0 - this", "-this" ]
+					"rotation" : [ "-42.0 - this", "28.0 - this", "-this" ],
+					"position" : [ -1.0, 0.0, 5.0 ]
 				},
 				"body" : {
-					"rotation" : [ -45, 0.0, 0.0 ]
+					"rotation" : [ -40, 0.0, 0.0 ]
+				},
+				"neck" : {
+					"rotation" : [ 45, 0.0, 0.0 ]
 				}
 			},
 			"loop" : true
