@@ -36,40 +36,6 @@
           ]
         }
       }
-    },
-    "controller.animation.zombie_pony.baby": {
-      "states": {
-        "default": {
-          "transitions": [
-            { "baby": "query.is_baby" }
-          ]
-        },
-        "baby": {
-          "animations": [
-            { "big_head": [] }
-          ],
-          "transitions": [
-            { "default": "!query.is_baby" }
-          ]
-        }
-      }
-    },
-    "controller.animation.zombie_pony.riding": {
-      "states": {
-        "default": {
-          "transitions": [
-            { "riding": "query.is_riding" }
-          ]
-        },
-        "riding": {
-          "animations": [
-            { "riding": [] }
-          ],
-          "transitions": [
-            { "default": "!query.is_riding" }
-          ]
-        }
-      }
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "format_version": "1.8.0",
+  "format_version": "1.10.0",
   "minecraft:client_entity": {
     "description": {
       "min_engine_version": "1.8.0",
@@ -17,7 +17,14 @@
           "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
           "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",
           "variable.attack = Math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3;",
-          "variable.attack2 = Math.sin(variable.attack_time * 180.0) * 57.3;"
+          "variable.attack2 = Math.sin(variable.attack_time * 180.0) * 57.3;",
+          "variable.is_pony = 1.0;"
+        ],
+        "animate": [
+          "default",
+          "default.arms",
+          { "riding": "query.is_riding" },
+          { "big_head": "query.is_baby" }
         ]
       },
       "animations": {
@@ -32,15 +39,10 @@
         "bob.tail": "animation.zombie_pony.bob.tail",
         "look_at_target": "animation.zombie_pony.look_at_target",
         "big_head": "animation.zombie_pony.big_head",
-        "riding": "animation.zombie_pony.riding"
+        "riding": "animation.zombie_pony.riding",
+        "default": "controller.animation.zombie_pony.default",
+        "default.arms": "controller.animation.zombie_pony.default.arms"
       },
-      "animation_controllers": [
-        { "default": "controller.animation.zombie_pony.default" },
-        { "default.arms": "controller.animation.zombie_pony.default.arms" },
-        { "look_at_target": "controller.animation.zombie_pony.look_at_target" },
-        { "baby": "controller.animation.zombie_pony.baby" },
-        { "riding": "controller.animation.zombie_pony.riding" }
-      ],
       "render_controllers": [ "controller.render.zombie_pony" ],
       "enable_attachables": true
     }
