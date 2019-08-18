@@ -18,6 +18,7 @@
         "default": {
           "animations": [
             { "bob.leftArm": [] },
+            { "show_attack.leftArm": [] },
             { "show_movement.rightArm": [] }
           ],
           "transitions": [ 
@@ -26,8 +27,9 @@
         },
         "is_holding_right": {
           "animations": [
-            { "show_movement.leftArm": [] },
-            { "bob.rightArm": [] }
+            { "bob.rightArm": [] },
+            { "show_attack.rightArm": [] },
+            { "show_movement.leftArm": [] }
           ],
           "transitions": [ 
             { "default": "variable.is_holding_right != 1.0" }

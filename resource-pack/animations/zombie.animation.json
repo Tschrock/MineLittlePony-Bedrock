@@ -78,13 +78,29 @@
 			},
 			"loop" : true
 		},
+		"animation.zombie_pony.show_attack.leftArm" : {
+			"bones" : {
+				"leftArm" : {
+					"rotation" : [ "-(variable.attack2 * 1.2 - variable.attack * 0.4)", "5.73 - (variable.attack2 * 0.6)", 0.0 ]
+				}
+			},
+			"loop" : true
+		},
+		"animation.zombie_pony.show_attack.rightArm" : {
+			"bones" : {
+				"rightArm" : {
+					"rotation" : [ "-(variable.attack2 * 1.2 - variable.attack * 0.4)", "variable.attack2 * 0.6 - 5.73", 0.0 ]
+				}
+			},
+			"loop" : true
+		},
 		"animation.zombie_pony.riding" : {
 			"bones" : {
 				"leftArm" : {
-					"rotation" : [ 0.0, 0.0, "variable.is_holding_right == 1.0 ? -10.0 : 0.0" ]
+					"rotation" : [ 0.0, 0.0, "variable.is_holding_left ? 0.0 : -10.0" ]
 				},
 				"rightArm" : {
-					"rotation" : [ 0.0, 0.0, "variable.is_holding_right != 1.0 ? 10.0 : 0.0" ]
+					"rotation" : [ 0.0, 0.0, "variable.is_holding_right ? 0.0 : 10.0" ]
 				},
 				"leftLeg" : {
 					"rotation" : [ "-42.0 - this", "-28.0 - this", "-this" ],
