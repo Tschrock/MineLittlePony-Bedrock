@@ -1,0 +1,83 @@
+{
+  "format_version": "1.8.0",
+  "geometry.humanoid.armor1:geometry.humanoid": {
+    "visible_bounds_width": 2,
+    "visible_bounds_height": 2,
+    "visible_bounds_offset": [ 0, 1, 0 ],
+    "texturewidth": 64,
+    "textureheight": 32,
+    "bones": [
+      {
+        "name": "head",
+        "inflate": 1.0
+      },
+      {
+        "name": "hat",
+        "inflate": 1.5,
+        "neverRender": false
+      },
+      {
+        "name": "body",
+        "inflate": 1.0
+      },
+
+      {
+        "name": "rightArm",
+        "inflate": 1.0
+      },
+
+      {
+        "name": "leftArm",
+        "inflate": 1.0
+      },
+
+      {
+        "name": "rightLeg",
+        "inflate": 1.0
+      },
+
+      {
+        "name": "leftLeg",
+        "inflate": 1.0
+      }
+    ]
+  },
+  "geometry.humanoid.armor2:geometry.humanoid": {
+    "visible_bounds_width": 2,
+    "visible_bounds_height": 2,
+    "visible_bounds_offset": [ 0, 1, 0 ],
+    "texturewidth": 64,
+    "textureheight": 32,
+    "bones": [
+      {
+        "name": "head",
+        "inflate": 0.5
+      },
+
+      {
+        "name": "body",
+        "inflate": 0.5
+      },
+
+      {
+        "name": "rightArm",
+        "inflate": 0.5
+      },
+
+      {
+        "name": "leftArm",
+        "inflate": 0.5
+      },
+
+      {
+        "name": "rightLeg",
+        "inflate": 0.5
+      },
+
+      {
+        "name": "leftLeg",
+        "inflate": 0.5
+      }
+    ]
+  }
+}
