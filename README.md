@@ -27,6 +27,6 @@ https://minelittlepony-mod.com
 | Wandering Trader     |       |            |
 | Which                |       |            |
 | Wither Skeleton      |       |            |
-| Zombie               | ✅     | 🔜         |
+| Zombie               | ✅     | ✅         |
 | Zombie Pigman        |       |            |
 | Zombie Villager      |       |            |
