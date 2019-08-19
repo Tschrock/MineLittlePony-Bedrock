@@ -13,6 +13,7 @@ https://minelittlepony-mod.com
 | (Generic) Earth Pony | ✅     |            |
 | (Generic) Unicorn    |       |            |
 | (Generic) Pegasus    |       |            |
+| (Generic) Pony Armor | ✅     | ➖           |
 | Drowned              |       |            |
 | Enderman             |       |            |
 | Evoker               |       |            |
