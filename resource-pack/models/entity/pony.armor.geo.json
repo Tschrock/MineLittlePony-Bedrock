@@ -1,161 +1,216 @@
 {
-	"format_version": "1.12.0",
-	"minecraft:geometry": [
-		{
-			"description": {
-				"identifier": "geometry.pony.armor.helmet",
-				"texture_width": 64,
-				"texture_height": 32,
-				"visible_bounds_width": 3,
-				"visible_bounds_height": 2,
-				"visible_bounds_offset": [0, 1, 0]
-			},
-			"bones": [
-				{
-					"name": "head",
-					"pivot": [0, 23, -6],
-					"cubes": [
-						{"origin": [-4, 21, -11], "size": [8, 8, 8], "inflate": 1, "uv": [0, 0]}
-					]
-				},
-				{
-					"name": "ears",
-					"parent": "head",
-					"pivot": [0, 23, -6],
-					"cubes": [
-						{"origin": [2, 29, -5], "size": [2, 2, 2], "inflate": 0.5, "uv": [0, 4]},
-						{"origin": [-4, 29, -5], "size": [2, 2, 2], "inflate": 0.5, "uv": [0, 0]}
-					]
-				}
-			]
-		},
-		{
-			"description": {
-				"identifier": "geometry.pony.armor.chestplate",
-				"texture_width": 64,
-				"texture_height": 32,
-				"visible_bounds_width": 2,
-				"visible_bounds_height": 1,
-				"visible_bounds_offset": [0, 0.5, 0]
-			},
-			"bones": [
-				{
-					"name": "body",
-					"pivot": [0, 16, 0],
-					"cubes": [
-						{
-							"origin": [-4, 12, -8],
-							"size": [8, 8, 16],
-							"inflate": 0.5,
-							"uv": [16, 8]
-						}
-					]
-				}
-			]
-		},
-		{
-			"description": {
-				"identifier": "geometry.pony.armor.chestplate.layer2",
-				"texture_width": 64,
-				"texture_height": 32,
-				"visible_bounds_width": 2,
-				"visible_bounds_height": 1,
-				"visible_bounds_offset": [0, 0.5, 0]
-			},
-			"bones": [
-				{
-					"name": "body",
-					"pivot": [0, 16, 0],
-					"cubes": [
-						{
-							"origin": [-4, 12, -8],
-							"size": [8, 8, 16],
-							"inflate": 1,
-							"uv": [16, 8]
-						}
-					]
-				}
-			]
-		},
-		{
-			"description": {
-				"identifier": "geometry.pony.armor.leggings",
-				"texture_width": 64,
-				"texture_height": 32,
-				"visible_bounds_width": 2,
-				"visible_bounds_height": 1,
-				"visible_bounds_offset": [0, 0.5, 0]
-			},
-			"bones": [
-				{
-					"name": "rightArm",
-					"pivot": [-2, 13, -5],
-					"cubes": [
-						{"origin": [-4, 0, -7], "size": [4, 12, 4], "inflate": 0.5, "uv": [48, 8]}
-					]
-				},
-				{
-					"name": "leftArm",
-					"pivot": [2, 13, -5],
-					"cubes": [
-						{"origin": [0, 0, -7], "size": [4, 12, 4], "inflate": 0.5, "uv": [48, 8]}
-					]
-				},
-				{
-					"name": "rightLeg",
-					"pivot": [-2, 13, 4],
-					"cubes": [
-						{"origin": [-3.9, 0, 2], "size": [4, 12, 4], "inflate": 0.5, "uv": [0, 16]}
-					]
-				},
-				{
-					"name": "leftLeg",
-					"pivot": [2, 13, 4],
-					"cubes": [
-						{"origin": [-0.1, 0, 2], "size": [4, 12, 4], "inflate": 0.5, "uv": [0, 16]}
-					]
-				}
-			]
-		},
-		{
-			"description": {
-				"identifier": "geometry.pony.armor.boots",
-				"texture_width": 64,
-				"texture_height": 32,
-				"visible_bounds_width": 2,
-				"visible_bounds_height": 1,
-				"visible_bounds_offset": [0, 0.5, 0]
-			},
-			"bones": [
-				{
-					"name": "rightArm",
-					"pivot": [-2, 13, -5],
-					"cubes": [
-						{"origin": [-4, 0, -7], "size": [4, 12, 4], "inflate": 1, "uv": [48, 8]}
-					]
-				},
-				{
-					"name": "leftArm",
-					"pivot": [2, 13, -5],
-					"cubes": [
-						{"origin": [0, 0, -7], "size": [4, 12, 4], "inflate": 1, "uv": [48, 8]}
-					]
-				},
-				{
-					"name": "rightLeg",
-					"pivot": [-2, 13, 4],
-					"cubes": [
-						{"origin": [-3.9, 0, 2], "size": [4, 12, 4], "inflate": 1, "uv": [0, 16]}
-					]
-				},
-				{
-					"name": "leftLeg",
-					"pivot": [2, 13, 4],
-					"cubes": [
-						{"origin": [-0.1, 0, 2], "size": [4, 12, 4], "inflate": 1, "uv": [0, 16]}
-					]
-				}
-			]
-		}
-	]
+    "format_version": "1.12.0",
+    "minecraft:geometry": [
+        {
+            "description": {
+                "identifier": "geometry.pony.armor.helmet",
+                "texture_width": 64,
+                "texture_height": 32,
+                "visible_bounds_width": 3,
+                "visible_bounds_height": 2,
+                "visible_bounds_offset": [ 0, 1, 0 ]
+            },
+            "bones": [
+                {
+                    "name": "head",
+                    "pivot": [ 0, 23, -6 ],
+                    "cubes": [
+                        {
+                            "origin": [ -4, 21, -11 ],
+                            "size": [ 8, 8, 8 ],
+                            "inflate": 1,
+                            "uv": [ 0, 0 ]
+                        }
+                    ]
+                },
+                {
+                    "name": "ears",
+                    "parent": "head",
+                    "pivot": [ 0, 23, -6 ],
+                    "cubes": [
+                        {
+                            "origin": [ 2, 29, -5 ],
+                            "size": [ 2, 2, 2 ],
+                            "inflate": 0.5,
+                            "uv": [ 0, 4 ]
+                        },
+                        {
+                            "origin": [ -4, 29, -5 ],
+                            "size": [ 2, 2, 2 ],
+                            "inflate": 0.5,
+                            "uv": [ 0, 0 ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": {
+                "identifier": "geometry.pony.armor.chestplate",
+                "texture_width": 64,
+                "texture_height": 32,
+                "visible_bounds_width": 2,
+                "visible_bounds_height": 1,
+                "visible_bounds_offset": [ 0, 0.5, 0 ]
+            },
+            "bones": [
+                {
+                    "name": "body",
+                    "pivot": [ 0, 16, 0 ],
+                    "cubes": [
+                        {
+                            "origin": [ -4, 12, -8 ],
+                            "size": [ 8, 8, 16 ],
+                            "inflate": 0.5,
+                            "uv": [ 16, 8 ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": {
+                "identifier": "geometry.pony.armor.chestplate.layer2",
+                "texture_width": 64,
+                "texture_height": 32,
+                "visible_bounds_width": 2,
+                "visible_bounds_height": 1,
+                "visible_bounds_offset": [ 0, 0.5, 0 ]
+            },
+            "bones": [
+                {
+                    "name": "body",
+                    "pivot": [ 0, 16, 0 ],
+                    "cubes": [
+                        {
+                            "origin": [ -4, 12, -8 ],
+                            "size": [ 8, 8, 16 ],
+                            "inflate": 1,
+                            "uv": [ 16, 8 ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": {
+                "identifier": "geometry.pony.armor.leggings",
+                "texture_width": 64,
+                "texture_height": 32,
+                "visible_bounds_width": 2,
+                "visible_bounds_height": 1,
+                "visible_bounds_offset": [ 0, 0.5, 0 ]
+            },
+            "bones": [
+                {
+                    "name": "rightArm",
+                    "pivot": [ -2, 13, -5 ],
+                    "cubes": [
+                        {
+                            "origin": [ -4, 0, -7 ],
+                            "size": [ 4, 12, 4 ],
+                            "inflate": 0.5,
+                            "uv": [ 48, 8 ]
+                        }
+                    ]
+                },
+                {
+                    "name": "leftArm",
+                    "pivot": [ 2, 13, -5 ],
+                    "cubes": [
+                        {
+                            "origin": [ 0, 0, -7 ],
+                            "size": [ 4, 12, 4 ],
+                            "inflate": 0.5,
+                            "uv": [ 48, 8 ]
+                        }
+                    ]
+                },
+                {
+                    "name": "rightLeg",
+                    "pivot": [ -2, 13, 4 ],
+                    "cubes": [
+                        {
+                            "origin": [ -3.9, 0, 2 ],
+                            "size": [ 4, 12, 4 ],
+                            "inflate": 0.5,
+                            "uv": [ 0, 16 ]
+                        }
+                    ]
+                },
+                {
+                    "name": "leftLeg",
+                    "pivot": [ 2, 13, 4 ],
+                    "cubes": [
+                        {
+                            "origin": [ -0.1, 0, 2 ],
+                            "size": [ 4, 12, 4 ],
+                            "inflate": 0.5,
+                            "uv": [ 0, 16 ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "description": {
+                "identifier": "geometry.pony.armor.boots",
+                "texture_width": 64,
+                "texture_height": 32,
+                "visible_bounds_width": 2,
+                "visible_bounds_height": 1,
+                "visible_bounds_offset": [ 0, 0.5, 0 ]
+            },
+            "bones": [
+                {
+                    "name": "rightArm",
+                    "pivot": [ -2, 13, -5 ],
+                    "cubes": [
+                        {
+                            "origin": [ -4, 0, -7 ],
+                            "size": [ 4, 12, 4 ],
+                            "inflate": 1,
+                            "uv": [ 48, 8 ]
+                        }
+                    ]
+                },
+                {
+                    "name": "leftArm",
+                    "pivot": [ 2, 13, -5 ],
+                    "cubes": [
+                        {
+                            "origin": [ 0, 0, -7 ],
+                            "size": [ 4, 12, 4 ],
+                            "inflate": 1,
+                            "uv": [ 48, 8 ]
+                        }
+                    ]
+                },
+                {
+                    "name": "rightLeg",
+                    "pivot": [ -2, 13, 4 ],
+                    "cubes": [
+                        {
+                            "origin": [ -3.9, 0, 2 ],
+                            "size": [ 4, 12, 4 ],
+                            "inflate": 1,
+                            "uv": [ 0, 16 ]
+                        }
+                    ]
+                },
+                {
+                    "name": "leftLeg",
+                    "pivot": [ 2, 13, 4 ],
+                    "cubes": [
+                        {
+                            "origin": [ -0.1, 0, 2 ],
+                            "size": [ 4, 12, 4 ],
+                            "inflate": 1,
+                            "uv": [ 0, 16 ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }

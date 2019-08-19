@@ -1,50 +1,56 @@
 {
-  "format_version": "1.10.0",
-  "minecraft:client_entity": {
-    "description": {
-      "min_engine_version": "1.8.0",
-      "identifier": "minecraft:zombie",
-      "materials": { "default": "zombie" },
-      "textures": { "default": "textures/entity/zombie/zombie" },
-      "geometry": { "default": "geometry.zombie" },
-      "spawn_egg": {
-        "texture": "spawn_egg",
-        "texture_index": 12
-      },
-      "scripts": {
-        "pre_animation": [
-          "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
-          "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
-          "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",
-          "variable.attack = Math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3;",
-          "variable.attack2 = Math.sin(variable.attack_time * 180.0) * 57.3;",
-          "variable.is_pony = 1.0;"
-        ],
-        "animate": [
-          "default",
-          "default.arms",
-          { "riding": "query.is_riding" },
-          { "big_head": "query.is_baby" }
-        ]
-      },
-      "animations": {
-        "show_movement.leftArm": "animation.zombie_pony.show_movement.leftArm",
-        "show_movement.rightArm": "animation.zombie_pony.show_movement.rightArm",
-        "show_movement.legs": "animation.zombie_pony.show_movement.legs",
-        "show_movement.tail": "animation.zombie_pony.show_movement.tail",
-        "show_attack.leftArm": "animation.zombie_pony.show_attack.leftArm",
-        "show_attack.rightArm": "animation.zombie_pony.show_attack.rightArm",
-        "bob.leftArm": "animation.zombie_pony.bob.leftArm",
-        "bob.rightArm": "animation.zombie_pony.bob.rightArm",
-        "bob.tail": "animation.zombie_pony.bob.tail",
-        "look_at_target": "animation.zombie_pony.look_at_target",
-        "big_head": "animation.zombie_pony.big_head",
-        "riding": "animation.zombie_pony.riding",
-        "default": "controller.animation.zombie_pony.default",
-        "default.arms": "controller.animation.zombie_pony.default.arms"
-      },
-      "render_controllers": [ "controller.render.zombie_pony" ],
-      "enable_attachables": true
+    "format_version": "1.10.0",
+    "minecraft:client_entity": {
+        "description": {
+            "min_engine_version": "1.8.0",
+            "identifier": "minecraft:zombie",
+            "materials": {
+                "default": "zombie"
+            },
+            "textures": {
+                "default": "textures/entity/zombie/zombie"
+            },
+            "geometry": {
+                "default": "geometry.zombie"
+            },
+            "spawn_egg": {
+                "texture": "spawn_egg",
+                "texture_index": 12
+            },
+            "scripts": {
+                "pre_animation": [
+                    "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
+                    "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
+                    "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",
+                    "variable.attack = Math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3;",
+                    "variable.attack2 = Math.sin(variable.attack_time * 180.0) * 57.3;",
+                    "variable.is_pony = 1.0;"
+                ],
+                "animate": [
+                    "default",
+                    "default.arms",
+                    { "riding": "query.is_riding" },
+                    { "big_head": "query.is_baby" }
+                ]
+            },
+            "animations": {
+                "show_movement.leftArm": "animation.zombie_pony.show_movement.leftArm",
+                "show_movement.rightArm": "animation.zombie_pony.show_movement.rightArm",
+                "show_movement.legs": "animation.zombie_pony.show_movement.legs",
+                "show_movement.tail": "animation.zombie_pony.show_movement.tail",
+                "show_attack.leftArm": "animation.zombie_pony.show_attack.leftArm",
+                "show_attack.rightArm": "animation.zombie_pony.show_attack.rightArm",
+                "bob.leftArm": "animation.zombie_pony.bob.leftArm",
+                "bob.rightArm": "animation.zombie_pony.bob.rightArm",
+                "bob.tail": "animation.zombie_pony.bob.tail",
+                "look_at_target": "animation.zombie_pony.look_at_target",
+                "big_head": "animation.zombie_pony.big_head",
+                "riding": "animation.zombie_pony.riding",
+                "default": "controller.animation.zombie_pony.default",
+                "default.arms": "controller.animation.zombie_pony.default.arms"
+            },
+            "render_controllers": [ "controller.render.zombie_pony" ],
+            "enable_attachables": true
+        }
     }
-  }
 }

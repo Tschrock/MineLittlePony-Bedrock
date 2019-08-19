@@ -1,18 +1,20 @@
 {
-  "format_version": "1.8.0",
-  "render_controllers": {
-    "controller.render.armor.pony": {
-      "arrays": {
-        "textures": {
-          "array.armor_texture": [ "Texture.default", "Texture.pony_layer1" ]
-        },
-        "geometries": {
-          "array.armor_geometry": [ "Geometry.default", "Geometry.pony_layer1" ]
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.armor.pony": {
+            "arrays": {
+                "textures": {
+                    "array.armor_texture": [ "Texture.default", "Texture.pony_layer1" ]
+                },
+                "geometries": {
+                    "array.armor_geometry": [ "Geometry.default", "Geometry.pony_layer1" ]
+                }
+            },
+            "geometry": "array.armor_geometry[variable.is_pony]",
+            "materials": [
+                { "*": "variable.is_enchanted ? Material.enchanted : Material.default" }
+            ],
+            "textures": [ "array.armor_texture[variable.is_pony]", "Texture.enchanted" ]
         }
-      },
-      "geometry": "array.armor_geometry[variable.is_pony]",
-      "materials": [ { "*": "variable.is_enchanted ? Material.enchanted : Material.default" } ],
-      "textures": [ "array.armor_texture[variable.is_pony]", "Texture.enchanted" ]
     }
-  }
 }

@@ -1,123 +1,147 @@
 {
-	"format_version" : "1.8.0",
-	"animations" : {
-		"animation.zombie_pony.big_head" : {
-			"bones" : {
-				"head" : {
-					"scale" : 1.399999976158142
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.look_at_target" : {
-			"bones" : {
-				"head" : {
-					"rotation" : [ "query.target_x_rotation", "query.target_y_rotation", 0.0 ]
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.bob.leftArm" : {
-			"bones" : {
-				"leftArm" : {
-					"rotation" : [ "-variable.x_bob - 90", 0.0, "variable.z_bob" ],
-					"position" : [ -0.5, 2.5, 0.5 ]
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.bob.rightArm" : {
-			"bones" : {
-				"rightArm" : {
-					"rotation" : [ "-variable.x_bob - 90", 0.0, "variable.z_bob" ],
-					"position" : [ 0.5, 2.5, 0.5 ]
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.bob.tail" : {
-			"bones" : {
-				"tailBody" : {
-					"rotation" : [ "-variable.x_bob / 3", 0.0, 0.0 ]
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.show_movement.leftArm" : {
-			"bones" : {
-				"leftArm" : {
-					"rotation" : [ "variable.movement_leg_angle", 0.0, 0.0 ]
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.show_movement.rightArm" : {
-			"bones" : {
-				"rightArm" : {
-					"rotation" : [ "-variable.movement_leg_angle", 0.0, 0.0 ]
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.show_movement.legs" : {
-			"bones" : {
-				"leftLeg" : {
-					"rotation" : [ "-variable.movement_leg_angle", 0.0, 0.0 ]
-				},
-				"rightLeg" : {
-					"rotation" : [ "variable.movement_leg_angle", 0.0, 0.0 ]
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.show_movement.tail" : {
-			"bones" : {
-				"tailBody" : {
-					"rotation" : [ "query.modified_move_speed * 30", 0.0, 0.0 ]
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.show_attack.leftArm" : {
-			"bones" : {
-				"leftArm" : {
-					"rotation" : [ "-(variable.attack2 * 1.2 - variable.attack * 0.4)", "5.73 - (variable.attack2 * 0.6)", 0.0 ]
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.show_attack.rightArm" : {
-			"bones" : {
-				"rightArm" : {
-					"rotation" : [ "-(variable.attack2 * 1.2 - variable.attack * 0.4)", "variable.attack2 * 0.6 - 5.73", 0.0 ]
-				}
-			},
-			"loop" : true
-		},
-		"animation.zombie_pony.riding" : {
-			"bones" : {
-				"leftArm" : {
-					"rotation" : [ 0.0, 0.0, "variable.is_holding_left ? 0.0 : -10.0" ]
-				},
-				"rightArm" : {
-					"rotation" : [ 0.0, 0.0, "variable.is_holding_right ? 0.0 : 10.0" ]
-				},
-				"leftLeg" : {
-					"rotation" : [ "-42.0 - this", "-28.0 - this", "-this" ],
-					"position" : [ 1.0, 0.0, 5.0 ]
-				},
-				"rightLeg" : {
-					"rotation" : [ "-42.0 - this", "28.0 - this", "-this" ],
-					"position" : [ -1.0, 0.0, 5.0 ]
-				},
-				"body" : {
-					"rotation" : [ -40, 0.0, 0.0 ]
-				},
-				"neck" : {
-					"rotation" : [ 45, 0.0, 0.0 ]
-				}
-			},
-			"loop" : true
-		}
-	}
+    "format_version": "1.8.0",
+    "animations": {
+        "animation.zombie_pony.big_head": {
+            "bones": {
+                "head": {
+                    "scale": 1.399999976158142
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.look_at_target": {
+            "bones": {
+                "head": {
+                    "rotation": [ "query.target_x_rotation", "query.target_y_rotation", 0 ]
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.bob.leftArm": {
+            "bones": {
+                "leftArm": {
+                    "rotation": [
+                        "-variable.x_bob - 90",
+                        0,
+                        "variable.z_bob"
+                    ],
+                    "position": [ -0.5, 2.5, 0.5 ]
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.bob.rightArm": {
+            "bones": {
+                "rightArm": {
+                    "rotation": [
+                        "-variable.x_bob - 90",
+                        0,
+                        "variable.z_bob"
+                    ],
+                    "position": [ 0.5, 2.5, 0.5 ]
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.bob.tail": {
+            "bones": {
+                "tailBody": {
+                    "rotation": [ "-variable.x_bob / 3", 0, 0 ]
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.show_movement.leftArm": {
+            "bones": {
+                "leftArm": {
+                    "rotation": [ "variable.movement_leg_angle", 0, 0 ]
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.show_movement.rightArm": {
+            "bones": {
+                "rightArm": {
+                    "rotation": [ "-variable.movement_leg_angle", 0, 0 ]
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.show_movement.legs": {
+            "bones": {
+                "leftLeg": {
+                    "rotation": [ "-variable.movement_leg_angle", 0, 0 ]
+                },
+                "rightLeg": {
+                    "rotation": [ "variable.movement_leg_angle", 0, 0 ]
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.show_movement.tail": {
+            "bones": {
+                "tailBody": {
+                    "rotation": [ "query.modified_move_speed * 30", 0, 0 ]
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.show_attack.leftArm": {
+            "bones": {
+                "leftArm": {
+                    "rotation": [
+                        "-(variable.attack2 * 1.2 - variable.attack * 0.4)",
+                        "5.73 - (variable.attack2 * 0.6)",
+                        0
+                    ]
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.show_attack.rightArm": {
+            "bones": {
+                "rightArm": {
+                    "rotation": [
+                        "-(variable.attack2 * 1.2 - variable.attack * 0.4)",
+                        "variable.attack2 * 0.6 - 5.73",
+                        0
+                    ]
+                }
+            },
+            "loop": true
+        },
+        "animation.zombie_pony.riding": {
+            "bones": {
+                "leftArm": {
+                    "rotation": [ 0, 0, "variable.is_holding_left ? 0.0 : -10.0" ]
+                },
+                "rightArm": {
+                    "rotation": [ 0, 0, "variable.is_holding_right ? 0.0 : 10.0" ]
+                },
+                "leftLeg": {
+                    "rotation": [
+                        "-42.0 - this",
+                        "-28.0 - this",
+                        "-this"
+                    ],
+                    "position": [ 1, 0, 5 ]
+                },
+                "rightLeg": {
+                    "rotation": [
+                        "-42.0 - this",
+                        "28.0 - this",
+                        "-this"
+                    ],
+                    "position": [ -1, 0, 5 ]
+                },
+                "body": {
+                    "rotation": [ -40, 0, 0 ]
+                },
+                "neck": {
+                    "rotation": [ 45, 0, 0 ]
+                }
+            },
+            "loop": true
+        }
+    }
 }
