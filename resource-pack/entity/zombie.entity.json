@@ -8,7 +8,7 @@
                 "default": "zombie"
             },
             "textures": {
-                "default": "textures/entity/zombie/zombie"
+                "default": "textures/entity/zombie/zombie_pony"
             },
             "geometry": {
                 "default": "geometry.zombie"
