@@ -5,7 +5,8 @@
             "min_engine_version": "1.8.0",
             "identifier": "minecraft:skeleton",
             "materials": {
-                "default": "skeleton"
+                "default": "skeleton",
+                "magic": "pony_magic"
             },
             "textures": {
                 "default": "textures/entity/skeleton/skeleton_pony"
@@ -49,7 +50,7 @@
                 "default": "controller.animation.skeleton_pony.default",
                 "default.arms": "controller.animation.skeleton_pony.default.arms"
             },
-            "render_controllers": [ "controller.render.skeleton_pony" ],
+            "render_controllers": [ "controller.render.skeleton_pony", "controller.render.skeleton_pony.magic" ],
             "enable_attachables": true
         }
     }

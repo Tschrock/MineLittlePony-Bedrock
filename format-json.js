@@ -212,7 +212,7 @@ async function formatFolder(folder) {
     const entries = await readDir(folder, { withFileTypes: true });
     for (const entry of entries) {
         if (entry.isDirectory() && !entry.name.startsWith(".")) await formatFolder(path.join(folder, entry.name));
-        else if (entry.isFile() && entry.name.endsWith(".json")) await formatFile(path.join(folder, entry.name));
+        else if (entry.isFile() && (entry.name.endsWith(".json") || entry.name.endsWith(".material"))) await formatFile(path.join(folder, entry.name));
     }
 }
 

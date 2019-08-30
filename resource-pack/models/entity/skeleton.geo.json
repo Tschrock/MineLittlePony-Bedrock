@@ -340,6 +340,67 @@
                     ]
                 },
                 {
+                    "name": "hornGlow",
+                    "parent": "horn",
+                    "pivot": [ 0, 30, -11 ],
+                    "cubes": [
+                        {
+                            "origin": [ -0.5, 28.8, -12 ],
+                            "size": [ 1, 4, 1 ],
+                            "inflate": 0.25,
+                            "uv": {
+                                "north": {
+                                    "uv": [ 0, 1 ],
+                                    "uv_size": [ 1, 1 ]
+                                },
+                                "east": {
+                                    "uv": [ 0, 1 ],
+                                    "uv_size": [ 1, 1 ]
+                                },
+                                "south": {
+                                    "uv": [ 0, 1 ],
+                                    "uv_size": [ 1, 1 ]
+                                },
+                                "west": {
+                                    "uv": [ 0, 1 ],
+                                    "uv_size": [ 1, 1 ]
+                                },
+                                "up": {
+                                    "uv": [ 0, 1 ],
+                                    "uv_size": [ 1, 1 ]
+                                }
+                            }
+                        },
+                        {
+                            "origin": [ -0.5, 28.8, -12 ],
+                            "size": [ 1, 4, 1 ],
+                            "inflate": 0.5,
+                            "uv": {
+                                "north": {
+                                    "uv": [ 0, 1 ],
+                                    "uv_size": [ 1, 1 ]
+                                },
+                                "east": {
+                                    "uv": [ 0, 1 ],
+                                    "uv_size": [ 1, 1 ]
+                                },
+                                "south": {
+                                    "uv": [ 0, 1 ],
+                                    "uv_size": [ 1, 1 ]
+                                },
+                                "west": {
+                                    "uv": [ 0, 1 ],
+                                    "uv_size": [ 1, 1 ]
+                                },
+                                "up": {
+                                    "uv": [ 0, 1 ],
+                                    "uv_size": [ 1, 1 ]
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "rightArm",
                     "parent": "body",
                     "pivot": [ -2, 13, -5 ],
