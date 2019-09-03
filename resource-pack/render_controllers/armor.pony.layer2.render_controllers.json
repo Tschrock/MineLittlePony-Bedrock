@@ -4,7 +4,7 @@
         "controller.render.armor.pony.layer2": {
             "geometry": "Geometry.pony_layer2",
             "part_visibility": [
-                { "*": "variable.is_pony" }
+                { "*": "variable.pony_type > 0" }
             ],
             "materials": [
                 { "*": "variable.is_enchanted ? Material.enchanted : Material.default" }

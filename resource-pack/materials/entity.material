@@ -5,46 +5,9 @@
             "vertexShader": "shaders/entity.vertex",
             "vrGeometryShader": "shaders/entity.geometry",
             "fragmentShader": "shaders/entity.fragment",
-            "vertexFields": [
-                { "field": "Position" },
-                { "field": "Normal" },
-                { "field": "UV0" }
-            ],
-            "variants": [
-                {
-                    "skinning": {
-                        "+defines": [ "USE_SKINNING" ],
-                        "vertexFields": [
-                            { "field": "Position" },
-                            { "field": "BoneId0" },
-                            { "field": "Normal" },
-                            { "field": "UV0" }
-                        ]
-                    }
-                },
-                {
-                    "skinning_color": {
-                        "+defines": [ "USE_SKINNING", "USE_OVERLAY" ],
-                        "+states": [ "Blending" ],
-                        "vertexFields": [
-                            { "field": "Position" },
-                            { "field": "BoneId0" },
-                            { "field": "Color" },
-                            { "field": "Normal" },
-                            { "field": "UV0" }
-                        ]
-                    }
-                }
-            ],
             "msaaSupport": "Both",
-            "+samplerStates": [
-                {
-                    "samplerIndex": 0,
-                    "textureWrap": "Repeat"
-                }
-            ],
-            "+defines": [ "ALPHA_TEST" ],
-            "+states": [ "Blending", "DisableCulling" ],
+            "+defines": [ "USE_SKINNING", "USE_OVERLAY" ],
+            "+states": [ "Blending" ],
             "blendSrc": "One",
             "blendDst": "One"
         }

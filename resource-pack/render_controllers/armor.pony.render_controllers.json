@@ -10,11 +10,11 @@
                     "array.armor_geometry": [ "Geometry.default", "Geometry.pony_layer1" ]
                 }
             },
-            "geometry": "array.armor_geometry[variable.is_pony]",
+            "geometry": "array.armor_geometry[variable.pony_type > 0]",
             "materials": [
                 { "*": "variable.is_enchanted ? Material.enchanted : Material.default" }
             ],
-            "textures": [ "array.armor_texture[variable.is_pony]", "Texture.enchanted" ]
+            "textures": [ "array.armor_texture[variable.pony_type > 0]", "Texture.enchanted" ]
         }
     }
 }

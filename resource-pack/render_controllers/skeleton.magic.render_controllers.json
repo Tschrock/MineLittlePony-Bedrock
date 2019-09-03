@@ -2,7 +2,6 @@
     "format_version": "1.10.0",
     "render_controllers": {
         "controller.render.skeleton_pony.magic": {
-            "rebuild_animation_matrices": true,
             "geometry": "Geometry.default",
             "part_visibility": [
                 { "*": 0 },
@@ -11,7 +10,8 @@
             "materials": [
                 { "*": "Material.magic" }
             ],
-            "textures": [ "Texture.default" ]
+            "textures": [ "Texture.default" ],
+            "ignore_lighting": true
         }
     }
 }

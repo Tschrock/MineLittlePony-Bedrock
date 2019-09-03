@@ -19,12 +19,13 @@
             },
             "scripts": {
                 "pre_animation": [
+                    "variable.pony_type = 1;",
+                    "variable.magic_texture_index = 0;",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
                     "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",
                     "variable.attack = Math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3;",
-                    "variable.attack2 = Math.sin(variable.attack_time * 180.0) * 57.3;",
-                    "variable.is_pony = 1.0;"
+                    "variable.attack2 = Math.sin(variable.attack_time * 180.0) * 57.3;"
                 ],
                 "animate": [
                     "default",
