@@ -11,7 +11,7 @@
                 "default": "textures/entity/zombie/zombie_pony"
             },
             "geometry": {
-                "default": "geometry.zombie"
+                "default": "geometry.base_pony"
             },
             "spawn_egg": {
                 "texture": "spawn_egg",
@@ -50,7 +50,7 @@
                 "default": "controller.animation.zombie_pony.default",
                 "default.arms": "controller.animation.zombie_pony.default.arms"
             },
-            "render_controllers": [ "controller.render.zombie_pony" ],
+            "render_controllers": [ "controller.render.pony_base" ],
             "enable_attachables": true
         }
     }

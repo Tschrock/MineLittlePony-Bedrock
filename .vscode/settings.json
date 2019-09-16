@@ -1,0 +1,47 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/manifest.json"
+            ],
+            "url": "https://json.cp3.es/minecraft/bedrock/manifest.json"
+        },
+        {
+            "fileMatch": [
+                "/*.animation_controllers.json"
+            ],
+            "url": "https://json.cp3.es/minecraft/bedrock/animation_controller.json"
+        },
+        {
+            "fileMatch": [
+                "/*.animation.json"
+            ],
+            "url": "https://json.cp3.es/minecraft/bedrock/animation.json"
+        },
+        {
+            "fileMatch": [
+                "/*.entity.json"
+            ],
+            "url": "https://json.cp3.es/minecraft/bedrock/client_entity.actor_resource_definition.json"
+        },
+        {
+            "fileMatch": [
+                "/attachables/*.json"
+            ],
+            "url": "https://json.cp3.es/minecraft/bedrock/attachable.actor_resource_definition.json"
+        },
+        {
+            "fileMatch": [
+                "/*.render_controllers.json"
+            ],
+            "url": "https://json.cp3.es/minecraft/bedrock/render_controller.json"
+        },
+        {
+            "fileMatch": [
+                "/models/mobs.json",
+                "/*.geo.json"
+            ],
+            "url": "https://json.cp3.es/minecraft/bedrock/geometry.json"
+        }
+    ]
+}

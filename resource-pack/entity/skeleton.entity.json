@@ -30,26 +30,26 @@
                 ],
                 "animate": [
                     "default",
-                    "default.arms",
                     { "riding": "query.is_riding" },
-                    { "big_head": "query.is_baby" }
+                    { "big_head": "query.is_baby" },
+                    { "bob.leftItem": "variable.is_holding_left" },
+                    { "bob.rightItem": "variable.is_holding_right" },
+                    { "show_attack.leftItem": "variable.is_holding_left" },
+                    { "show_attack.rightItem": "variable.is_holding_right" }
                 ]
             },
             "animations": {
-                "show_movement.leftArm": "animation.skeleton_pony.show_movement.leftArm",
-                "show_movement.rightArm": "animation.skeleton_pony.show_movement.rightArm",
-                "show_movement.legs": "animation.skeleton_pony.show_movement.legs",
+                "default": "controller.animation.skeleton_pony.default",
+                "show_movement": "animation.skeleton_pony.show_movement",
                 "show_movement.tail": "animation.skeleton_pony.show_movement.tail",
-                "show_attack.leftArm": "animation.skeleton_pony.show_attack.leftArm",
-                "show_attack.rightArm": "animation.skeleton_pony.show_attack.rightArm",
-                "bob.leftArm": "animation.skeleton_pony.bob.leftArm",
-                "bob.rightArm": "animation.skeleton_pony.bob.rightArm",
+                "show_attack.leftItem": "animation.skeleton_pony.show_attack.leftItem",
+                "show_attack.rightItem": "animation.skeleton_pony.show_attack.rightItem",
+                "bob.leftItem": "animation.skeleton_pony.bob.leftItem",
+                "bob.rightItem": "animation.skeleton_pony.bob.rightItem",
                 "bob.tail": "animation.skeleton_pony.bob.tail",
                 "look_at_target": "animation.skeleton_pony.look_at_target",
                 "big_head": "animation.skeleton_pony.big_head",
-                "riding": "animation.skeleton_pony.riding",
-                "default": "controller.animation.skeleton_pony.default",
-                "default.arms": "controller.animation.skeleton_pony.default.arms"
+                "riding": "animation.skeleton_pony.riding"
             },
             "render_controllers": [ "controller.render.skeleton_pony", "controller.render.skeleton_pony.magic" ],
             "enable_attachables": true

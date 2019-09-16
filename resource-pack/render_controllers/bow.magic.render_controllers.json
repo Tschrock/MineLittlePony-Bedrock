@@ -1,0 +1,21 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.bow.magic": {
+            "arrays": {
+                "textures": {
+                    "array.magic_texture": [
+                        "Texture.magic_default",
+                        "Texture.magic_skeleton"
+                    ]
+                }
+            },
+            "geometry": "Geometry.magic",
+            "materials": [
+                { "*": "Material.magic" }
+            ],
+            "textures": [ "array.magic_texture[variable.magic_texture_index]" ],
+            "ignore_lighting": true
+        }
+    }
+}

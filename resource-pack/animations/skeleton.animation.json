@@ -17,9 +17,9 @@
             },
             "loop": true
         },
-        "animation.skeleton_pony.bob.leftArm": {
+        "animation.skeleton_pony.bob.leftItem": {
             "bones": {
-                "leftArm": {
+                "leftItem": {
                     "rotation": [
                         "-variable.x_bob - 90",
                         0,
@@ -30,9 +30,9 @@
             },
             "loop": true
         },
-        "animation.skeleton_pony.bob.rightArm": {
+        "animation.skeleton_pony.bob.rightItem": {
             "bones": {
-                "rightArm": {
+                "rightItem": {
                     "rotation": [
                         "-variable.x_bob - 90",
                         0,
@@ -51,24 +51,14 @@
             },
             "loop": true
         },
-        "animation.skeleton_pony.show_movement.leftArm": {
+        "animation.skeleton_pony.show_movement": {
             "bones": {
                 "leftArm": {
                     "rotation": [ "variable.movement_leg_angle", 0, 0 ]
-                }
-            },
-            "loop": true
-        },
-        "animation.skeleton_pony.show_movement.rightArm": {
-            "bones": {
+                },
                 "rightArm": {
                     "rotation": [ "-variable.movement_leg_angle", 0, 0 ]
-                }
-            },
-            "loop": true
-        },
-        "animation.skeleton_pony.show_movement.legs": {
-            "bones": {
+                },
                 "leftLeg": {
                     "rotation": [ "-variable.movement_leg_angle", 0, 0 ]
                 },
@@ -86,9 +76,9 @@
             },
             "loop": true
         },
-        "animation.skeleton_pony.show_attack.leftArm": {
+        "animation.skeleton_pony.show_attack.leftItem": {
             "bones": {
-                "leftArm": {
+                "leftItem": {
                     "rotation": [
                         "-(variable.attack2 * 1.2 - variable.attack * 0.4)",
                         "5.73 - (variable.attack2 * 0.6)",
@@ -98,9 +88,9 @@
             },
             "loop": true
         },
-        "animation.skeleton_pony.show_attack.rightArm": {
+        "animation.skeleton_pony.show_attack.rightItem": {
             "bones": {
-                "rightArm": {
+                "rightItem": {
                     "rotation": [
                         "-(variable.attack2 * 1.2 - variable.attack * 0.4)",
                         "variable.attack2 * 0.6 - 5.73",

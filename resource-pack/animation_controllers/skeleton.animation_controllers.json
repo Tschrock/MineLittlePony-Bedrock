@@ -6,33 +6,9 @@
                 "default": {
                     "animations": [
                         { "look_at_target": [] },
-                        { "show_movement.legs": [] },
+                        { "show_movement": [] },
                         { "show_movement.tail": [] },
                         { "bob.tail": [] }
-                    ]
-                }
-            }
-        },
-        "controller.animation.skeleton_pony.default.arms": {
-            "states": {
-                "default": {
-                    "animations": [
-                        { "bob.leftArm": [] },
-                        { "show_attack.leftArm": [] },
-                        { "show_movement.rightArm": [] }
-                    ],
-                    "transitions": [
-                        { "is_holding_right": "variable.is_holding_right == 1.0" }
-                    ]
-                },
-                "is_holding_right": {
-                    "animations": [
-                        { "bob.rightArm": [] },
-                        { "show_attack.rightArm": [] },
-                        { "show_movement.leftArm": [] }
-                    ],
-                    "transitions": [
-                        { "default": "variable.is_holding_right != 1.0" }
                     ]
                 }
             }

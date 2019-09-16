@@ -1,11 +1,11 @@
 {
     "format_version": "1.8.0",
     "render_controllers": {
-        "controller.render.skeleton_pony.magic": {
+        "controller.render.pony_base.magic": {
             "geometry": "Geometry.default",
             "part_visibility": [
                 { "*": 0 },
-                { "hornGlow": 1 }
+                { "hornGlow": "(variable.pony_type == 2 || variable.pony_type == 4) && (variable.is_holding_left || variable.is_holding_right)" }
             ],
             "materials": [
                 { "*": "Material.magic" }
