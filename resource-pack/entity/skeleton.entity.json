@@ -51,7 +51,7 @@
                 "big_head": "animation.skeleton_pony.big_head",
                 "riding": "animation.skeleton_pony.riding"
             },
-            "render_controllers": [ "controller.render.skeleton_pony", "controller.render.skeleton_pony.magic" ],
+            "render_controllers": [ "controller.render.base_pony", "controller.render.base_pony.magic" ],
             "enable_attachables": true
         }
     }

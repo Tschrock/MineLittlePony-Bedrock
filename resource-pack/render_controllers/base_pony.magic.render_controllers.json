@@ -1,7 +1,7 @@
 {
     "format_version": "1.8.0",
     "render_controllers": {
-        "controller.render.pony_base.magic": {
+        "controller.render.base_pony.magic": {
             "geometry": "Geometry.default",
             "part_visibility": [
                 { "*": 0 },

@@ -15,8 +15,8 @@
             },
             "geometry": {
                 "default": "geometry.humanoid.armor.chestplate",
-                "pony_layer1": "geometry.pony.armor.chestplate",
-                "pony_layer2": "geometry.pony.armor.chestplate.layer2"
+                "pony_layer1": "geometry.base_pony.armor.chestplate",
+                "pony_layer2": "geometry.base_pony.armor.chestplate.layer2"
             },
             "render_controllers": [ "controller.render.armor.pony", "controller.render.armor.pony.layer2" ]
         }

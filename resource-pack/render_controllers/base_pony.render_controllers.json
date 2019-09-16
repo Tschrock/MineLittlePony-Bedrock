@@ -1,10 +1,12 @@
 {
     "format_version": "1.8.0",
     "render_controllers": {
-        "controller.render.skeleton_pony": {
+        "controller.render.base_pony": {
             "rebuild_animation_matrices": true,
             "geometry": "Geometry.default",
             "part_visibility": [
+                { "*": 1 },
+                { "horn": "variable.pony_type == 2 || variable.pony_type == 4" },
                 { "hornGlow": 0 }
             ],
             "materials": [

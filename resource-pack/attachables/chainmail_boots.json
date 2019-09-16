@@ -14,7 +14,7 @@
             },
             "geometry": {
                 "default": "geometry.humanoid.armor.boots",
-                "pony_layer1": "geometry.pony.armor.boots"
+                "pony_layer1": "geometry.base_pony.armor.boots"
             },
             "render_controllers": [ "controller.render.armor.pony" ]
         }

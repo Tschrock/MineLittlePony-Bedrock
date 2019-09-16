@@ -14,7 +14,7 @@
             },
             "geometry": {
                 "default": "geometry.humanoid.armor.leggings",
-                "pony_layer1": "geometry.pony.armor.leggings"
+                "pony_layer1": "geometry.base_pony.armor.leggings"
             },
             "render_controllers": [ "controller.render.armor.pony" ]
         }

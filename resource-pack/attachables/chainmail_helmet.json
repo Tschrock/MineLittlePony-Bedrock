@@ -14,7 +14,7 @@
             },
             "geometry": {
                 "default": "geometry.humanoid.armor.helmet",
-                "pony_layer1": "geometry.pony.armor.helmet"
+                "pony_layer1": "geometry.base_pony.armor.helmet"
             },
             "render_controllers": [ "controller.render.armor.pony" ]
         }
