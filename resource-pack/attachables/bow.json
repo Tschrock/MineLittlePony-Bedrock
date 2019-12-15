@@ -7,7 +7,7 @@
             "materials": {
                 "default": "entity_alphatest",
                 "enchanted": "entity_alphatest_glint",
-                "magic": "pony_magic"
+                "magic": "entity_change_color"
             },
             "textures": {
                 "default": "textures/items/bow_standby",
@@ -15,8 +15,7 @@
                 "bow_pulling_1": "textures/items/bow_pulling_1",
                 "bow_pulling_2": "textures/items/bow_pulling_2",
                 "enchanted": "textures/misc/enchanted_item_glint",
-                "magic_default": "textures/items/white_template",
-                "magic_skeleton": "textures/entity/skeleton/skeleton_pony"
+                "magic": "textures/items/white_template"
             },
             "geometry": {
                 "default": "geometry.bow_standby",

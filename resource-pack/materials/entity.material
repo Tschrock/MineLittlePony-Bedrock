@@ -6,7 +6,7 @@
             "vrGeometryShader": "shaders/entity.geometry",
             "fragmentShader": "shaders/entity.fragment",
             "msaaSupport": "Both",
-            "+defines": [ "USE_SKINNING", "USE_OVERLAY" ],
+            "+defines": [ "USE_SKINNING", "USE_OVERLAY", "USE_COLOR_MASK" ],
             "+states": [ "Blending" ],
             "blendSrc": "One",
             "blendDst": "One"

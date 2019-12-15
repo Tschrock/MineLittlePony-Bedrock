@@ -2,14 +2,11 @@
     "format_version": "1.8.0",
     "render_controllers": {
         "controller.render.armor.pony.layer2": {
-            "geometry": "Geometry.pony_layer2",
-            "part_visibility": [
-                { "*": "variable.pony_type > 0" }
-            ],
+            "geometry": "Geometry.layer2",
             "materials": [
                 { "*": "variable.is_enchanted ? Material.enchanted : Material.default" }
             ],
-            "textures": [ "Texture.pony_layer2", "Texture.enchanted" ]
+            "textures": [ "Texture.layer2", "Texture.enchanted" ]
         }
     }
 }

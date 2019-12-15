@@ -1,20 +1,19 @@
 {
-    "format_version": "1.8.0",
+    "format_version": "1.10.0",
     "minecraft:attachable": {
         "description": {
-            "identifier": "minecraft:leather_leggings",
+            "identifier": "minecraft:leather_helmet.pony",
+            "item": { "minecraft:leather_helmet": "query.owner_identifier == 'minecraft:zombie'" },
             "materials": {
                 "default": "armor_leather",
                 "enchanted": "armor_leather_enchanted"
             },
             "textures": {
-                "default": "textures/models/armor/leather_2",
                 "enchanted": "textures/misc/enchanted_item_glint",
-                "pony_layer1": "textures/models/armor/leather_layer_inner_pony"
+                "default": "textures/models/armor/leather_layer_outer_pony"
             },
             "geometry": {
-                "default": "geometry.humanoid.armor.leggings",
-                "pony_layer1": "geometry.base_pony.armor.leggings"
+                "default": "geometry.base_pony.armor.helmet"
             },
             "render_controllers": [ "controller.render.armor.pony" ]
         }

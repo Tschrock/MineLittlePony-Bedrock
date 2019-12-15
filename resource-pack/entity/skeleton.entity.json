@@ -9,7 +9,8 @@
                 "magic": "pony_magic"
             },
             "textures": {
-                "default": "textures/entity/skeleton/skeleton_pony"
+                "default": "textures/entity/skeleton/skeleton_pony",
+                "magic": "textures/items/grey_template"
             },
             "geometry": {
                 "default": "geometry.skeleton"
@@ -20,8 +21,15 @@
             },
             "scripts": {
                 "pre_animation": [
-                    "variable.pony_type = 2;",
-                    "variable.magic_texture_index = 1;",
+                    "variable.is_pony = 1;",
+                    "variable.horn_type = 1;",
+                    "variable.wing_type = 0;",
+                    "variable.ear_type = 0;",
+                    "variable.muzzle_type = 0;",
+                    "variable.magic_color.r = 0;",
+                    "variable.magic_color.g = 255;",
+                    "variable.magic_color.b = 0;",
+                    "variable.handedness = 0;",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
                     "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",

@@ -6,7 +6,7 @@
             "geometry": "Geometry.default",
             "part_visibility": [
                 { "*": 1 },
-                { "horn": "variable.pony_type == 2 || variable.pony_type == 4" },
+                { "horn": "variable.horn_type > 0" },
                 { "hornGlow": 0 }
             ],
             "materials": [

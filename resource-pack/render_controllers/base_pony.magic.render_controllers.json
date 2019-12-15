@@ -5,12 +5,12 @@
             "geometry": "Geometry.default",
             "part_visibility": [
                 { "*": 0 },
-                { "hornGlow": "(variable.pony_type == 2 || variable.pony_type == 4) && (variable.is_holding_left || variable.is_holding_right)" }
+                { "hornGlow": "variable.horn_type > 0 && (variable.is_holding_left || variable.is_holding_right)" }
             ],
             "materials": [
                 { "*": "Material.magic" }
             ],
-            "textures": [ "Texture.default" ],
+            "textures": [ "Texture.magic" ],
             "ignore_lighting": true
         }
     }
