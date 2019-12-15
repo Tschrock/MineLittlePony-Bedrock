@@ -3,7 +3,7 @@
     "minecraft:attachable": {
         "description": {
             "identifier": "minecraft:leather_chestplate.pony",
-            "item": { "minecraft:leather_chestplate": "query.owner_identifier == 'minecraft:zombie'" },
+            "item": { "minecraft:leather_chestplate": "variable.is_pony" },
             "materials": {
                 "default": "armor_leather",
                 "enchanted": "armor_leather_enchanted"

@@ -3,7 +3,7 @@
     "minecraft:attachable": {
         "description": {
             "identifier": "minecraft:leather_boots.pony",
-            "item": { "minecraft:leather_boots": "query.owner_identifier == 'minecraft:zombie'" },
+            "item": { "minecraft:leather_boots": "variable.is_pony" },
             "materials": {
                 "default": "armor_leather",
                 "enchanted": "armor_leather_enchanted"

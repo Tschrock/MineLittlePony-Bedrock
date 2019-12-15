@@ -3,7 +3,7 @@
     "minecraft:attachable": {
         "description": {
             "identifier": "minecraft:chainmail_chestplate.pony",
-            "item": { "minecraft:chainmail_chestplate": "query.owner_identifier == 'minecraft:zombie'" },
+            "item": { "minecraft:chainmail_chestplate": "variable.is_pony" },
             "materials": {
                 "default": "armor",
                 "enchanted": "armor_enchanted"

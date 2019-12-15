@@ -3,7 +3,7 @@
     "minecraft:attachable": {
         "description": {
             "identifier": "minecraft:turtle_helmet.pony",
-            "item": { "minecraft:turtle_helmet": "query.owner_identifier == 'minecraft:zombie'" },
+            "item": { "minecraft:turtle_helmet": "variable.is_pony" },
             "materials": {
                 "default": "armor",
                 "enchanted": "armor_enchanted"

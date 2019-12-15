@@ -3,7 +3,7 @@
     "minecraft:attachable": {
         "description": {
             "identifier": "minecraft:golden_leggings.pony",
-            "item": { "minecraft:golden_leggings": "query.owner_identifier == 'minecraft:zombie'" },
+            "item": { "minecraft:golden_leggings": "variable.is_pony" },
             "materials": {
                 "default": "armor",
                 "enchanted": "armor_enchanted"
