@@ -7,7 +7,7 @@
             "materials": {
                 "default": "entity_alphatest",
                 "enchanted": "entity_alphatest_glint",
-                "magic": "entity_change_color"
+                "magic": "pony_magic"
             },
             "textures": {
                 "default": "textures/items/bow_standby",
