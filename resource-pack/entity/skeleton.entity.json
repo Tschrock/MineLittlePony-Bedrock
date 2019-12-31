@@ -21,6 +21,7 @@
             },
             "scripts": {
                 "pre_animation": [
+                    "variable.test = query.log(5);",
                     "variable.is_pony = 1;",
                     "variable.horn_type = 1;",
                     "variable.wing_type = 0;",

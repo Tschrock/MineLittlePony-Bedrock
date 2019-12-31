@@ -12,7 +12,7 @@
         "animation.skeleton_pony.look_at_target": {
             "bones": {
                 "head": {
-                    "rotation": [ "query.target_x_rotation", "query.target_y_rotation", 0 ]
+                    "rotation": [ "query.log(query.target_x_rotation)", "query.target_y_rotation", 0 ]
                 }
             },
             "loop": true

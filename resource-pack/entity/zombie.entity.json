@@ -21,6 +21,7 @@
             },
             "scripts": {
                 "pre_animation": [
+                    "variable.skinidtest = query.log(query.skin_id);",
                     "variable.is_pony = 1;",
                     "variable.horn_type = 0;",
                     "variable.wing_type = 0;",

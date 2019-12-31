@@ -2,8 +2,8 @@
     "format_version": 1,
     "header": {
         "description": "Turns mobs into ponies!",
-        "name": "Mine Little Pony Mobs",
-        "uuid": "571ec626-7915-4b36-8897-47f793a77643",
+        "name": "Mine Little Pony Behaviors Test",
+        "uuid": "5b6316cb-67d4-4a32-b331-b2b99851391c",
         "version": [
             0,
             0,
@@ -18,8 +18,8 @@
     "modules": [
         {
             "description": "Turns mobs into ponies!",
-            "type": "resources",
-            "uuid": "b81d5c84-a207-4025-a522-daa2caa26156",
+            "type": "client_data",
+            "uuid": "1cebd9f3-13c6-4598-8025-46fafa8b3377",
             "version": [
                 0,
                 0,

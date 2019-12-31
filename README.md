@@ -15,6 +15,7 @@ https://minelittlepony-mod.com
 | (Generic) Pegasus     |       |            |
 | (Generic) Pony Armor  | ✔️     | ➖          |
 | (Generic) Magic Auras | 🔜     | ➖          |
+| Player                | 🔜     |            |
 | Drowned               |       |            |
 | Enderman              |       |            |
 | Evoker                |       |            |
