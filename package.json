@@ -21,23 +21,33 @@
         "url": "https://cyberpon3.net"
     },
     "scripts": {
-        "test": " "
+        "build": "gulp build",
+        "test": "mocha -r ts-node/register tests/**/*.spec.ts --delay"
     },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Tschrock/MineLittlePony-Bedrock.git"
     },
     "devDependencies": {
+        "@types/chai": "^4.2.7",
         "@types/gulp": "^4.0.6",
         "@types/gulp-zip": "^4.0.1",
+        "@types/mocha": "^5.2.7",
         "@types/node": "^13.1.2",
         "@types/semver": "^6.2.0",
         "@types/webpack-stream": "^3.2.10",
+        "ajv": "^6.10.2",
+        "chai": "^4.2.0",
+        "chai-as-promised": "^7.1.1",
         "del": "^5.1.0",
+        "globby": "^10.0.1",
         "gulp": "^4.0.2",
         "gulp-zip": "^5.0.1",
+        "minecraft-bedrock-addon-schemas": "github:Tschrock/minecraft-bedrock-addon-schemas",
+        "mocha": "^6.2.2",
         "semver": "^7.1.1",
         "ts-loader": "^6.2.1",
+        "ts-node": "^8.5.4",
         "typescript": "^3.7.4",
         "webpack": "^4.41.5",
         "webpack-stream": "^5.2.1"

@@ -2,46 +2,46 @@
     "json.schemas": [
         {
             "fileMatch": [
-                "/manifest.json"
+                "**/manifest.json"
             ],
-            "url": "https://json.cp3.es/minecraft/bedrock/manifest.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/manifest.json"
         },
         {
             "fileMatch": [
-                "/*.animation_controllers.json"
+                "**/*.animation_controllers.json"
             ],
-            "url": "https://json.cp3.es/minecraft/bedrock/animation_controller.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/actor_animation_controller.json"
         },
         {
             "fileMatch": [
-                "/*.animation.json"
+                "**/*.animation.json"
             ],
-            "url": "https://json.cp3.es/minecraft/bedrock/animation.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/actor_animation.json"
         },
         {
             "fileMatch": [
-                "/*.entity.json"
+                "**/*.entity.json"
             ],
-            "url": "https://json.cp3.es/minecraft/bedrock/client_entity.actor_resource_definition.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/client_entity.actor_resource_definition.json"
         },
         {
             "fileMatch": [
-                "/attachables/*.json"
+                "**/attachables/*.json"
             ],
-            "url": "https://json.cp3.es/minecraft/bedrock/attachable.actor_resource_definition.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/attachable.actor_resource_definition.json"
         },
         {
             "fileMatch": [
-                "/*.render_controllers.json"
+                "**/*.render_controllers.json"
             ],
-            "url": "https://json.cp3.es/minecraft/bedrock/render_controller.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/render_controller.json"
         },
         {
             "fileMatch": [
-                "/models/mobs.json",
-                "/*.geo.json"
+                "**/models/mobs.json",
+                "**/*.geo.json"
             ],
-            "url": "https://json.cp3.es/minecraft/bedrock/geometry.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/geometry.json"
         }
     ]
 }
