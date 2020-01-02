@@ -9,13 +9,16 @@
 [![Tests][tests-badge]][tests-link]
 [![Release][release-badge]][release-link]
 
-----------
-
 </div>
 
 A Minecraft: Bedrock Edition addon that turns players and mobs into ponies.
 
 https://minelittlepony-mod.com
+
+## Installation
+
+1. Download the latest .McPack files from [the GitHub Releases page][release-link]
+2. Follow the official installation instructions from https://minecraft.net/addons
 
 ## Current Status:
 
@@ -45,11 +48,6 @@ https://minelittlepony-mod.com
 | Zombie Pigman         |       |            |
 | Zombie Villager       |       |            |
 
-
-## Installation
-
-1. Download the latest .McPack files from [the GitHub Releases page][release-link]
-2. Follow the official installation instructions from https://minecraft.net/addons
 
 ## Cloning & Building
 We use [Node.js](https://nodejs.org/) to build all of the different components of the addon and bundle them together.
