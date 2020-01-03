@@ -1,3 +1,4 @@
+import path from 'path';
 
 import del from 'del';
 import gulp from 'gulp';
@@ -5,7 +6,7 @@ import gulp_zip from 'gulp-zip';
 import webpackStream from 'webpack-stream';
 
 import webpackConfig from './webpack.config';
-import { versionManifest, getPackageVersion, getPackageName } from './tools/util';
+import { versionManifest, getPackageVersion, getPackageName, getMCDataDirectory } from './tools/util';
 
 
 // ============================== //
@@ -73,6 +74,9 @@ function buildBehaviorScripts() {
         './behavior-pack/scripts/server/server.ts'
     ])
         .pipe(webpackStream(webpackConfig))
+        .on('error', function handleError(this: NodeJS.EventEmitter) {
+            this.emit('end'); // Recover from errors
+        })
         .pipe(gulp.dest('./dist/build/behavior-pack/'));
 }
 
@@ -90,7 +94,6 @@ function copyBehaviorFiles() {
     return gulp.src([
         './behavior-pack/*', // Copy all files
         '!./behavior-pack/scripts', // Ignore scripts (see buildBehaviorScripts)
-        '!./behavior-pack/manifest.json' // Ignore manifest (see versionBehaviors)
     ])
         .pipe(gulp.dest('./dist/build/behavior-pack/'))
 }
@@ -110,9 +113,20 @@ async function packBehaviors() {
  */
 export function watchBehaviors() {
     return niceWatch(
-        './behavior-pack/*',
-        gulp.series(cleanBehaviors, buildBehaviorScripts, copyBehaviorFiles, packBehaviors)
+        './behavior-pack/**/*',
+        gulp.series(cleanBehaviors, buildBehaviorScripts, copyBehaviorFiles, installBehaviors)
     );
+}
+
+/**
+ * Installs behavior files
+ */
+export async function installBehaviors() {
+    const packsPath = path.join(getMCDataDirectory(), 'development_behavior_packs');
+    const installName = await getPackageName();
+    const installPath = path.join(packsPath, installName);
+    await del(installPath, { cwd: packsPath });
+    return gulp.src('./dist/build/behavior-pack/**/*').pipe(gulp.dest(installPath));
 }
 
 export const behaviors = gulp.series(cleanBehaviors, versionBehaviors, buildBehaviorScripts, copyBehaviorFiles, packBehaviors);
@@ -141,7 +155,6 @@ async function versionResources() {
 function copyResourceFiles() {
     return gulp.src([
         './resource-pack/*', // Copy all files
-        '!./resource-pack/manifest.json' // Ignore manifest (see versionResources)
     ])
         .pipe(gulp.dest('./dist/build/resource-pack/'))
 }
@@ -163,9 +176,20 @@ async function packResources() {
  */
 export function watchResources() {
     return niceWatch(
-        './resource-pack/*',
-        gulp.series(cleanResources, copyResourceFiles, packResources)
+        './resource-pack/**/*',
+        gulp.series(cleanResources, copyResourceFiles, installResources)
     );
+}
+
+/**
+ * Installs resource files
+ */
+export async function installResources() {
+    const packsPath = path.join(getMCDataDirectory(), 'development_resource_packs');
+    const installName = await getPackageName();
+    const installPath = path.join(packsPath, installName);
+    await del(installPath, { cwd: packsPath });
+    return gulp.src('./dist/build/resource-pack/**/*').pipe(gulp.dest(installPath));
 }
 
 export const resources = gulp.series(cleanResources, versionResources, copyResourceFiles, packResources);
@@ -173,5 +197,7 @@ export const resources = gulp.series(cleanResources, versionResources, copyResou
 export const build = gulp.parallel(resources, behaviors);
 
 export const watch = gulp.parallel(watchResources, watchBehaviors);
+
+export const install = gulp.parallel(installResources, installBehaviors);
 
 export default build;

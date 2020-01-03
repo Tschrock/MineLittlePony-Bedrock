@@ -44,6 +44,8 @@
         "gulp": "^4.0.2",
         "gulp-zip": "^5.0.1",
         "minecraft-bedrock-addon-schemas": "github:Tschrock/minecraft-bedrock-addon-schemas",
+        "minecraft-scripting-types-client": "^1.0.0",
+        "minecraft-scripting-types-server": "^1.0.0",
         "mocha": "^6.2.2",
         "semver": "^7.1.1",
         "ts-loader": "^6.2.1",

@@ -1,5 +1,7 @@
-
 import fs from 'fs';
+import os from 'os';
+import path from 'path';
+
 import { parse } from 'semver';
 
 export async function readJson<T>(path: string): Promise<T> {
@@ -18,7 +20,7 @@ interface Package {
 let packageJSON: Package | null = null;
 
 async function getPackageJSON() {
-    if(packageJSON === null) packageJSON = await readJson<Package>('./package.json');
+    if (packageJSON === null) packageJSON = await readJson<Package>('./package.json');
     return packageJSON;
 }
 
@@ -37,9 +39,9 @@ interface PackManifest {
 export async function versionManifest(path: string, version: string | [number, number, number]) {
 
     // If we were passed a string, parse it with semver
-    if(typeof version === 'string') {
+    if (typeof version === 'string') {
         var semver = parse(version);
-        if(semver === null) throw new Error(`Invalid version '${version}'`);
+        if (semver === null) throw new Error(`Invalid version '${version}'`);
         version = [semver.major, semver.minor, semver.patch];
     }
 
@@ -53,4 +55,18 @@ export async function versionManifest(path: string, version: string | [number, n
     // Write the manifest
     await writeJson(path, manifest);
 
+}
+
+const platformRoots: { [key: string]: string } = {
+    "win32": "AppData/Local/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState",
+    "linux": ".local/share/mcpelauncher",
+    "darwin": "Library/Application Support/mcpelauncher",
+    "android": "storage/shared/"
+}
+
+export function getMCDataDirectory() {
+    const platform = os.platform();
+    const dataPath = platformRoots[platform];
+    if(!dataPath) throw new Error(`Could not determine MC data location. Unknown platform '${platform}'.`);
+    return path.join(os.homedir(), dataPath, "games/com.mojang");
 }
