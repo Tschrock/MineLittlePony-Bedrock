@@ -40,7 +40,7 @@ class Client extends System<IVanillaClientSystem> {
                 absorbs_input: true,
                 always_accepts_input: false,
                 force_render_below: false,
-                is_showing_menu: false,
+                is_showing_menu: true,
                 render_game_behind: true,
                 render_only_when_topmost: true,
                 should_steal_mouse: false
