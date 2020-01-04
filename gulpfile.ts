@@ -5,7 +5,8 @@ import gulp from 'gulp';
 import gulp_zip from 'gulp-zip';
 import webpackStream from 'webpack-stream';
 
-import webpackConfig from './webpack.config';
+import webpackConfigBehaviors from './webpack.behaviors.config';
+import webpackConfigResources from './webpack.resources.config';
 import { versionManifest, getPackageVersion, getPackageName, getMCDataDirectory } from './tools/util';
 
 
@@ -73,7 +74,7 @@ function buildBehaviorScripts() {
         './behavior-pack/scripts/client/client.ts',
         './behavior-pack/scripts/server/server.ts'
     ])
-        .pipe(webpackStream(webpackConfig))
+        .pipe(webpackStream(webpackConfigBehaviors))
         .on('error', function handleError(this: NodeJS.EventEmitter) {
             this.emit('end'); // Recover from errors
         })
@@ -143,6 +144,20 @@ function cleanResources() {
 }
 
 /**
+ * Builds the resource pack UI scripts using webpack
+ */
+function buildResourceUIScripts() {
+    return gulp.src([
+        './resource-pack/experimental_ui/scripts/main.ts'
+    ])
+        .pipe(webpackStream(webpackConfigResources))
+        .on('error', function handleError(this: NodeJS.EventEmitter) {
+            this.emit('end'); // Recover from errors
+        })
+        .pipe(gulp.dest('./dist/build/resource-pack/'));
+}
+
+/**
  * Ensures that the pack's manifest version matches the project's version
  */
 async function versionResources() {
@@ -155,6 +170,7 @@ async function versionResources() {
 function copyResourceFiles() {
     return gulp.src([
         './resource-pack/**/*', // Copy all files
+        '!./resource-pack/experimental_ui/scripts/**/*'
     ])
         .pipe(gulp.dest('./dist/build/resource-pack/'))
 }
@@ -177,7 +193,7 @@ async function packResources() {
 export function watchResources() {
     return niceWatch(
         './resource-pack/**/*',
-        gulp.series(cleanResources, copyResourceFiles, installResources)
+        gulp.series(cleanResources, buildResourceUIScripts, copyResourceFiles, installResources)
     );
 }
 
@@ -192,7 +208,7 @@ export async function installResources() {
     return gulp.src('./dist/build/resource-pack/**/*').pipe(gulp.dest(installPath));
 }
 
-export const resources = gulp.series(cleanResources, versionResources, copyResourceFiles, packResources);
+export const resources = gulp.series(cleanResources, versionResources, buildResourceUIScripts, copyResourceFiles, packResources);
 
 export const build = gulp.parallel(resources, behaviors);
 
