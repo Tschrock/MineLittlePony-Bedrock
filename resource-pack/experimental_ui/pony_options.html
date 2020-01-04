@@ -8,14 +8,13 @@
 </head>
 
 <body>
-    <div class="container-spacer"></div>
-	<div class="container">
-        <p class="h1">Test UI</p>
-        <button>Button 1</button>
-        <button>Button 2</button>
+    <div class="settings-header">
+        <div class="button-text" id="doThing">&lt;</div>
+        <div class="settings-title">Pony Settings</div>
+    </div>
+    <div class="settings-content">
         <textarea id="textTest"></textarea>
     </div>
-    <div class="container-spacer"></div>
 </body>
 
 <script type="text/javascript">
@@ -36,7 +35,8 @@
             textTest.value += toStringUnknown(thing) + "\n";
         }
 
-        setTimeout(() => textTest.scrollTop++, 100);
+        let doThing = document.getElementById("doThing");
+        doThing.addEventListener("click", (evt) => { this.location.reload(); }, false);
 
         const MAX_DEPTH = 3;
 
@@ -85,22 +85,64 @@
             }
         }
 
-        try {
-            var oReq = new XMLHttpRequest();
-            oReq.addEventListener("load", () => log(oReq));
-            oReq.addEventListener("error", () => {log("error");log(oReq)});
-            oReq.open("GET", "mod://./style.css");
-            oReq.send();
-        }
-        catch(e) {
-            log("error");
-            log(e);
+        // try {
+        //     var oReq = new XMLHttpRequest();
+        //     oReq.addEventListener("load", () => log(oReq));
+        //     oReq.addEventListener("error", () => {log("error");log(oReq)});
+        //     oReq.open("GET", "mod://./style.css");
+        //     oReq.send();
+        // }
+        // catch(e) {
+        //     log("error");
+        //     log(e);
+        // }
+
+        async function fetch(file) {
+            return new Promise((resolve, reject) => {
+                var req = new XMLHttpRequest();
+                req.addEventListener("load", () => resolve(req.responseText));
+                req.addEventListener("error", (e) => reject(e));
+                req.open("GET", `mod://${file}`);
+                req.send();
+            });
         }
 
+        const filesToWatch = [
+            "./pony_options.html",
+            "./styles.css"
+        ];
 
+        const fileContent = new Map();
+
+        async function checkFiles() {
+            for (const file of filesToWatch) {
+                try {
+                    const newContent = await fetch(file);
+                    let oldContent = fileContent.get(file);
+                    if(!oldContent) {
+                        oldContent = newContent;
+                        fileContent.set(file, oldContent);
+                    }
+                    log(file);
+                    log(oldContent.length);
+                    log(newContent.length);
+                    if(oldContent != newContent) {
+                        setTimeout(() => this.location.reload(), 500);
+                        return;
+                    }
+                }
+                catch(e) {
+                    log(e);
+                }
+            }
+            setTimeout(checkFiles, 1000);
+        }
+
+        checkFiles();
 
     })();
 
 </script>
 
 </html>
+

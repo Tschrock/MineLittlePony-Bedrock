@@ -3,7 +3,7 @@
  */
 @font-face {
     font-family: 'MinecraftFive';
-    src: url('./fonts/Minecraft Five.otf');
+    src: url('./fonts/MinecraftFive.otf');
 }
 
 /**
@@ -11,7 +11,7 @@
  */
 @font-face {
     font-family: 'MinecraftSeven';
-    src: url('./fonts/Minecraft Seven.otf');
+    src: url('./fonts/MinecraftSeven.otf');
 }
 
 /**
@@ -22,6 +22,9 @@
     src: url('./fonts/MinecraftTen.otf');
 }
 
+/**
+ * DroidSans is a standard sans font
+ */
 @font-face {
     font-family: 'DroidSans';
     src: url('./fonts/DroidSans.ttf');
@@ -35,13 +38,38 @@ html, body {
 }
 
 body {
-    font-family: "MinecraftSeven";
-    font-size: 36px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    font-family: "MinecraftSeven";
     background-color: rgba(0, 0, 0, 0.3);
-    overflow: scroll;
+}
+
+.settings-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+    padding-bottom: 30px;
+    border-image-slice: 16 fill;
+    border-image-width: 0 0 30px 0;
+    border-image-source: url('./img/panel.png');
+    border-image-repeat: repeat;
+}
+
+.settings-title {
+    font-size: 1em;
+    font-family: "MinecraftSeven";
+}
+
+.settings-content {
+    float: 1;
+}
+
+
+.button-text {
+    font-size: 1em;
+    padding: 10px;
+    font-family: "MinecraftSeven";
 }
 
 .h1 {
@@ -58,53 +86,79 @@ body {
     background-color: blueviolet;
     width: 80%;
     height: 80%;
-    padding: 10px;
 }
 
 .container-spacer {
     flex: 1;
 }
 
-button {
+.button {
     display: flex;
-    margin: 3px;
-    padding: 20px;
-    font-family: "MinecraftTen";
+    font-family: "MinecraftSeven";
     font-size: 1em;
     color: #4c4c4c;
-    background-color: #c6c6c6;
-    border-image: url('./img/button.png') 12 / 9px;
+    border-image-slice: 12 fill;
+    border-image-source: url('./img/button.png');
 }
 
-button:hover,
-button.focused {
+.button:hover,
+.button.focused {
     color: #ffffff;
-    background-color: #218306;
-    border-image: url('./img/button-focused.png') 12 / 9px;
+    border-image-source: url('./img/button-focused.png');
 }
 
-button.pressed {
+.button.pressed {
     color: #ffffff;
-    background-color: #218306;
-    border-image: url('./img/button-pressed.png') 12 / 9px;
+    border-image-source: url('./img/button-pressed.png');
 }
 
-button.selected {
+.button.selected {
     color: #4c4c4c;
-    background-color: #8b8b8b;
-    border-image: url('./img/button-selected.png') 12 / 9px;
+    border-image-source: url('./img/button-selected.png');
 }
 
-button.disabled {
+.button.disabled {
     color: #4c4c4c;
-    background-color: #757575;
-    border-image: url('./img/button-disabled.png') 12 / 9px;
+    border-image-source: url('./img/button-disabled.png');
 }
 
 #textTest {
     width: 100%;
-    height: 400px;
+    height: 1000px;
 	font-family: 'DroidSans';
     font-size: 12px;
     overflow: scroll;
+}
+
+/*==============================//
+//         Small Sizes          //
+//==============================*/
+body {
+    font-size: 20px;
+}
+.container {
+    padding: 10px;
+}
+.button {
+    margin: 3px;
+    padding: 14px;
+    border-image-width: 6px;
+}
+
+/*==============================//
+//         Medium Sizes         //
+//==============================*/
+@media (min-width: 1500px) and (min-height: 1000px)
+{
+    body {
+        font-size: 30px;
+    }
+    .container {
+        padding: 15px;
+    }
+    .button {
+        margin: 4px;
+        padding: 22px;
+        border-image-width: 9px;
+    }
 }
