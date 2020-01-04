@@ -33,5 +33,8 @@
         ],
         "license": "MIT",
         "url": "https://minelittlepony-mod.com"
-    }
+    },
+    "capabilities": [
+        "experimental_custom_ui"
+    ]
 }

@@ -1,0 +1,110 @@
+/**
+ * MinecraftFive-Regular is an all-caps Minecraft font
+ */
+@font-face {
+    font-family: 'MinecraftFive';
+    src: url('./fonts/Minecraft Five.otf');
+}
+
+/**
+ * Minecraft Seven is a normal Minecraft font
+ */
+@font-face {
+    font-family: 'MinecraftSeven';
+    src: url('./fonts/Minecraft Seven.otf');
+}
+
+/**
+ * Minecraft Ten is an extrabold Minecraft font
+ */
+@font-face {
+    font-family: 'MinecraftTen';
+    src: url('./fonts/MinecraftTen.otf');
+}
+
+@font-face {
+    font-family: 'DroidSans';
+    src: url('./fonts/DroidSans.ttf');
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    font-family: "MinecraftSeven";
+    font-size: 36px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.3);
+    overflow: scroll;
+}
+
+.h1 {
+    font-family: "MinecraftTen";
+    font-size: 2em;
+    padding: 0;
+    margin-top: 0.25em;
+    margin-left: 0;
+    margin-bottom: 0.25em;
+    margin-right: 0;
+}
+
+.container {
+    background-color: blueviolet;
+    width: 80%;
+    height: 80%;
+    padding: 10px;
+}
+
+.container-spacer {
+    flex: 1;
+}
+
+button {
+    display: flex;
+    margin: 3px;
+    padding: 20px;
+    font-family: "MinecraftTen";
+    font-size: 1em;
+    color: #4c4c4c;
+    background-color: #c6c6c6;
+    border-image: url('./img/button.png') 12 / 9px;
+}
+
+button:hover,
+button.focused {
+    color: #ffffff;
+    background-color: #218306;
+    border-image: url('./img/button-focused.png') 12 / 9px;
+}
+
+button.pressed {
+    color: #ffffff;
+    background-color: #218306;
+    border-image: url('./img/button-pressed.png') 12 / 9px;
+}
+
+button.selected {
+    color: #4c4c4c;
+    background-color: #8b8b8b;
+    border-image: url('./img/button-selected.png') 12 / 9px;
+}
+
+button.disabled {
+    color: #4c4c4c;
+    background-color: #757575;
+    border-image: url('./img/button-disabled.png') 12 / 9px;
+}
+
+#textTest {
+    width: 100%;
+    height: 400px;
+	font-family: 'DroidSans';
+    font-size: 12px;
+    overflow: scroll;
+}

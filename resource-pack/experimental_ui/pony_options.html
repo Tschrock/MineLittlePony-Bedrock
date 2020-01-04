@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <script src="UIEngine.js"></script>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <div class="container-spacer"></div>
+	<div class="container">
+        <p class="h1">Test UI</p>
+        <button>Button 1</button>
+        <button>Button 2</button>
+        <textarea id="textTest"></textarea>
+    </div>
+    <div class="container-spacer"></div>
+</body>
+
+<script type="text/javascript">
+
+    (() => {
+
+        // Get a handle to the scripting interface on creation.
+        // The script interface can trigger events to the client script
+        let scriptEngineHandle = null;
+        engine.on("facet:updated:core.scripting", function (scriptEngine) {
+            scriptEngineHandle = scriptEngine;
+        });
+
+        engine.trigger("facet:request", ["core.scripting"]);
+
+        let textTest = document.getElementById("textTest");
+        function log(thing) {
+            textTest.value += toStringUnknown(thing) + "\n";
+        }
+
+        setTimeout(() => textTest.scrollTop++, 100);
+
+        const MAX_DEPTH = 3;
+
+        function toStringUnknown(thing, label, depth = 0, seenObjects = []) {
+            const thingType = typeof thing;
+            const indent = ' '.repeat(4 * depth);
+            const labelStr = label ? `${label}: ` : '';
+            switch (thingType) {
+                case 'bigint':
+                case 'boolean':
+                case 'function':
+                case 'number':
+                case 'symbol':
+                    return `${indent}${labelStr}[${thingType}] ${thing.toString().split('\n').map(x => x.trim()).join(' ')}`;
+                case 'string':
+                    return `${indent}${labelStr}[string] ${JSON.stringify(thing)}`;
+                case 'object':
+                    if (thing === null) {
+                        return `${indent}${labelStr}[null] null`;
+                    }
+                    else if (Array.isArray(thing)) {
+                        if (seenObjects.indexOf(thing) !== -1) return `${indent}${labelStr}[array] <ALREADY SEEN>`;
+                        seenObjects.push(thing);
+                        if (depth >= MAX_DEPTH) return `${indent}${labelStr}[array] <MAX DEPTH REACHED>`;
+                        const items = thing.map(i => toStringUnknown(i, null, depth + 1, seenObjects));
+                        const itemsStr = items.join(",\n");
+                        return `${indent}${labelStr}[array] [\n${itemsStr}\n${indent}]`;
+                    }
+                    else {
+                        if (seenObjects.indexOf(thing) !== -1) return `${indent}${labelStr}[object] <ALREADY SEEN>`;
+                        seenObjects.push(thing);
+                        if (depth >= MAX_DEPTH) return `${indent}${labelStr}[object] <MAX DEPTH REACHED>`;
+                        const ownPropertyKeys = Object.getOwnPropertyNames(thing).sort();
+                        const ownPropertyLines = [];
+                        for (const k of ownPropertyKeys) ownPropertyLines.push(toStringUnknown(thing[k], k, depth + 1, seenObjects));
+                        const proto = Object.getPrototypeOf(thing);
+                        if (proto && proto !== Object.prototype) {
+                            ownPropertyLines.push(toStringUnknown(proto, "__proto__", depth + 1, seenObjects))
+                        }
+                        return `${indent}${labelStr}[object] {\n${ownPropertyLines.join(",\n")}\n${indent}}`;
+                    }
+                case 'undefined':
+                    return `${indent}${labelStr}[undefined] undefined`;
+                default:
+                    return `${indent}${labelStr}[unknown type]`;
+            }
+        }
+
+        try {
+            var oReq = new XMLHttpRequest();
+            oReq.addEventListener("load", () => log(oReq));
+            oReq.addEventListener("error", () => {log("error");log(oReq)});
+            oReq.open("GET", "mod://./style.css");
+            oReq.send();
+        }
+        catch(e) {
+            log("error");
+            log(e);
+        }
+
+
+
+    })();
+
+</script>
+
+</html>

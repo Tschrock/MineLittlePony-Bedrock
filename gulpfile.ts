@@ -92,8 +92,8 @@ async function versionBehaviors() {
  */
 function copyBehaviorFiles() {
     return gulp.src([
-        './behavior-pack/*', // Copy all files
-        '!./behavior-pack/scripts', // Ignore scripts (see buildBehaviorScripts)
+        './behavior-pack/**/*', // Copy all files
+        '!./behavior-pack/scripts/**/*', // Ignore scripts (see buildBehaviorScripts)
     ])
         .pipe(gulp.dest('./dist/build/behavior-pack/'))
 }
@@ -154,7 +154,7 @@ async function versionResources() {
  */
 function copyResourceFiles() {
     return gulp.src([
-        './resource-pack/*', // Copy all files
+        './resource-pack/**/*', // Copy all files
     ])
         .pipe(gulp.dest('./dist/build/resource-pack/'))
 }
