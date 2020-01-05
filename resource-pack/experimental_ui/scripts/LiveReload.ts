@@ -50,7 +50,7 @@ export class LiveReload {
                 const newContent = await localFetch(file);
                 const oldContent = this.getCachedContent(file, newContent);
                 if(oldContent != newContent) {
-                    setTimeout(() => window.location.reload(), 500);
+                    setTimeout(() => window.location.reload(), 1000);
                     return;
                 }
             }

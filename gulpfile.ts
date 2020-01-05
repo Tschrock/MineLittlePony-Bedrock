@@ -4,11 +4,14 @@ import del from 'del';
 import gulp from 'gulp';
 import gulp_zip from 'gulp-zip';
 import webpackStream from 'webpack-stream';
+import gulp_sass from 'gulp-sass';
+import node_sass from 'node-sass';
 
 import webpackConfigBehaviors from './webpack.behaviors.config';
 import webpackConfigResources from './webpack.resources.config';
 import { versionManifest, getPackageVersion, getPackageName, getMCDataDirectory } from './tools/util';
 
+(gulp_sass as any).compiler = node_sass;
 
 // ============================== //
 //             Utils              //
@@ -42,9 +45,6 @@ process.on('SIGINT', async () => {
 
     // Notify all handlers
     for (const h of quitHandlers) await h();
-
-    // Quit
-    process.exit(130);
 
 });
 
@@ -127,7 +127,12 @@ export async function installBehaviors() {
     const installName = await getPackageName();
     const installPath = path.join(packsPath, installName);
     await del(installPath, { cwd: packsPath });
-    return gulp.src('./dist/build/behavior-pack/**/*').pipe(gulp.dest(installPath));
+    await new Promise((resolve, reject) => {
+        gulp.src('./dist/build/behavior-pack/**/*')
+        .on("end", () => resolve())
+        .on("error", err => reject(err))
+        .pipe(gulp.dest(installPath));
+    });
 }
 
 export const behaviors = gulp.series(cleanBehaviors, versionBehaviors, buildBehaviorScripts, copyBehaviorFiles, packBehaviors);
@@ -158,6 +163,15 @@ function buildResourceUIScripts() {
 }
 
 /**
+ * Builds the resource pack UI styles using sass
+ */
+function buildResourceUIStyles() {
+    return gulp.src('./resource-pack/experimental_ui/styles/**/*.scss')
+        .pipe(gulp_sass().on('error', gulp_sass.logError))
+        .pipe(gulp.dest('./dist/build/resource-pack/experimental_ui/styles/'));
+}
+
+/**
  * Ensures that the pack's manifest version matches the project's version
  */
 async function versionResources() {
@@ -170,7 +184,8 @@ async function versionResources() {
 function copyResourceFiles() {
     return gulp.src([
         './resource-pack/**/*', // Copy all files
-        '!./resource-pack/experimental_ui/scripts/**/*'
+        '!./resource-pack/experimental_ui/scripts/**/*',
+        '!./resource-pack/experimental_ui/styles/**/*'
     ])
         .pipe(gulp.dest('./dist/build/resource-pack/'))
 }
@@ -193,7 +208,7 @@ async function packResources() {
 export function watchResources() {
     return niceWatch(
         './resource-pack/**/*',
-        gulp.series(cleanResources, buildResourceUIScripts, copyResourceFiles, installResources)
+        gulp.series(cleanResources, gulp.parallel(buildResourceUIScripts, buildResourceUIStyles, copyResourceFiles), installResources)
     );
 }
 
@@ -205,10 +220,15 @@ export async function installResources() {
     const installName = await getPackageName();
     const installPath = path.join(packsPath, installName);
     await del(installPath, { cwd: packsPath });
-    return gulp.src('./dist/build/resource-pack/**/*').pipe(gulp.dest(installPath));
+    await new Promise((resolve, reject) => {
+        gulp.src('./dist/build/resource-pack/**/*')
+        .on("end", () => resolve())
+        .on("error", err => reject(err))
+        .pipe(gulp.dest(installPath));
+    });
 }
 
-export const resources = gulp.series(cleanResources, versionResources, buildResourceUIScripts, copyResourceFiles, packResources);
+export const resources = gulp.series(cleanResources, versionResources, gulp.parallel(buildResourceUIScripts, buildResourceUIStyles, copyResourceFiles), packResources);
 
 export const build = gulp.parallel(resources, behaviors);
 
