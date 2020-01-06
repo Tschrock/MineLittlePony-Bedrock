@@ -1,0 +1,13 @@
+$fonts: (
+    "MinecraftFive": "../fonts/MinecraftFive.otf",
+    "MinecraftSeven": "../fonts/MinecraftSeven.otf",
+    "MinecraftTen": "../fonts/MinecraftTen.otf",
+    "DroidSans": "../fonts/DroidSans.ttf"
+);
+
+@each $name, $path in $fonts {
+    @font-face {
+        font-family: $name;
+        src: url($path);
+    }
+}

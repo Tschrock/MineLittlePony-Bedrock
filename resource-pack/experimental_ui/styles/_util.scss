@@ -1,0 +1,10 @@
+
+@mixin ui-element($color-fg, $border-image-path, $border-image-slice) {
+    color: $color-fg;
+    margin: $margin;
+    padding: $border-image-slice * $pixel-size + $padding;
+    border-image-slice: $border-image-slice * 4 fill;
+    border-image-width: $border-image-slice * $pixel-size;
+    border-image-source: url($border-image-path);
+    border-image-repeat: repeat;
+}

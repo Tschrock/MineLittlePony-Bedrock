@@ -1,6 +1,19 @@
 import { localFetch } from "./util";
 
 /**
+ * Gets the default files to watch. Includes the current page an any referenced scripts or stylesheets.
+ */
+export function getDefaultFiles() {
+    const scripts = Array.from(document.getElementsByTagName('script')).filter(s => s.src).map(s => s.src);
+    const styles = Array.from(document.getElementsByTagName('link')).filter(l => l.rel === "stylesheet").map(s => s.href);
+    return [
+        window.location.pathname,
+        ...scripts,
+        ...styles
+    ];
+}
+
+/**
  * Detects changes to UI files and triggers a reload.
  */
 export class LiveReload {
@@ -23,13 +36,13 @@ export class LiveReload {
     }
 
     public start() {
-        if(this.timeoutId === null) {
+        if (this.timeoutId === null) {
             this.timeoutId = setTimeout(this.checkerFn, 0);
         }
     }
 
     public stop() {
-        if(this.timeoutId) {
+        if (this.timeoutId) {
             clearTimeout(this.timeoutId);
             this.timeoutId = null;
         }
@@ -37,7 +50,7 @@ export class LiveReload {
 
     private getCachedContent(file: string, newContent: string) {
         let oldContent = this.contents.get(file);
-        if(!oldContent) {
+        if (!oldContent) {
             this.contents.set(file, newContent);
             return newContent;
         }
@@ -49,12 +62,12 @@ export class LiveReload {
             try {
                 const newContent = await localFetch(file);
                 const oldContent = this.getCachedContent(file, newContent);
-                if(oldContent != newContent) {
+                if (oldContent != newContent) {
                     setTimeout(() => window.location.reload(), 1000);
                     return;
                 }
             }
-            catch(e) {
+            catch (e) {
                 // Ignore
             }
         }

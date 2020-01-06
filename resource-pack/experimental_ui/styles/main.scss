@@ -1,29 +1,14 @@
-$fonts: (
-    "MinecraftFive": "../fonts/MinecraftFive.otf",
-    "MinecraftSeven": "../fonts/MinecraftSeven.otf",
-    "MinecraftTen": "../fonts/MinecraftTen.otf",
-    "DroidSans": "../fonts/DroidSans.ttf"
-);
-
-@each $name, $path in $fonts {
-    @font-face {
-        font-family: $name;
-        src: url($path);
-    }
-}
-
-@mixin ui-element($color-fg, $color-bg, $border-image-path, $border-image-slice) {
-    color: $color-fg;
-    //background-color: $color-bg;
-    padding: $border-image-slice * $pixel-size;
-    border-image-slice: $border-image-slice * 4 fill;
-    border-image-width: $border-image-slice * $pixel-size;
-    border-image-source: url($border-image-path);
-    border-image-repeat: repeat;
-}
 
 $pixel-size: 3px;
 $font-size: $pixel-size * 10;
+
+$padding: 3 * $pixel-size;
+$margin: 2 * $pixel-size;
+
+@import 'fonts';
+@import 'panel';
+@import 'button';
+@import 'selection-grid';
 
 html, body {
     margin: 0;
@@ -49,55 +34,31 @@ body {
     align-items: center;
     font-size: $font-size;
     height: $pixel-size * 24;
-    @include ui-element(#4c4c4c, #c6c6c6, "../img/ui/panel.png", 4);
+    @include ui-element(#4c4c4c, "../img/ui/panel.png", 4);
     border-image-width: 0 0 4 * $pixel-size 0;
     padding: 0 0 4 * $pixel-size 0;
+    margin: 0;
 }
 
 .settings-title {
     font-size: 1em;
-    font-family: "MinecraftSeven";
-}
-
-.settings-content {
-    float: 1;
-}
-
-.heading {
-    margin: 10px;
-}
-
-.button-text {
-    font-size: 1em;
-    background-color: #ff0000;
     padding: 2 * $pixel-size 4 * $pixel-size;
     font-family: "MinecraftSeven";
 }
 
-.panel {
-    margin: 10px;
-    padding: 10px;
+.settings-content {
+    flex: 1;
+    padding: 15 * $pixel-size;
+    overflow: scroll;
 }
 
-.panel-dialog {
-    @include ui-element(#4c4c4c, #c6c6c6, "../img/ui/panel.png", 4);
+#loggerBox {
+    width: 100%;
+    height: 600px;
+    font-family: "DroidSans";
+    font-size: 20px;;
 }
 
-.panel-flat {
-    color: #fff;
-    background-color: #5e6062;
-    border: solid 3px #000;
-}
-
-.panel-inset {
-    @include ui-element(#ffffff, #000000, "../img/ui/panel-inset.png", 2);
-}
-
-/*==============================//
-//         Small Sizes          //
-//==============================*/
-.button {
-    margin: 3px;
-    padding: 14px;
-    border-image-width: 6px;
+.heading {
+    margin: $margin - 2 * $pixel-size $margin $margin $margin;
 }

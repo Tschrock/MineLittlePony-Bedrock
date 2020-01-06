@@ -1,0 +1,19 @@
+@import 'util';
+
+.panel {
+    margin: 1px;
+}
+
+.panel-dialog {
+    @include ui-element(#4c4c4c, "../img/ui/panel.png", 4);
+}
+
+.panel-flat {
+    color: #fff;
+    background-color: #5e6062;
+    border: solid 3px #000;
+}
+
+.panel-inset {
+    @include ui-element(#ffffff, "../img/ui/panel-inset.png", 2);
+}

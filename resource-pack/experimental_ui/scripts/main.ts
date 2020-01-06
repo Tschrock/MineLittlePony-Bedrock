@@ -1,4 +1,4 @@
-import { LiveReload } from "./LiveReload";
+import { LiveReload, getDefaultFiles } from "./LiveReload";
 import { getLogString } from "./util";
 
 declare const engine: any;
@@ -13,18 +13,12 @@ engine.on("facet:updated:core.scripting", (scriptEngine: unknown) => {
 engine.trigger("facet:request", ["core.scripting"]);
 
 
-let textTest = document.getElementById("textTest") as HTMLTextAreaElement;
+let loggerBox = document.getElementById("loggerBox") as HTMLTextAreaElement;
 function log(thing: any) {
-    textTest.value += getLogString(thing) + "\n";
+    loggerBox.value += getLogString(thing) + "\n";
 }
 
 let doThing = document.getElementById("doThing") as HTMLDivElement;
 doThing.addEventListener("click", () => { window.location.reload(); }, false);
 
-
-// Set up a live reloader for development
-new LiveReload([
-    "./pony_options.html",
-    "./scripts/main.js",
-    "./styles.css"
-]).start();
+new LiveReload(getDefaultFiles()).start();

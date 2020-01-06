@@ -1,0 +1,14 @@
+@import 'util';
+
+.button {
+    font-size: 1em;
+    font-family: "MinecraftSeven";
+}
+
+.button-text {
+    padding: 2 * $pixel-size 4 * $pixel-size;
+}
+
+.button-minecraft {
+    @include ui-element(#4c4c4c, "../img/ui/button.png", 3);
+}
