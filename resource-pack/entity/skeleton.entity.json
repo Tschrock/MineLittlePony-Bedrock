@@ -2,7 +2,7 @@
     "format_version": "1.10.0",
     "minecraft:client_entity": {
         "description": {
-            "min_engine_version": "1.8.0",
+            "min_engine_version": "1.10.0",
             "identifier": "minecraft:skeleton",
             "materials": {
                 "default": "skeleton",
@@ -10,7 +10,7 @@
             },
             "textures": {
                 "default": "textures/entity/skeleton/skeleton_pony",
-                "magic": "textures/items/grey_template"
+                "magic": "textures/items/magic_glow"
             },
             "geometry": {
                 "default": "geometry.skeleton"
@@ -27,9 +27,9 @@
                     "variable.wing_type = 0;",
                     "variable.ear_type = 0;",
                     "variable.muzzle_type = 0;",
-                    "variable.magic_color.r = 0;",
-                    "variable.magic_color.g = 255;",
-                    "variable.magic_color.b = 0;",
+                    "variable.magic_color.r = 1;",
+                    "variable.magic_color.g = 1;",
+                    "variable.magic_color.b = 1;",
                     "variable.handedness = 0;",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",

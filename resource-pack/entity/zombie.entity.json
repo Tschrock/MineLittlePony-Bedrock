@@ -10,7 +10,7 @@
             },
             "textures": {
                 "default": "textures/entity/zombie/zombie_pony",
-                "magic": "textures/items/grey_template"
+                "magic": "textures/items/magic_glow"
             },
             "geometry": {
                 "default": "geometry.base_pony"
@@ -28,7 +28,7 @@
                     "variable.ear_type = 0;",
                     "variable.muzzle_type = 0;",
                     "variable.magic_color.r = 0;",
-                    "variable.magic_color.g = 255;",
+                    "variable.magic_color.g = 0;",
                     "variable.magic_color.b = 0;",
                     "variable.handedness = 0;",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",

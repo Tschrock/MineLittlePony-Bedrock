@@ -8,7 +8,7 @@
             "msaaSupport": "Both",
             "+defines": [ "USE_SKINNING", "USE_OVERLAY", "USE_COLOR_MASK" ],
             "+states": [ "Blending" ],
-            "blendSrc": "One",
+            "blendSrc": "SourceAlpha",
             "blendDst": "One"
         }
     }
