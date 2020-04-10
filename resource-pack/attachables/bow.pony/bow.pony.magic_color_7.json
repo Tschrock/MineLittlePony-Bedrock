@@ -3,7 +3,8 @@
     "minecraft:attachable": {
         "description": {
             "min_engine_version": "1.10.0",
-            "identifier": "minecraft:bow",
+            "identifier": "cp3:bow_magic_color_7",
+            "item": { "minecraft:bow": "variable.is_pony && variable.magic_color == 7" },
             "materials": {
                 "default": "entity_alphatest",
                 "enchanted": "entity_alphatest_glint",
@@ -15,7 +16,7 @@
                 "bow_pulling_1": "textures/items/bow_pulling_1",
                 "bow_pulling_2": "textures/items/bow_pulling_2",
                 "enchanted": "textures/misc/enchanted_item_glint",
-                "magic": "textures/items/magic_glow"
+                "magic": "textures/magic/7"
             },
             "geometry": {
                 "default": "geometry.bow_standby",
@@ -34,3 +35,4 @@
         }
     }
 }
+

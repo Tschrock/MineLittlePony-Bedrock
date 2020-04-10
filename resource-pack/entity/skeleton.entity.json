@@ -10,7 +10,21 @@
             },
             "textures": {
                 "default": "textures/entity/skeleton/skeleton_pony",
-                "magic": "textures/items/magic_glow"
+                "magic": "textures/items/magic_glow2",
+                "magic_color_0":  "textures/magic/0",
+                "magic_color_1":  "textures/magic/1",
+                "magic_color_2":  "textures/magic/2",
+                "magic_color_3":  "textures/magic/3",
+                "magic_color_4":  "textures/magic/4",
+                "magic_color_5":  "textures/magic/5",
+                "magic_color_6":  "textures/magic/6",
+                "magic_color_7":  "textures/magic/7",
+                "magic_color_8":  "textures/magic/8",
+                "magic_color_9":  "textures/magic/9",
+                "magic_color_10": "textures/magic/10",
+                "magic_color_11": "textures/magic/11",
+                "magic_color_12": "textures/magic/12",
+                "magic_color_13": "textures/magic/13"
             },
             "geometry": {
                 "default": "geometry.skeleton"
@@ -27,9 +41,7 @@
                     "variable.wing_type = 0;",
                     "variable.ear_type = 0;",
                     "variable.muzzle_type = 0;",
-                    "variable.magic_color.r = 1;",
-                    "variable.magic_color.g = 1;",
-                    "variable.magic_color.b = 1;",
+                    "variable.magic_color = 13;",
                     "variable.handedness = 0;",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
