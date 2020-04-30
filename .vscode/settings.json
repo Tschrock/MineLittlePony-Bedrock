@@ -10,25 +10,25 @@
             "fileMatch": [
                 "**/*.animation_controllers.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/actor_animation_controller.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/animation_controller.json"
         },
         {
             "fileMatch": [
                 "**/*.animation.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/actor_animation.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/animation.json"
         },
         {
             "fileMatch": [
                 "**/*.entity.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/client_entity.actor_resource_definition.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/actor_resource_definition.json"
         },
         {
             "fileMatch": [
                 "**/attachables/*.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/attachable.actor_resource_definition.json"
+            "url": "./node_modules/minecraft-bedrock-addon-schemas/actor_resource_definition.json"
         },
         {
             "fileMatch": [
