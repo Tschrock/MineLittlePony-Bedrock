@@ -2,10 +2,11 @@ import fs from 'fs';
 import os from 'os';
 import path from 'path';
 
-import { parse } from 'semver';
+import { parse as parseSemver } from 'semver';
+import { parse as parseJson } from 'jsonc-parser';
 
 export async function readJson<T>(path: string): Promise<T> {
-    return JSON.parse(await fs.promises.readFile(path, "utf-8")) as T;
+    return parseJson(await fs.promises.readFile(path, "utf-8")) as T;
 }
 
 export async function writeJson<T>(path: string, data: T): Promise<void> {
@@ -40,7 +41,7 @@ export async function versionManifest(path: string, version: string | [number, n
 
     // If we were passed a string, parse it with semver
     if (typeof version === 'string') {
-        var semver = parse(version);
+        var semver = parseSemver(version);
         if (semver === null) throw new Error(`Invalid version '${version}'`);
         version = [semver.major, semver.minor, semver.patch];
     }

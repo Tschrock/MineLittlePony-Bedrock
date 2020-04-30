@@ -1,47 +1,51 @@
 {
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/dist": true,
+    },
     "json.schemas": [
         {
             "fileMatch": [
                 "**/manifest.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/manifest.json"
+            "url": "./node_modules/bedrock-json-schemas/manifest.json"
         },
         {
             "fileMatch": [
                 "**/*.animation_controllers.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/animation_controller.json"
+            "url": "./node_modules/bedrock-json-schemas/animation_controller.json"
         },
         {
             "fileMatch": [
                 "**/*.animation.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/animation.json"
+            "url": "./node_modules/bedrock-json-schemas/animation.json"
         },
         {
             "fileMatch": [
                 "**/*.entity.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/actor_resource_definition.json"
+            "url": "./node_modules/bedrock-json-schemas/actor_resource_definition.json"
         },
         {
             "fileMatch": [
                 "**/attachables/*.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/actor_resource_definition.json"
+            "url": "./node_modules/bedrock-json-schemas/actor_resource_definition.json"
         },
         {
             "fileMatch": [
                 "**/*.render_controllers.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/render_controller.json"
+            "url": "./node_modules/bedrock-json-schemas/render_controller.json"
         },
         {
             "fileMatch": [
                 "**/models/mobs.json",
                 "**/*.geo.json"
             ],
-            "url": "./node_modules/minecraft-bedrock-addon-schemas/geometry.json"
+            "url": "./node_modules/bedrock-json-schemas/geometry.json"
         }
     ]
 }
