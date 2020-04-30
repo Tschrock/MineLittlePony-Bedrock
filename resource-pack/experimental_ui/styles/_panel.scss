@@ -1,19 +1,78 @@
 @import 'util';
 
 .panel {
-    margin: 1px;
+    @include ui-element(#4c4c4c, "../img/ui/panel-default.png", 4);
+    min-height: 30 * $pixel-size;
+    padding: 4 * $pixel-size;
+
 }
 
-.panel-dialog {
-    @include ui-element(#4c4c4c, "../img/ui/panel.png", 4);
+.panel-header {
+    display: flex;
+    flex-direction: row;
+    padding-top: 1 * $pixel-size;
+    padding-right: 2 * $pixel-size;
+    padding-bottom: 2 * $pixel-size;
+    padding-left: 2 * $pixel-size;
 }
 
-.panel-flat {
-    color: #fff;
-    background-color: #5e6062;
-    border: solid 3px #000;
+.panel-title {
+    flex: 1;
+    width: 100%;
 }
 
-.panel-inset {
+.panel-close {
+    margin-top: -1 * $pixel-size;
+    margin-bottom: -3 * $pixel-size;
+    margin-right: -2 * $pixel-size;
+    padding: 1 * $pixel-size;
+    width: 14 * $pixel-size;
+}
+
+.panel-body {
     @include ui-element(#ffffff, "../img/ui/panel-inset.png", 2);
+    min-height: 30 * $pixel-size;
+    margin: 2 * $pixel-size;
+    padding: 2 * $pixel-size;
+}
+
+.panel-footer {
+    margin: 2 * $pixel-size;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    min-height: 400px;
+}
+
+.menu-header {
+    display: flex;
+    flex-direction: row;
+    @include ui-element(#4c4c4c, "../img/ui/panel-menu-header.png", 3);
+    background-color: #0000ff;
+    margin: 0;
+    padding-bottom: 2 * $pixel-size;
+}
+
+.menu-title {
+}
+
+.menu-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 200 * $pixel-size;
+    height: 30 * $pixel-size;
+}
+
+.menu-body {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 4 * $pixel-size;
+    flex: 1;
 }

@@ -1,0 +1,27 @@
+
+#logger-textarea {
+    width: 100%;
+    height: 16000 * $pixel-size;
+    font-family: DroidSans;
+    font-size: 16px;
+    padding: 10px;
+}
+
+#logbox {
+    width: 100%;
+    height: 600 * $pixel-size;
+    overflow: scroll;
+}
+
+input[type=checkbox] {
+    border: none;
+    background-color: transparent;
+    background-image: url("../img/ui/checkbox-unchecked.png");
+    color: transparent;
+    width: 20 * $pixel-size;
+    height: 20 * $pixel-size;
+}
+
+input[type=checkbox][checked] {
+    background-image: url("../img/ui/checkbox-checked.png");
+}

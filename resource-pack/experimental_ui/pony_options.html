@@ -3,50 +3,49 @@
 
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <script src="UIEngine.js"></script>
     <link rel="stylesheet" href="styles/main.css" />
+    <script async defer src="UIEngine.js"></script>
+    <script async defer src="scripts/main.js"></script>
 </head>
 
 <body>
-    <div class="settings-header">
-        <div class="button-text" id="doThing">&lt;</div>
-        <div class="settings-title">Pony Settings</div>
-    </div>
-    <div class="settings-content">
-        <div class="panel panel-dialog">
-            <div class="heading">Horn</div>
-            <div class="panel panel-inset selection-grid">
-                <button class="selection-item"><img src="./img/components/horn_none.png" /></button>
-                <button class="selection-item"><img src="./img/components/horn_full.png" /></button>
-                <button class="selection-item"><img src="./img/components/horn_broken.png" /></button>
-            </div>
-            <div class="heading">Wings</div>
-            <div class="panel panel-inset selection-grid">
-                <button class="selection-item"><img src="./img/components/horn_none.png" /></button>
-                <img class="selection-item" src="150.png" />
-                <img class="selection-item" src="150.png" />
-            </div>
-            <div class="heading">Ears</div>
-            <div class="panel panel-inset selection-grid">
-                <button class="selection-item"><img src="./img/components/horn_none.png" /></button>
-                <img class="selection-item" src="150.png" />
-            </div>
-            <div class="heading">Muzzle</div>
-            <div class="panel panel-inset selection-grid">
-                <button class="selection-item"><img src="./img/components/horn_none.png" /></button>
-                <img class="selection-item" src="150.png" />
-                <img class="selection-item" src="150.png" />
-            </div>
-            <div class="heading">Tail</div>
-            <div class="panel panel-inset selection-grid">
-                <button class="selection-item"><img src="./img/components/horn_none.png" /></button>
-                <img class="selection-item" src="150.png" />
-                <img class="selection-item" src="150.png" />
-            </div>
-            <button class="button button-minecraft">Apply</button>
+    <div class="menu margin-t-4">
+        <div class="menu-header">
+            <div class="menu-btn btn btn-text" id="btn-close">‹</div>
+            <div class="menu-title">Header</div>
+            <div class="menu-btn btn btn-text" id="btn-refresh">↻</div>
         </div>
-        <textarea id="loggerBox" style="display: none;"></textarea>
+        <div class="menu-body">
+
+            <div class="panel">
+                <div class="panel-header">
+                    <div class="panel-title">Header</div>
+                    <div class="btn btn-text panel-close">×</div>
+                </div>
+                <div class="panel-body">
+                    Body
+                </div>
+                <div class="panel-footer">
+                    <div class="btn btn-default margin-r-3">Save</div>
+                    <div class="btn btn-default">Cancel</div>
+                </div>
+            </div>
+
+            <div class="panel">
+                <div class="panel-body">
+                    Body
+                </div>
+            </div>
+
+            <div id="console-wrapper">
+                <div id="console-output"></div>
+                <input type="text" id="console-input">
+            </div>
+
+            <button id="reload-button" class="btn btn-default" onclick="window.location.reload()">Reload</button>
+
+        </div>
     </div>
 </body>
-<script src="scripts/main.js"></script>
 </html>
+

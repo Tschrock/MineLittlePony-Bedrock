@@ -1,14 +1,73 @@
 @import 'util';
 
-.button {
+.btn {
     font-size: 1em;
     font-family: "MinecraftSeven";
 }
 
-.button-text {
-    padding: 2 * $pixel-size 4 * $pixel-size;
+.btn-text {
+    background-color: transparent;
+    border: none;
+
+    &:hover,
+    &.hover {
+        background-color: rgba(0,0,0,0.2);
+    }
 }
 
-.button-minecraft {
-    @include ui-element(#4c4c4c, "../img/ui/button.png", 3);
+.btn-default {
+    @include ui-element(#4c4c4c, "../img/ui/button-default-up.png", 3);
+    padding: 8 * $pixel-size;
+
+    &:hover,
+    &.hover {
+        color: #ffffff;
+        border-image-source: url('../img/ui/button-default-up-highlighted.png');
+    }
+
+    &:active,
+    &.active {
+        color: #4c4c4c;
+        border-image-source: url('../img/ui/button-default-down.png');
+
+        &:hover,
+        &.hover {
+            color: #ffffff;
+            border-image-source: url('../img/ui/button-default-down-highlighted.png');
+        }
+    }
+}
+
+
+
+.btn-dark {
+    @include ui-element(#ffffff, "../img/ui/button-dark-up.png", 3);
+    padding: 8 * $pixel-size;
+
+    &:hover,
+    &.hover  {
+        color: #ffffff;
+        border-image-source: url('../img/ui/button-dark-up-highlighted.png');
+    }
+
+    &:active,
+    &.active {
+        color: #4c4c4c;
+        border-image-source: url('../img/ui/button-default-down.png');
+
+        &:hover,
+        &.hover {
+            color: #ffffff;
+            border-image-source: url('../img/ui/button-default-down-highlighted.png');
+        }
+    }
+}
+
+
+.btn-key {
+    @include ui-element(#ffffff, "../img/ui/button-key.png", 6);
+    padding-top: 3 * $pixel-size;
+    padding-left: 3 * $pixel-size;
+    padding-right: 3 * $pixel-size;
+    padding-bottom: 6 * $pixel-size;
 }

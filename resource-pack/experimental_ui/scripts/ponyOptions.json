@@ -1,0 +1,30 @@
+{
+    "Horn": {
+        "None": "./img/components/none.png",
+        "Normal": "./img/components/horn_normal.png",
+        "Long": "./img/components/horn_long.png",
+        "Broken": "./img/components/horn_broken.png",
+        "Changeling": "./img/components/temp.png"
+    },
+    "Wings": {
+        "None": "./img/components/none.png",
+        "Normal": "./img/components/temp.png",
+        "Bat": "./img/components/temp.png",
+        "Changeling": "./img/components/temp.png"
+    },
+    "Ears": {
+        "Normal": "./img/components/temp.png",
+        "Bat": "./img/components/temp.png"
+    },
+    "Muzzle": {
+        "None": "./img/components/none.png",
+        "Round": "./img/components/temp.png",
+        "Square": "./img/components/temp.png"
+    },
+    "Tail": {
+        "1/4": "./img/components/temp.png",
+        "1/2": "./img/components/temp.png",
+        "3/4": "./img/components/temp.png",
+        "Full": "./img/components/temp.png"
+    }
+}

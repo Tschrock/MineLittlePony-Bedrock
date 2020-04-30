@@ -1,0 +1,58 @@
+#console-wrapper {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#console-input {
+    width: 100%;
+    padding: 6px;
+    margin: 0;
+}
+
+#console-output {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    height: 600px;
+    background-color: white;
+    overflow: scroll;
+}
+
+.console-log-entry {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border-bottom: solid 1px rgb(240, 240, 240);
+}
+
+.console-log-entry.warning {
+    color: rgb(92, 60, 0);
+    background-color: hsl(50, 100%, 95%);
+    border-bottom: solid 1px hsl(50, 100%, 88%);
+}
+
+.console-log-entry.error {
+    color: red;
+    background-color: rgb(255, 240, 240);;
+    border-bottom: solid 1px rgb(255, 214, 214);
+}
+
+.console-log-entry-icon {
+    padding: 3px 9px;
+    width: 30px;
+    margin: 0;
+}
+
+.console-log-entry-message {
+    padding: 3px 9px 3px 0;
+    margin: 0;
+    flex: 1;
+    font-family: DroidSans;
+    font-size: 16px;
+}
+
+.console-log-entry-line {
+    padding: 3px 9px 3px 0;
+    color: rgb(33%, 33%, 33%);
+}

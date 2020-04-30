@@ -1,14 +1,23 @@
 
-$pixel-size: 3px;
+$pixel-size: 2px;
 $font-size: $pixel-size * 10;
 
-$padding: 3 * $pixel-size;
-$margin: 2 * $pixel-size;
+$padding: 5 * $pixel-size;
+$margin: 4 * $pixel-size;
+
+* {
+    box-sizing: border-box;
+    font-family: "MinecraftSeven";
+}
 
 @import 'fonts';
-@import 'panel';
 @import 'button';
+@import 'panel';
+@import 'input';
 @import 'selection-grid';
+@import 'console';
+@import 'helpers';
+
 
 html, body {
     margin: 0;
@@ -26,39 +35,4 @@ body {
     // For some reason the top of the rendered screen is cut off a little.
     // The following pushes everything down so things line up properly.
     padding-top: 1 * $pixel-size;
-}
-
-.settings-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    font-size: $font-size;
-    height: $pixel-size * 24;
-    @include ui-element(#4c4c4c, "../img/ui/panel.png", 4);
-    border-image-width: 0 0 4 * $pixel-size 0;
-    padding: 0 0 4 * $pixel-size 0;
-    margin: 0;
-}
-
-.settings-title {
-    font-size: 1em;
-    padding: 2 * $pixel-size 4 * $pixel-size;
-    font-family: "MinecraftSeven";
-}
-
-.settings-content {
-    flex: 1;
-    padding: 15 * $pixel-size;
-    overflow: scroll;
-}
-
-#loggerBox {
-    width: 100%;
-    height: 600px;
-    font-family: "DroidSans";
-    font-size: 20px;;
-}
-
-.heading {
-    margin: $margin - 2 * $pixel-size $margin $margin $margin;
 }

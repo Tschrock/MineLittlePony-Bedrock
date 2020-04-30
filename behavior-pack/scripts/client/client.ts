@@ -13,6 +13,7 @@ class Client extends System<IVanillaClientSystem> {
 
     protected initialize() {
         this.system.listenForEvent(ReceiveFromMinecraftClient.ClientEnteredWorld, this.OnClientEnteredWorld.bind(this));
+        this.system.listenForEvent(ReceiveFromMinecraftClient.UIEvent, this.OnUIEvent.bind(this));
 
         const loggerConfig = this.system.createEventData(SendToMinecraftClient.ScriptLoggerConfig);
         if (loggerConfig) {
@@ -51,6 +52,18 @@ class Client extends System<IVanillaClientSystem> {
         this.setTimeout(() => {
             this.log(`New player joined with id ${eventData.data.player.id}`);
         }, 80);
+
+    }
+
+    private OnUIEvent(eventData: IEventData<unknown>) {
+        this.log(eventData);
+        if(eventData.data === "CLOSE_SETTINGS") {
+            let unloadEventData = this.system.createEventData(SendToMinecraftClient.UnloadUI);
+            if(unloadEventData) {
+                unloadEventData.data.path = "pony_options.html";
+                this.system.broadcastEvent(SendToMinecraftClient.UnloadUI, unloadEventData);
+            }
+        }
     }
 
     protected logString(message: string) {
