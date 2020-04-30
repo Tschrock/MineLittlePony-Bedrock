@@ -1,0 +1,43 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.minelp.magic.items": {
+            "arrays": {
+                "textures": {
+                    "array.minelp_magic_colors": [
+                        "Texture.minelp.magic_color_0",
+                        "Texture.minelp.magic_color_1",
+                        "Texture.minelp.magic_color_2",
+                        "Texture.minelp.magic_color_3",
+                        "Texture.minelp.magic_color_4",
+                        "Texture.minelp.magic_color_5",
+                        "Texture.minelp.magic_color_6",
+                        "Texture.minelp.magic_color_7",
+                        "Texture.minelp.magic_color_8",
+                        "Texture.minelp.magic_color_9",
+                        "Texture.minelp.magic_color_10",
+                        "Texture.minelp.magic_color_11",
+                        "Texture.minelp.magic_color_12",
+                        "Texture.minelp.magic_color_13"
+                    ]
+                }
+            },
+            "geometry": "Geometry.minelp.magic.items",
+            "part_visibility": [
+                { "*": false },
+                { "acacia_button": "variable.minelp.horn_type > 0 && (variable.is_holding_left || variable.is_holding_right)" }
+            ],
+            "materials": [
+                { "*": "Material.minelp.magic" }
+            ],
+            "textures": [ "array.minelp_magic_colors[variable.minelp.magic_color]" ],
+            // "overlay_color": {
+            //     "r": "variable.minelp.magic_color.r",
+            //     "g": "variable.minelp.magic_color.g",
+            //     "b": "variable.minelp.magic_color.b",
+            //     "a": "1"
+            // },
+            "ignore_lighting": false
+        }
+    }
+}

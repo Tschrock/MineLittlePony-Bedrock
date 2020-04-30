@@ -31,7 +31,7 @@
                 { "rightArmArmor": "variable.chest_layer_visible && !query.has_cape" },
                 { "belt": "variable.chest_layer_visible && variable.leg_layer_visible" },
                 { "horn": "variable.minelp.horn_type > 0" },
-                { "hornGlow": 0 }
+                { "hornGlow": false }
             ]
         },
         "controller.render.minelp.player.map": {
@@ -44,7 +44,7 @@
                 { "hat": true },
                 { "helmet": true },
                 { "horn": "variable.minelp.horn_type > 0" },
-                { "hornGlow": 0 }
+                { "hornGlow": false }
             ]
         }
     }

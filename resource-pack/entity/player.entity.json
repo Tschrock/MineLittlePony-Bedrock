@@ -30,7 +30,8 @@
             "geometry": {
                 "default": "geometry.humanoid.custom",
                 "cape": "geometry.cape",
-                "minelp.default": "geometry.minelp.pony"
+                "minelp.default": "geometry.minelp.pony",
+                "minelp.magic.items": "geometry.minelp.magic.items"
             },
             "scripts": {
                 "scale": "0.9375",
@@ -118,7 +119,8 @@
                 { "controller.render.minelp.player.first_person": "variable.is_first_person" },
                 { "controller.render.minelp.player.third_person": "!variable.is_first_person && !variable.map_face_icon" },
                 { "controller.render.minelp.player.map": "variable.map_face_icon" },
-                { "controller.render.minelp.pony.magic": "!variable.is_first_person" }
+                { "controller.render.minelp.pony.magic": "!variable.is_first_person" },
+                { "controller.render.minelp.magic.items": "!variable.map_face_icon" }
             ],
             "enable_attachables": true
         }
