@@ -2,7 +2,6 @@
 
 # Mine Little Pony - Bedrock Edition
 
-
 [![Discord Server][discord-badge]][discord-link]
 [![License][license-badge]][license-link]
 [![Build][build-badge]][build-link]
@@ -20,47 +19,93 @@ https://minelittlepony-mod.com
 1. Download the latest .McPack files from [the GitHub Releases page][release-link]
 2. Follow the official installation instructions from https://minecraft.net/addons
 
-## Current Status:
+## Current Status
 
-| Entity                | Model | Animations |
-|-----------------------|:-----:|:----------:|
-| (Generic) Earth Pony  | ✔️     |            |
-| (Generic) Unicorn     | ✔️     |            |
-| (Generic) Pegasus     |       |            |
-| (Generic) Pony Armor  | ✔️     | ➖          |
-| (Generic) Magic Auras | 🔜     | ➖          |
-| Player                | ✔️     |            |
-| Drowned               |       |            |
-| Enderman              |       |            |
-| Evoker                |       |            |
-| Illusionist           |       |            |
-| Husk                  |       |            |
-| Pillager              |       |            |
-| Skeleton              | ✔️     |            |
-| Stray                 |       |            |
-| Villager              |       |            |
-| Vex                   |       |            |
-| Vindicator            |       |            |
-| Wandering Trader      |       |            |
-| Which                 |       |            |
-| Wither Skeleton       |       |            |
-| Zombie                | ✔️     |            |
-| Zombie Pigman         |       |            |
-| Zombie Villager       |       |            |
+### Pony Forms
 
+| Form        | Model | Animations |
+|-------------|:-----:|:----------:|
+| Earth Pony  |   ✔️   | Partial    |
+| Unicorn     |   ✔️   |            |
+| Pegasus     |       |            |
+| Batpony     |       |            |
+| Changeling  |       |            |
 
-## Cloning & Building
-We use [Node.js](https://nodejs.org/) to build all of the different components of the addon and bundle them together.
+### Technical Misc
 
+| Item             | Status      |
+|------------------|:-----------:|
+| Ponified armor   |      ✔️      |
+| Magic auras      | In Progress |
+| Pony hat fixes   |             |
+| Unicorn horn     |      ✔️      |
+| Magic colors     |      ✔️      |
+| Pegasi wings     |             |
+| Changeling wings |             |
+| Batpony wings    |             |
+| Batpony ears     |             |
+| Tail length      |             |
+| Snuzzle type     |             |
+| Model size       |             |
+| Pony gear        |             |
+
+### Mobs
+
+| Mobs             | Form                     | Status      |
+|------------------|--------------------------|:-----------:|
+| Drowned          | Earth Pony               |             |
+| Enderman         | Special                  |             |
+| Evoker           | Unicorn                  |             |
+| Guardian         | Special                  |             |
+| Husk             | Earth Pony               |             |
+| Illusioner       | Unicorn                  |             |
+| Pillager         | Changeling               |             |
+| Skeleton         | Skeleton (Unicorn)       | In Progress |
+| Stray            | Skeleton (Earth Pony)    |             |
+| Vex              | Breezie                  |             |
+| Villager         | Earth Pony               |             |
+| Vindicator       | Pegasus                  |             |
+| Wandering Trader | Earth Pony               |             |
+| Witch            | Earth Pony + Hat         |             |
+| Wither Skeleton  | Large Skeleton (Unicorn) |             |
+| Zombie           | Earth Pony               |      ✔️      |
+| Zombie Pigman    | Earth Pony               |             |
+| Zombie Villager  | Earth Pony               |             |
+
+### Known Issues & Limitations
+
+- Trigger pixels are not supported (and will probably never be).
+  - An experimental UI is being worked on to allow selecting pony options, but it will only be available for Windows 10 devices.
+- Some items like the Turtle Shell helmet and Elytra are positioned incorrectly.
+  - There's currently no way for an addon to override their positioning.
+- Magic auras are limited to 16 colors.
+  - This limitation may be removed in the future.
+
+## Development
+We use [Node.js](https://nodejs.org/) to build the different components of the addon and bundle them together.
+
+### Building
+To build the project and bundle it into an add-on file:
 ```bash
-git clone https://github.com/Tschrock/MineLittlePony-Bedrock.git
-cd MineLittlePony-Bedrock
-npm i
+npm install
 npm run build
+```
+The bundled add-on files can be found in `./dist/`
+
+### Local install
+To install the plugin as a local development pack for testing:
+```bash
+npm run install-pack
+```
+
+### Watching for changes
+To watch the project for changes and automatically build and install:
+```bash
+npm run watch
 ```
 
 ## License
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
 
 [website-badge]: https://img.shields.io/badge/website-minelittlepony--mod.com-blue
 [website-link]: https://minelittlepony-mod.com
