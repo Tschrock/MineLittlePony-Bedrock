@@ -78,7 +78,7 @@ https://minelittlepony-mod.com
   - An experimental UI is being worked on to allow selecting pony options, but it will only be available for Windows 10 devices.
 - Some items like the Turtle Shell helmet and Elytra are positioned incorrectly.
   - There's currently no way for an addon to override their positioning.
-- Magic auras are limited to 16 colors.
+- Magic auras are limited to 13 colors.
   - This limitation may be removed in the future.
 
 ## Development
