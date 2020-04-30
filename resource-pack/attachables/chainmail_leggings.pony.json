@@ -2,8 +2,8 @@
     "format_version": "1.10.0",
     "minecraft:attachable": {
         "description": {
-            "identifier": "minecraft:chainmail_leggings.pony",
-            "item": { "minecraft:chainmail_leggings": "variable.is_pony" },
+            "identifier": "minelp:chainmail_leggings.pony",
+            "item": { "minecraft:chainmail_leggings": "variable.minelp.is_pony" },
             "materials": {
                 "default": "armor",
                 "enchanted": "armor_enchanted"
@@ -13,9 +13,9 @@
                 "default": "textures/models/armor/chainmail_layer_inner_pony"
             },
             "geometry": {
-                "default": "geometry.base_pony.armor.leggings"
+                "default": "geometry.minelp.pony.armor.leggings"
             },
-            "render_controllers": [ "controller.render.armor.pony" ]
+            "render_controllers": [ "controller.render.minelp.pony.armor" ]
         }
     }
 }

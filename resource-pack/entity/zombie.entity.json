@@ -6,14 +6,30 @@
             "identifier": "minecraft:zombie",
             "materials": {
                 "default": "zombie",
-                "magic": "pony_magic"
+                "minelp.default": "zombie",
+                "minelp.magic": "pony_magic"
             },
             "textures": {
-                "default": "textures/entity/zombie/zombie_pony",
-                "magic": "textures/items/magic_glow"
+                "default": "textures/entity/zombie/zombie",
+                "minelp.default": "textures/entity/zombie/minelp.pony.zombie",
+                "minelp.magic_color_0":  "textures/magic/0",
+                "minelp.magic_color_1":  "textures/magic/1",
+                "minelp.magic_color_2":  "textures/magic/2",
+                "minelp.magic_color_3":  "textures/magic/3",
+                "minelp.magic_color_4":  "textures/magic/4",
+                "minelp.magic_color_5":  "textures/magic/5",
+                "minelp.magic_color_6":  "textures/magic/6",
+                "minelp.magic_color_7":  "textures/magic/7",
+                "minelp.magic_color_8":  "textures/magic/8",
+                "minelp.magic_color_9":  "textures/magic/9",
+                "minelp.magic_color_10": "textures/magic/10",
+                "minelp.magic_color_11": "textures/magic/11",
+                "minelp.magic_color_12": "textures/magic/12",
+                "minelp.magic_color_13": "textures/magic/13"
             },
             "geometry": {
-                "default": "geometry.base_pony"
+                "default": "geometry.zombie.v1.8",
+                "minelp.default": "geometry.minelp.pony"
             },
             "spawn_egg": {
                 "texture": "spawn_egg",
@@ -21,14 +37,13 @@
             },
             "scripts": {
                 "pre_animation": [
-                    "variable.skinidtest = query.log(query.skin_id);",
-                    "variable.is_pony = 1;",
-                    "variable.horn_type = 0;",
-                    "variable.wing_type = 0;",
-                    "variable.ear_type = 0;",
-                    "variable.muzzle_type = 0;",
-                    "variable.magic_color = 0;",
-                    "variable.handedness = 0;",
+                    "variable.minelp.is_pony = 1;",
+                    "variable.minelp.horn_type = 0;",
+                    "variable.minelp.wing_type = 0;",
+                    "variable.minelp.ear_type = 0;",
+                    "variable.minelp.muzzle_type = 0;",
+                    "variable.minelp.magic_color = 0;",
+                    "variable.minelp.handedness = 0;",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
                     "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",
@@ -40,14 +55,14 @@
                 ]
             },
             "animations": {
-                "leftArm.show_movement": "animation.base_pony.leftArm.show_movement",
-                "rightArm.show_movement": "animation.base_pony.rightArm.show_movement",
-                "legs.show_movement": "animation.base_pony.legs.show_movement",
-                "tail.show_movement": "animation.base_pony.tail.show_movement",
-                "arms.show_movement": "controller.animation.base_pony.arms.show_movement",
-                "show_movement": "controller.animation.base_pony.show_movement"
+                "leftArm.show_movement": "animation.minelp.pony.leftArm.show_movement",
+                "rightArm.show_movement": "animation.minelp.pony.rightArm.show_movement",
+                "legs.show_movement": "animation.minelp.pony.legs.show_movement",
+                "tail.show_movement": "animation.minelp.pony.tail.show_movement",
+                "arms.show_movement": "controller.animation.minelp.pony.arms.show_movement",
+                "show_movement": "controller.animation.minelp.pony.show_movement"
             },
-            "render_controllers": [ "controller.render.base_pony" ],
+            "render_controllers": [ "controller.render.minelp.pony" ],
             "enable_attachables": true
         }
     }

@@ -2,32 +2,34 @@
     "format_version": "1.10.0",
     "minecraft:client_entity": {
         "description": {
-            "min_engine_version": "1.10.0",
             "identifier": "minecraft:skeleton",
+            "min_engine_version": "1.10.0",
             "materials": {
                 "default": "skeleton",
-                "magic": "pony_magic"
+                "minelp.default": "skeleton",
+                "minelp.magic": "pony_magic"
             },
             "textures": {
-                "default": "textures/entity/skeleton/skeleton_pony",
-                "magic": "textures/items/magic_glow2",
-                "magic_color_0":  "textures/magic/0",
-                "magic_color_1":  "textures/magic/1",
-                "magic_color_2":  "textures/magic/2",
-                "magic_color_3":  "textures/magic/3",
-                "magic_color_4":  "textures/magic/4",
-                "magic_color_5":  "textures/magic/5",
-                "magic_color_6":  "textures/magic/6",
-                "magic_color_7":  "textures/magic/7",
-                "magic_color_8":  "textures/magic/8",
-                "magic_color_9":  "textures/magic/9",
-                "magic_color_10": "textures/magic/10",
-                "magic_color_11": "textures/magic/11",
-                "magic_color_12": "textures/magic/12",
-                "magic_color_13": "textures/magic/13"
+                "default": "textures/entity/skeleton/skeleton",
+                "minelp.default": "textures/entity/skeleton/minelp.pony.skeleton",
+                "minelp.magic_color_0":  "textures/magic/0",
+                "minelp.magic_color_1":  "textures/magic/1",
+                "minelp.magic_color_2":  "textures/magic/2",
+                "minelp.magic_color_3":  "textures/magic/3",
+                "minelp.magic_color_4":  "textures/magic/4",
+                "minelp.magic_color_5":  "textures/magic/5",
+                "minelp.magic_color_6":  "textures/magic/6",
+                "minelp.magic_color_7":  "textures/magic/7",
+                "minelp.magic_color_8":  "textures/magic/8",
+                "minelp.magic_color_9":  "textures/magic/9",
+                "minelp.magic_color_10": "textures/magic/10",
+                "minelp.magic_color_11": "textures/magic/11",
+                "minelp.magic_color_12": "textures/magic/12",
+                "minelp.magic_color_13": "textures/magic/13"
             },
             "geometry": {
-                "default": "geometry.skeleton"
+                "default": "geometry.skeleton.v1.8",
+                "minelp.default": "geometry.minelp.pony.skeleton"
             },
             "spawn_egg": {
                 "texture": "spawn_egg",
@@ -35,14 +37,13 @@
             },
             "scripts": {
                 "pre_animation": [
-                    "variable.test = query.log(5);",
-                    "variable.is_pony = 1;",
-                    "variable.horn_type = 1;",
-                    "variable.wing_type = 0;",
-                    "variable.ear_type = 0;",
-                    "variable.muzzle_type = 0;",
-                    "variable.magic_color = 13;",
-                    "variable.handedness = 0;",
+                    "variable.minelp.is_pony = 1;",
+                    "variable.minelp.horn_type = 1;",
+                    "variable.minelp.wing_type = 0;",
+                    "variable.minelp.ear_type = 0;",
+                    "variable.minelp.muzzle_type = 0;",
+                    "variable.minelp.magic_color = 2;",
+                    "variable.minelp.handedness = 0;",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
                     "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",
@@ -60,19 +61,19 @@
                 ]
             },
             "animations": {
-                "default": "controller.animation.skeleton_pony.default",
-                "show_movement": "animation.skeleton_pony.show_movement",
-                "show_movement.tail": "animation.skeleton_pony.show_movement.tail",
-                "show_attack.leftItem": "animation.skeleton_pony.show_attack.leftItem",
-                "show_attack.rightItem": "animation.skeleton_pony.show_attack.rightItem",
-                "bob.leftItem": "animation.skeleton_pony.bob.leftItem",
-                "bob.rightItem": "animation.skeleton_pony.bob.rightItem",
-                "bob.tail": "animation.skeleton_pony.bob.tail",
-                "look_at_target": "animation.skeleton_pony.look_at_target",
-                "big_head": "animation.skeleton_pony.big_head",
-                "riding": "animation.skeleton_pony.riding"
+                "default": "controller.animation.minelp.pony.skeleton.default",
+                "show_movement": "animation.minelp.pony.skeleton.show_movement",
+                "show_movement.tail": "animation.minelp.pony.skeleton.show_movement.tail",
+                "show_attack.leftItem": "animation.minelp.pony.skeleton.show_attack.leftItem",
+                "show_attack.rightItem": "animation.minelp.pony.skeleton.show_attack.rightItem",
+                "bob.leftItem": "animation.minelp.pony.skeleton.bob.leftItem",
+                "bob.rightItem": "animation.minelp.pony.skeleton.bob.rightItem",
+                "bob.tail": "animation.minelp.pony.skeleton.bob.tail",
+                "look_at_target": "animation.minelp.pony.skeleton.look_at_target",
+                "big_head": "animation.minelp.pony.skeleton.big_head",
+                "riding": "animation.minelp.pony.skeleton.riding"
             },
-            "render_controllers": [ "controller.render.base_pony", "controller.render.base_pony.magic" ],
+            "render_controllers": [ "controller.render.minelp.pony", "controller.render.minelp.pony.magic" ],
             "enable_attachables": true
         }
     }

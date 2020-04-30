@@ -1,7 +1,7 @@
 {
     "format_version": "1.8.0",
     "animation_controllers": {
-        "controller.animation.skeleton_pony.default": {
+        "controller.animation.minelp.pony.skeleton.default": {
             "states": {
                 "default": {
                     "animations": [

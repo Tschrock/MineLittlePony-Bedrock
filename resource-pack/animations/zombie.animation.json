@@ -1,7 +1,7 @@
 {
     "format_version": "1.8.0",
     "animations": {
-        "animation.zombie_pony.big_head": {
+        "animation.minelp.pony.zombie.big_head": {
             "bones": {
                 "head": {
                     "scale": 1.399999976158142
@@ -9,7 +9,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.look_at_target": {
+        "animation.minelp.pony.zombie.look_at_target": {
             "bones": {
                 "head": {
                     "rotation": [ "query.target_x_rotation", "query.target_y_rotation", 0 ]
@@ -17,7 +17,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.bob.leftArm": {
+        "animation.minelp.pony.zombie.bob.leftArm": {
             "bones": {
                 "leftArm": {
                     "rotation": [
@@ -30,7 +30,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.bob.rightArm": {
+        "animation.minelp.pony.zombie.bob.rightArm": {
             "bones": {
                 "rightArm": {
                     "rotation": [
@@ -43,7 +43,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.bob.tail": {
+        "animation.minelp.pony.zombie.bob.tail": {
             "bones": {
                 "tailBody": {
                     "rotation": [ "-variable.x_bob / 3", 0, 0 ]
@@ -51,7 +51,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.show_movement.leftArm": {
+        "animation.minelp.pony.zombie.show_movement.leftArm": {
             "bones": {
                 "leftArm": {
                     "rotation": [ "variable.movement_leg_angle", 0, 0 ]
@@ -59,7 +59,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.show_movement.rightArm": {
+        "animation.minelp.pony.zombie.show_movement.rightArm": {
             "bones": {
                 "rightArm": {
                     "rotation": [ "-variable.movement_leg_angle", 0, 0 ]
@@ -67,7 +67,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.show_movement.legs": {
+        "animation.minelp.pony.zombie.show_movement.legs": {
             "bones": {
                 "leftLeg": {
                     "rotation": [ "-variable.movement_leg_angle", 0, 0 ]
@@ -78,7 +78,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.show_movement.tail": {
+        "animation.minelp.pony.zombie.show_movement.tail": {
             "bones": {
                 "tailBody": {
                     "rotation": [ "query.modified_move_speed * 30", 0, 0 ]
@@ -86,7 +86,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.show_attack.leftArm": {
+        "animation.minelp.pony.zombie.show_attack.leftArm": {
             "bones": {
                 "leftArm": {
                     "rotation": [
@@ -98,7 +98,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.show_attack.rightArm": {
+        "animation.minelp.pony.zombie.show_attack.rightArm": {
             "bones": {
                 "rightArm": {
                     "rotation": [
@@ -110,7 +110,7 @@
             },
             "loop": true
         },
-        "animation.zombie_pony.riding": {
+        "animation.minelp.pony.zombie.riding": {
             "bones": {
                 "leftArm": {
                     "rotation": [ 0, 0, "variable.is_holding_left ? 0.0 : -10.0" ]

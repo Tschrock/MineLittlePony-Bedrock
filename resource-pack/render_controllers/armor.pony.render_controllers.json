@@ -1,7 +1,7 @@
 {
     "format_version": "1.8.0",
     "render_controllers": {
-        "controller.render.armor.pony": {
+        "controller.render.minelp.pony.armor": {
             "geometry": "Geometry.default",
             "materials": [
                 { "*": "variable.is_enchanted ? Material.enchanted : Material.default" }

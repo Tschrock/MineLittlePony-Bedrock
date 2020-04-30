@@ -2,8 +2,8 @@
     "format_version": "1.10.0",
     "minecraft:attachable": {
         "description": {
-            "identifier": "minecraft:leather_helmet.pony",
-            "item": { "minecraft:leather_helmet": "variable.is_pony" },
+            "identifier": "minelp:leather_helmet.pony",
+            "item": { "minecraft:leather_helmet": "variable.minelp.is_pony" },
             "materials": {
                 "default": "armor_leather",
                 "enchanted": "armor_leather_enchanted"
@@ -13,9 +13,9 @@
                 "default": "textures/models/armor/leather_layer_outer_pony"
             },
             "geometry": {
-                "default": "geometry.base_pony.armor.helmet"
+                "default": "geometry.minelp.pony.armor.helmet"
             },
-            "render_controllers": [ "controller.render.armor.pony" ]
+            "render_controllers": [ "controller.render.minelp.pony.armor" ]
         }
     }
 }

@@ -3,7 +3,7 @@
     "minecraft:geometry": [
         {
             "description": {
-                "identifier": "geometry.base_pony.armor.helmet",
+                "identifier": "geometry.minelp.pony.armor.helmet",
                 "texture_width": 64,
                 "texture_height": 32,
                 "visible_bounds_width": 3,
@@ -46,7 +46,7 @@
         },
         {
             "description": {
-                "identifier": "geometry.base_pony.armor.chestplate",
+                "identifier": "geometry.minelp.pony.armor.chestplate",
                 "texture_width": 64,
                 "texture_height": 32,
                 "visible_bounds_width": 2,
@@ -70,7 +70,7 @@
         },
         {
             "description": {
-                "identifier": "geometry.base_pony.armor.chestplate.layer2",
+                "identifier": "geometry.minelp.pony.armor.chestplate.layer2",
                 "texture_width": 64,
                 "texture_height": 32,
                 "visible_bounds_width": 2,
@@ -94,7 +94,7 @@
         },
         {
             "description": {
-                "identifier": "geometry.base_pony.armor.leggings",
+                "identifier": "geometry.minelp.pony.armor.leggings",
                 "texture_width": 64,
                 "texture_height": 32,
                 "visible_bounds_width": 2,
@@ -154,7 +154,7 @@
         },
         {
             "description": {
-                "identifier": "geometry.base_pony.armor.boots",
+                "identifier": "geometry.minelp.pony.armor.boots",
                 "texture_width": 64,
                 "texture_height": 32,
                 "visible_bounds_width": 2,

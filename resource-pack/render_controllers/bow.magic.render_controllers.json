@@ -8,9 +8,9 @@
             ],
             "textures": [ "Texture.magic" ],
             // "overlay_color": {
-            //     "r": "variable.magic_color.r",
-            //     "g": "variable.magic_color.g",
-            //     "b": "variable.magic_color.b",
+            //     "r": "variable.minelp.magic_color.r",
+            //     "g": "variable.minelp.magic_color.g",
+            //     "b": "variable.minelp.magic_color.b",
             //     "a": "1"
             // },
             "ignore_lighting": false

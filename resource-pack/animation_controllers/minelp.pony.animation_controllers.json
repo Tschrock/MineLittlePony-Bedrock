@@ -1,7 +1,7 @@
 {
     "format_version": "1.8.0",
     "animation_controllers": {
-        "controller.animation.base_pony.show_movement": {
+        "controller.animation.minelp.pony.show_movement": {
             "states": {
                 "default": {
                     "animations": [
@@ -12,7 +12,7 @@
                 }
             }
         },
-        "controller.animation.base_pony.arms.show_movement": {
+        "controller.animation.minelp.pony.arms.show_movement": {
             "states": {
                 "default": {
                     "animations": [
@@ -20,8 +20,8 @@
                         { "rightArm.show_movement": [] }
                     ],
                     "transitions": [
-                        { "holding_left":   "variable.horn_type == 0.0 && variable.is_holding_left  && ( variable.handedness == 1.0 || !variable.is_holding_right )" },
-                        { "holding_right":  "variable.horn_type == 0.0 && variable.is_holding_right && ( variable.handedness == 0.0 || !variable.is_holding_left  )" }
+                        { "holding_left":   "variable.minelp.horn_type == 0.0 && variable.is_holding_left  && ( variable.minelp.handedness == 1.0 || !variable.is_holding_right )" },
+                        { "holding_right":  "variable.minelp.horn_type == 0.0 && variable.is_holding_right && ( variable.minelp.handedness == 0.0 || !variable.is_holding_left  )" }
                     ]
                 },
                 "holding_left": {
@@ -29,8 +29,8 @@
                         { "rightArm.show_movement": [] }
                     ],
                     "transitions": [
-                        { "default":        "variable.horn_type >  0.0 || ( !variable.is_holding_left && !variable.is_holding_right )" },
-                        { "holding_right":  "variable.horn_type == 0.0 && variable.is_holding_right && ( variable.handedness == 0.0 || !variable.is_holding_left  )" }
+                        { "default":        "variable.minelp.horn_type >  0.0 || ( !variable.is_holding_left && !variable.is_holding_right )" },
+                        { "holding_right":  "variable.minelp.horn_type == 0.0 && variable.is_holding_right && ( variable.minelp.handedness == 0.0 || !variable.is_holding_left  )" }
                     ]
                 },
                 "holding_right": {
@@ -38,8 +38,8 @@
                         { "leftArm.show_movement": [] }
                     ],
                     "transitions": [
-                        { "default":        "variable.horn_type >  0.0 || ( !variable.is_holding_left && !variable.is_holding_right )" },
-                        { "holding_left":   "variable.horn_type == 0.0 && variable.is_holding_left  && ( variable.handedness == 1.0 || !variable.is_holding_right )" }
+                        { "default":        "variable.minelp.horn_type >  0.0 || ( !variable.is_holding_left && !variable.is_holding_right )" },
+                        { "holding_left":   "variable.minelp.horn_type == 0.0 && variable.is_holding_left  && ( variable.minelp.handedness == 1.0 || !variable.is_holding_right )" }
                     ]
                 }
             }

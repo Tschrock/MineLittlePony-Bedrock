@@ -1,7 +1,7 @@
 {
     "format_version": "1.8.0",
     "animations": {
-        "animation.base_pony.leftArm.show_movement": {
+        "animation.minelp.pony.leftArm.show_movement": {
             "bones": {
                 "leftArm": {
                     "rotation": [ "variable.movement_leg_angle", 0, 0 ]
@@ -9,7 +9,7 @@
             },
             "loop": true
         },
-        "animation.base_pony.rightArm.show_movement": {
+        "animation.minelp.pony.rightArm.show_movement": {
             "bones": {
                 "rightArm": {
                     "rotation": [ "-variable.movement_leg_angle", 0, 0 ]
@@ -17,7 +17,7 @@
             },
             "loop": true
         },
-        "animation.base_pony.legs.show_movement": {
+        "animation.minelp.pony.legs.show_movement": {
             "bones": {
                 "leftLeg": {
                     "rotation": [ "-variable.movement_leg_angle", 0, 0 ]
@@ -28,7 +28,7 @@
             },
             "loop": true
         },
-        "animation.base_pony.tail.show_movement": {
+        "animation.minelp.pony.tail.show_movement": {
             "bones": {
                 "tailBody": {
                     "rotation": [ "query.modified_move_speed * 30", 0, 0 ]

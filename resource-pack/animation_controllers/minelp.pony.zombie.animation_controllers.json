@@ -1,7 +1,7 @@
 {
     "format_version": "1.8.0",
     "animation_controllers": {
-        "controller.animation.zombie_pony.default": {
+        "controller.animation.minelp.pony.zombie.default": {
             "states": {
                 "default": {
                     "animations": [
@@ -13,7 +13,7 @@
                 }
             }
         },
-        "controller.animation.zombie_pony.default.arms": {
+        "controller.animation.minelp.pony.zombie.default.arms": {
             "states": {
                 "default": {
                     "animations": [

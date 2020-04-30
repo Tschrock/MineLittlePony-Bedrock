@@ -2,8 +2,8 @@
     "format_version": "1.10.0",
     "minecraft:attachable": {
         "description": {
-            "identifier": "minecraft:leather_chestplate.pony",
-            "item": { "minecraft:leather_chestplate": "variable.is_pony" },
+            "identifier": "minelp:leather_chestplate.pony",
+            "item": { "minecraft:leather_chestplate": "variable.minelp.is_pony" },
             "materials": {
                 "default": "armor_leather",
                 "enchanted": "armor_leather_enchanted"
@@ -14,10 +14,10 @@
                 "layer2": "textures/models/armor/leather_layer_outer_pony"
             },
             "geometry": {
-                "default": "geometry.base_pony.armor.chestplate",
-                "layer2": "geometry.base_pony.armor.chestplate.layer2"
+                "default": "geometry.minelp.pony.armor.chestplate",
+                "layer2": "geometry.minelp.pony.armor.chestplate.layer2"
             },
-            "render_controllers": [ "controller.render.armor.pony", "controller.render.armor.pony.layer2" ]
+            "render_controllers": [ "controller.render.minelp.pony.armor", "controller.render.minelp.pony.armor.layer2" ]
         }
     }
 }

@@ -2,8 +2,8 @@
     "format_version": "1.10.0",
     "minecraft:attachable": {
         "description": {
-            "identifier": "minecraft:chainmail_boots.pony",
-            "item": { "minecraft:chainmail_boots": "variable.is_pony" },
+            "identifier": "minelp:chainmail_boots.pony",
+            "item": { "minecraft:chainmail_boots": "variable.minelp.is_pony" },
             "materials": {
                 "default": "armor",
                 "enchanted": "armor_enchanted"
@@ -13,9 +13,9 @@
                 "enchanted": "textures/misc/enchanted_item_glint"
             },
             "geometry": {
-                "default": "geometry.base_pony.armor.boots"
+                "default": "geometry.minelp.pony.armor.boots"
             },
-            "render_controllers": [ "controller.render.armor.pony" ]
+            "render_controllers": [ "controller.render.minelp.pony.armor" ]
         }
     }
 }

@@ -3,8 +3,8 @@
     "minecraft:attachable": {
         "description": {
             "min_engine_version": "1.10.0",
-            "identifier": "cp3:bow_magic_color_12",
-            "item": { "minecraft:bow": "variable.is_pony && variable.magic_color == 12" },
+            "identifier": "minelp:bow_magic_color_12",
+            "item": { "minecraft:bow": "variable.minelp.is_pony && variable.minelp.magic_color == 12" },
             "materials": {
                 "default": "entity_alphatest",
                 "enchanted": "entity_alphatest_glint",

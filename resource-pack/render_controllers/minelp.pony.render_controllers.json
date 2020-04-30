@@ -1,0 +1,17 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.minelp.pony": {
+            "geometry": "Geometry.minelp.default",
+            "part_visibility": [
+                { "*": 1 },
+                { "horn": "variable.minelp.horn_type > 0" },
+                { "hornGlow": 0 }
+            ],
+            "materials": [
+                { "*": "Material.minelp.default" }
+            ],
+            "textures": [ "Texture.minelp.default" ]
+        }
+    }
+}
