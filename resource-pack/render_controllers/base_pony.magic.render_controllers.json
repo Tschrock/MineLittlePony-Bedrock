@@ -2,6 +2,76 @@
     "format_version": "1.8.0",
     "render_controllers": {
         "controller.render.base_pony.magic": {
+            "arrays": {
+                "textures": {
+                    "array.magic_colors": [
+                        "texture.magic_color_0",
+                        "texture.magic_color_1",
+                        "texture.magic_color_2",
+                        "texture.magic_color_3",
+                        "texture.magic_color_4",
+                        "texture.magic_color_5",
+                        "texture.magic_color_6",
+                        "texture.magic_color_7",
+                        "texture.magic_color_8",
+                        "texture.magic_color_9",
+                        "texture.magic_color_10",
+                        "texture.magic_color_11",
+                        "texture.magic_color_12",
+                        "texture.magic_color_13",
+                        "texture.magic_color_14",
+                        "texture.magic_color_15",
+                        "texture.magic_color_16",
+                        "texture.magic_color_17",
+                        "texture.magic_color_18",
+                        "texture.magic_color_19",
+                        "texture.magic_color_20",
+                        "texture.magic_color_21",
+                        "texture.magic_color_22",
+                        "texture.magic_color_23",
+                        "texture.magic_color_24",
+                        "texture.magic_color_25",
+                        "texture.magic_color_26",
+                        "texture.magic_color_27",
+                        "texture.magic_color_28",
+                        "texture.magic_color_29",
+                        "texture.magic_color_30",
+                        "texture.magic_color_31",
+                        "texture.magic_color_32",
+                        "texture.magic_color_33",
+                        "texture.magic_color_34",
+                        "texture.magic_color_35",
+                        "texture.magic_color_36",
+                        "texture.magic_color_37",
+                        "texture.magic_color_38",
+                        "texture.magic_color_39",
+                        "texture.magic_color_40",
+                        "texture.magic_color_41",
+                        "texture.magic_color_42",
+                        "texture.magic_color_43",
+                        "texture.magic_color_44",
+                        "texture.magic_color_45",
+                        "texture.magic_color_46",
+                        "texture.magic_color_47",
+                        "texture.magic_color_48",
+                        "texture.magic_color_49",
+                        "texture.magic_color_50",
+                        "texture.magic_color_51",
+                        "texture.magic_color_52",
+                        "texture.magic_color_53",
+                        "texture.magic_color_54",
+                        "texture.magic_color_55",
+                        "texture.magic_color_56",
+                        "texture.magic_color_57",
+                        "texture.magic_color_58",
+                        "texture.magic_color_59",
+                        "texture.magic_color_60",
+                        "texture.magic_color_61",
+                        "texture.magic_color_62",
+                        "texture.magic_color_63"
+                    ]
+                }
+            },
             "geometry": "Geometry.default",
             "part_visibility": [
                 { "*": 0 },
@@ -10,8 +80,14 @@
             "materials": [
                 { "*": "Material.magic" }
             ],
-            "textures": [ "Texture.magic" ],
-            "ignore_lighting": true
+            "textures": [ "array.magic_colors[variable.magic_color]" ],
+            // "overlay_color": {
+            //     "r": "variable.magic_color.r",
+            //     "g": "variable.magic_color.g",
+            //     "b": "variable.magic_color.b",
+            //     "a": "1"
+            // },
+            "ignore_lighting": false
         }
     }
 }

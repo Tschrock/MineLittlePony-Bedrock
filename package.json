@@ -22,7 +22,7 @@
     },
     "scripts": {
         "build": "gulp build",
-        "install": "gulp install",
+        "install-pack": "gulp install",
         "watch": "gulp watch",
         "test": "mocha -r ts-node/register tests/**/*.spec.ts --delay"
     },

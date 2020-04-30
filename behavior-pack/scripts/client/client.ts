@@ -33,20 +33,20 @@ class Client extends System<IVanillaClientSystem> {
     private OnClientEnteredWorld(eventData: IEventData<IClientEnteredWorldEventData>) {
 
         // Client has entered the world, show the starting screen
-        let loadEventData = this.system.createEventData(SendToMinecraftClient.LoadUI);
-        if (loadEventData) {
-            loadEventData.data.path = "pony_options.html";
-            loadEventData.data.options = {
-                absorbs_input: true,
-                always_accepts_input: false,
-                force_render_below: false,
-                is_showing_menu: true,
-                render_game_behind: true,
-                render_only_when_topmost: true,
-                should_steal_mouse: false
-            };
-            this.system.broadcastEvent(SendToMinecraftClient.LoadUI, loadEventData);
-        }
+        // let loadEventData = this.system.createEventData(SendToMinecraftClient.LoadUI);
+        // if (loadEventData) {
+        //     loadEventData.data.path = "pony_options.html";
+        //     loadEventData.data.options = {
+        //         absorbs_input: true,
+        //         always_accepts_input: false,
+        //         force_render_below: false,
+        //         is_showing_menu: true,
+        //         render_game_behind: true,
+        //         render_only_when_topmost: true,
+        //         should_steal_mouse: false
+        //     };
+        //     this.system.broadcastEvent(SendToMinecraftClient.LoadUI, loadEventData);
+        // }
 
         this.setTimeout(() => {
             this.log(`New player joined with id ${eventData.data.player.id}`);

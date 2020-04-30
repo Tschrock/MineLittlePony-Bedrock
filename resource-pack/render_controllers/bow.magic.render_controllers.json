@@ -6,14 +6,14 @@
             "materials": [
                 { "*": "Material.magic" }
             ],
-            "color": {
-              "r": "0",
-              "g": "1",
-              "b": "0",
-              "a": "0.5"
-            },
             "textures": [ "Texture.magic" ],
-            "ignore_lighting": true
+            // "overlay_color": {
+            //     "r": "variable.magic_color.r",
+            //     "g": "variable.magic_color.g",
+            //     "b": "variable.magic_color.b",
+            //     "a": "1"
+            // },
+            "ignore_lighting": false
         }
     }
 }

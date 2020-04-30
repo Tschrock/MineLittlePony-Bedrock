@@ -10,7 +10,7 @@
             },
             "textures": {
                 "default": "textures/entity/zombie/zombie_pony",
-                "magic": "textures/items/grey_template"
+                "magic": "textures/items/magic_glow"
             },
             "geometry": {
                 "default": "geometry.base_pony"
@@ -27,9 +27,7 @@
                     "variable.wing_type = 0;",
                     "variable.ear_type = 0;",
                     "variable.muzzle_type = 0;",
-                    "variable.magic_color.r = 0;",
-                    "variable.magic_color.g = 255;",
-                    "variable.magic_color.b = 0;",
+                    "variable.magic_color = 0;",
                     "variable.handedness = 0;",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
@@ -49,7 +47,7 @@
                 "arms.show_movement": "controller.animation.base_pony.arms.show_movement",
                 "show_movement": "controller.animation.base_pony.show_movement"
             },
-            "render_controllers": [ "controller.render.base_pony", "controller.render.base_pony.magic" ],
+            "render_controllers": [ "controller.render.base_pony" ],
             "enable_attachables": true
         }
     }
