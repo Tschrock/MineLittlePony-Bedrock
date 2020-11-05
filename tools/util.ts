@@ -1,6 +1,4 @@
 import fs from 'fs';
-import os from 'os';
-import path from 'path';
 
 import { parse as parseSemver } from 'semver';
 import { parse as parseJson } from 'jsonc-parser';
@@ -56,18 +54,4 @@ export async function versionManifest(path: string, version: string | [number, n
     // Write the manifest
     await writeJson(path, manifest);
 
-}
-
-const platformRoots: { [key: string]: string } = {
-    "win32": "AppData/Local/Packages/Microsoft.MinecraftUWP_8wekyb3d8bbwe/LocalState",
-    "linux": ".local/share/mcpelauncher",
-    "darwin": "Library/Application Support/mcpelauncher",
-    "android": "storage/shared/"
-}
-
-export function getMCDataDirectory() {
-    const platform = os.platform();
-    const dataPath = platformRoots[platform];
-    if(!dataPath) throw new Error(`Could not determine MC data location. Unknown platform '${platform}'.`);
-    return path.join(os.homedir(), dataPath, "games/com.mojang");
 }

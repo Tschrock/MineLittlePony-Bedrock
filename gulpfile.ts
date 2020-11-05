@@ -6,10 +6,11 @@ import gulp_zip from 'gulp-zip';
 import webpackStream from 'webpack-stream';
 import gulp_sass from 'gulp-sass';
 import node_sass from 'node-sass';
+import { getDataLocations } from 'bedrock-dev-lib';
 
 import webpackConfigBehaviors from './webpack.behaviors.config';
 import webpackConfigResources from './webpack.resources.config';
-import { versionManifest, getPackageVersion, getPackageName, getMCDataDirectory } from './tools/util';
+import { versionManifest, getPackageVersion, getPackageName } from './tools/util';
 
 (gulp_sass as any).compiler = node_sass;
 
@@ -123,16 +124,19 @@ export function watchBehaviors() {
  * Installs behavior files
  */
 export async function installBehaviors() {
-    const packsPath = path.join(getMCDataDirectory(), 'development_behavior_packs');
-    const installName = await getPackageName();
-    const installPath = path.join(packsPath, installName);
-    await del(installPath, { cwd: packsPath });
-    await new Promise((resolve, reject) => {
-        gulp.src('./dist/build/behavior-pack/**/*')
-        .on("end", () => resolve())
-        .on("error", err => reject(err))
-        .pipe(gulp.dest(installPath));
-    });
+    const dirs = await getDataLocations();
+    for(const dir of dirs) {
+        const packsPath = path.join(dir, 'development_behavior_packs');
+        const installName = await getPackageName();
+        const installPath = path.join(packsPath, installName);
+        await del(installPath, { cwd: packsPath });
+        await new Promise((resolve, reject) => {
+            gulp.src('./dist/build/behavior-pack/**/*')
+            .on("end", () => resolve())
+            .on("error", err => reject(err))
+            .pipe(gulp.dest(installPath));
+        });
+    }
 }
 
 export const behaviors = gulp.series(cleanBehaviors, versionBehaviors, buildBehaviorScripts, copyBehaviorFiles, packBehaviors);
@@ -216,16 +220,19 @@ export function watchResources() {
  * Installs resource files
  */
 export async function installResources() {
-    const packsPath = path.join(getMCDataDirectory(), 'development_resource_packs');
-    const installName = await getPackageName();
-    const installPath = path.join(packsPath, installName);
-    await del(installPath, { cwd: packsPath });
-    await new Promise((resolve, reject) => {
-        gulp.src('./dist/build/resource-pack/**/*')
-        .on("end", () => resolve())
-        .on("error", err => reject(err))
-        .pipe(gulp.dest(installPath));
-    });
+    const dirs = await getDataLocations();
+    for(const dir of dirs) {
+        const packsPath = path.join(dir, 'development_resource_packs');
+        const installName = await getPackageName();
+        const installPath = path.join(packsPath, installName);
+        await del(installPath, { cwd: packsPath });
+        await new Promise((resolve, reject) => {
+            gulp.src('./dist/build/resource-pack/**/*')
+            .on("end", () => resolve())
+            .on("error", err => reject(err))
+            .pipe(gulp.dest(installPath));
+        });
+    }
 }
 
 export const resources = gulp.series(cleanResources, versionResources, gulp.parallel(buildResourceUIScripts, buildResourceUIStyles, copyResourceFiles), packResources);
