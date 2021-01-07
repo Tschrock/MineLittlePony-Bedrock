@@ -75,10 +75,8 @@ https://minelittlepony-mod.com
 ### Known Issues & Limitations
 
 - Ponified player models are not supported.
-- Some items like the Turtle Shell helmet and Elytra are positioned incorrectly.
+- Elytra are not positioned correctly.
   - There's currently no way for an addon to override their positioning.
-- Magic auras are limited to 13 colors.
-  - This limitation may be removed in the future.
 
 ## Development
 We use [Node.js](https://nodejs.org/) to build the different components of the addon and bundle them together.
