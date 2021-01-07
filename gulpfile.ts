@@ -11,14 +11,6 @@ import { versionManifest, getPackageVersion, getPackageName } from './tools/util
 //             Utils              //
 // ============================== //
 
-/**
- * Cleans the build directory
- */
-export function clean() {
-    return del('./dist/build');
-}
-clean.description = 'Cleans the build directory';
-
 /** Array of functions to run on quit. */
 const quitHandlers = new Set<() => Promise<void> | void>();
 
@@ -56,33 +48,32 @@ async function niceWatch(path: string, task: gulp.TaskFunction) {
 /**
  * Cleans the build directory
  */
-function cleanResources() {
-    return del('./dist/build/resource-pack');
+export function clean() {
+    return del('./dist/build');
 }
+clean.description = 'Cleans the build directory';
 
 /**
- * Ensures that the pack's manifest version matches the project's version
+ * Updates the pack's manifest version to match the project's version
  */
-async function versionResources() {
+export async function version() {
     await versionManifest('./resource-pack/manifest.json', await getPackageVersion());
 }
+version.description = `Updates the pack's manifest version to match the project's version`;
 
 /**
  * Copies the resource pack files
  */
-function copyResourceFiles() {
-    return gulp.src([
-        './resource-pack/**/*', // Copy all files
-        '!./resource-pack/experimental_ui/scripts/**/*',
-        '!./resource-pack/experimental_ui/styles/**/*'
-    ])
+export function copy() {
+    return gulp.src(['./resource-pack/**/*'], { since: gulp.lastRun(copy) })
         .pipe(gulp.dest('./dist/build/resource-pack/'))
 }
+copy.description = 'Copies the resource pack files';
 
 /**
  * Packs the built resources into an mcpack file
  */
-async function packResources() {
+export async function pack() {
 
     const filename = `${await getPackageName()}-v${await getPackageVersion()}.mcpack`;
 
@@ -90,42 +81,40 @@ async function packResources() {
         .pipe(gulp_zip(filename))
         .pipe(gulp.dest('./dist'))
 }
+pack.description = 'Packs the built resources into an mcpack file';
 
 /**
  * Watches resource files
  */
-export function watchResources() {
+export const watch = gulp.series(clean, version, copy, () => {
     return niceWatch(
         './resource-pack/**/*',
-        gulp.series(cleanResources, copyResourceFiles, installResources)
-    );
-}
+        gulp.series(copy, install)
+        );
+    });
+watch.description = 'Watches resource files';
+
 
 /**
  * Installs resource files
  */
-export async function installResources() {
+export async function install() {
     const dirs = await getDataLocations();
-    for(const dir of dirs) {
+    for (const dir of dirs) {
         const packsPath = path.join(dir, 'development_resource_packs');
         const installName = await getPackageName();
         const installPath = path.join(packsPath, installName);
         await del(installPath, { cwd: packsPath });
         await new Promise<void>((resolve, reject) => {
             gulp.src('./dist/build/resource-pack/**/*')
-            .on("end", () => resolve())
-            .on("error", err => reject(err))
-            .pipe(gulp.dest(installPath));
+                .on("end", () => resolve())
+                .on("error", err => reject(err))
+                .pipe(gulp.dest(installPath));
         });
     }
 }
+install.description = 'Installs resource files';
 
-export const resources = gulp.series(cleanResources, versionResources, copyResourceFiles, packResources);
-
-export const build = gulp.parallel(resources);
-
-export const watch = gulp.parallel(watchResources);
-
-export const install = gulp.parallel(installResources);
+export const build = gulp.series(clean, version, copy, pack);
 
 export default build;

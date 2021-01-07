@@ -23,6 +23,7 @@
     "scripts": {
         "build": "gulp build",
         "install-pack": "gulp install",
+        "version": "gulp version && git add ./resource-pack/manifest.json",
         "watch": "gulp watch",
         "test": "mocha -r ts-node/register tests/**/*.spec.ts --delay"
     },
