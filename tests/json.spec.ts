@@ -2,6 +2,8 @@ import path from 'path';
 
 import 'mocha';
 import Ajv from 'ajv';
+import addFormats from "ajv-formats"
+
 import glob from 'globby';
 
 import { readJson } from '../tools/util';
@@ -37,7 +39,7 @@ async function buildValidator(schemaPath: string, schemaFetcher: (path: string) 
 
     // Create a new validator
     const ajv = new Ajv({ loadSchema: loadRef });
-
+    addFormats(ajv);
 
     // Compile and return the validator
     return ajv.compileAsync(schemaJSON);
@@ -53,23 +55,30 @@ async function validateFiles() {
     // For each schema
     for (const schema of settingsJSON["json.schemas"]) {
 
-        // Find files to validate
-        const filesToValidate = await glob(schema.fileMatch, { gitignore: true });
+        const validator = await buildValidator(schema.url, readJson).catch(e => {
+            console.error(`Error building validator for '${schema.url}':`);
+            console.error(e);
+        });
 
-        // Build a validator for the schema
-        const validator = await buildValidator(schema.url, readJson);
+        if(validator) {
 
-        // Build the test
-        for (const file of filesToValidate) {
-            const fileData = await readJson(file);
-            describe(file, () => {
-                it('should validate', () => {
-                    if(!validator(fileData)) {
-                        throw new Error("Validation Failed");
-                    }
+            // Find files to validate
+            const filesToValidate = await glob(schema.fileMatch, { gitignore: true });
+
+            // Build the test
+            for (const file of filesToValidate) {
+                const fileData = await readJson(file);
+                describe(file, () => {
+                    it('should validate', () => {
+                        if(!validator(fileData)) {
+                            throw new Error("Validation Failed");
+                        }
+                    });
                 });
-            });
+            }
+
         }
+
     }
 
 }

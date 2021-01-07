@@ -39,6 +39,7 @@
         "@types/node": "^14.14.20",
         "@types/semver": "^7.3.4",
         "ajv": "^7.0.3",
+        "ajv-formats": "^1.5.1",
         "bedrock-dev-lib": "github:bedrock-studio/bedrock-dev-lib",
         "bedrock-json-schemas": "github:bedrock-studio/bedrock-json-schemas",
         "chai": "^4.2.0",
