@@ -12,31 +12,32 @@
             "textures": {
                 "default": "textures/entity/steve",
                 "cape": "textures/entity/cape_invisible",
-                "minelp.magic_color_0": "textures/magic/0",
-                "minelp.magic_color_1": "textures/magic/1",
-                "minelp.magic_color_2": "textures/magic/2",
-                "minelp.magic_color_3": "textures/magic/3",
-                "minelp.magic_color_4": "textures/magic/4",
-                "minelp.magic_color_5": "textures/magic/5",
-                "minelp.magic_color_6": "textures/magic/6",
-                "minelp.magic_color_7": "textures/magic/7",
-                "minelp.magic_color_8": "textures/magic/8",
-                "minelp.magic_color_9": "textures/magic/9",
+                "minelp.magic_color_0":  "textures/magic/0",
+                "minelp.magic_color_1":  "textures/magic/1",
+                "minelp.magic_color_2":  "textures/magic/2",
+                "minelp.magic_color_3":  "textures/magic/3",
+                "minelp.magic_color_4":  "textures/magic/4",
+                "minelp.magic_color_5":  "textures/magic/5",
+                "minelp.magic_color_6":  "textures/magic/6",
+                "minelp.magic_color_7":  "textures/magic/7",
+                "minelp.magic_color_8":  "textures/magic/8",
+                "minelp.magic_color_9":  "textures/magic/9",
                 "minelp.magic_color_10": "textures/magic/10",
                 "minelp.magic_color_11": "textures/magic/11",
                 "minelp.magic_color_12": "textures/magic/12",
                 "minelp.magic_color_13": "textures/magic/13"
             },
             "geometry": {
-                "default": "geometry.cape",
+                "default": "geometry.humanoid.custom",
                 "cape": "geometry.cape",
-                "minelp.default": "geometry.minelp.humanoid",
+                "minelp.default": "geometry.minelp.pony",
                 "minelp.magic.items": "geometry.minelp.magic.items"
             },
             "scripts": {
                 "scale": "0.9375",
                 "initialize": [
                     "variable.is_holding_right = 0.0;",
+                    "variable.is_holding_left = 0.0;",
                     "variable.is_blinking = 0.0;",
                     "variable.last_blink_time = 0.0;",
                     "variable.hand_bob = 0.0;"
@@ -67,7 +68,7 @@
             "animations": {
                 "root": "controller.animation.player.root",
                 "base_controller": "controller.animation.player.base",
-                "hudplayer": "controller.animation.player.hudplayer",
+                "hudplayer":  "controller.animation.player.hudplayer",
                 "humanoid_base_pose": "animation.humanoid.base_pose",
                 "look_at_target": "controller.animation.humanoid.look_at_target",
                 "look_at_target_ui": "animation.player.look_at_target.ui",
@@ -117,9 +118,10 @@
                 "blink": "controller.animation.persona.blink"
             },
             "render_controllers": [
-                { "controller.render.player.first_person": "variable.is_first_person" },
+                { "controller.render.minelp.player.first_person": "variable.is_first_person" },
                 { "controller.render.minelp.player.third_person": "!variable.is_first_person && !variable.map_face_icon" },
-                { "controller.render.player.map": "variable.map_face_icon" },
+                { "controller.render.minelp.player.map": "variable.map_face_icon" },
+                { "controller.render.minelp.pony.magic": "!variable.is_first_person" },
                 { "controller.render.minelp.magic.items": "!variable.map_face_icon" }
             ],
             "enable_attachables": true
