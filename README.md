@@ -74,8 +74,7 @@ https://minelittlepony-mod.com
 
 ### Known Issues & Limitations
 
-- Trigger pixels are not supported (and will probably never be).
-  - An experimental UI is being worked on to allow selecting pony options, but it will only be available for Windows 10 devices.
+- Ponified player models are not supported.
 - Some items like the Turtle Shell helmet and Elytra are positioned incorrectly.
   - There's currently no way for an addon to override their positioning.
 - Magic auras are limited to 13 colors.

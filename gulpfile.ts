@@ -3,16 +3,9 @@ import path from 'path';
 import del from 'del';
 import gulp from 'gulp';
 import gulp_zip from 'gulp-zip';
-import webpackStream from 'webpack-stream';
-import gulp_sass from 'gulp-sass';
-import node_sass from 'node-sass';
 import { getDataLocations } from 'bedrock-dev-lib';
 
-import webpackConfigBehaviors from './webpack.behaviors.config';
-import webpackConfigResources from './webpack.resources.config';
 import { versionManifest, getPackageVersion, getPackageName } from './tools/util';
-
-(gulp_sass as any).compiler = node_sass;
 
 // ============================== //
 //             Utils              //
@@ -57,91 +50,6 @@ async function niceWatch(path: string, task: gulp.TaskFunction) {
 }
 
 // ============================== //
-//           Behaviors            //
-// ============================== //
-
-/**
- * Cleans the build directory
- */
-function cleanBehaviors() {
-    return del('./dist/build/behavior-pack');
-}
-
-/**
- * Builds the behavior pack script using webpack
- */
-function buildBehaviorScripts() {
-    return gulp.src([
-        './behavior-pack/scripts/client/client.ts',
-        './behavior-pack/scripts/server/server.ts'
-    ])
-        .pipe(webpackStream(webpackConfigBehaviors))
-        .on('error', function handleError(this: NodeJS.EventEmitter) {
-            this.emit('end'); // Recover from errors
-        })
-        .pipe(gulp.dest('./dist/build/behavior-pack/'));
-}
-
-/**
- * Ensures that the pack's manifest version matches the project's version
- */
-async function versionBehaviors() {
-    await versionManifest('./behavior-pack/manifest.json', await getPackageVersion());
-}
-
-/**
- * Copies the behavior pack files
- */
-function copyBehaviorFiles() {
-    return gulp.src([
-        './behavior-pack/**/*', // Copy all files
-        '!./behavior-pack/scripts/**/*', // Ignore scripts (see buildBehaviorScripts)
-    ])
-        .pipe(gulp.dest('./dist/build/behavior-pack/'))
-}
-
-/**
- * Packs the built behaviors into an mcpack file
- */
-async function packBehaviors() {
-    const filename = `${await getPackageName()}-behaviors-v${await getPackageVersion()}.mcpack`;
-    return gulp.src('./dist/build/behavior-pack/**/*')
-        .pipe(gulp_zip(filename))
-        .pipe(gulp.dest('./dist'))
-}
-
-/**
- * Watches behavior files
- */
-export function watchBehaviors() {
-    return niceWatch(
-        './behavior-pack/**/*',
-        gulp.series(cleanBehaviors, buildBehaviorScripts, copyBehaviorFiles, installBehaviors)
-    );
-}
-
-/**
- * Installs behavior files
- */
-export async function installBehaviors() {
-    const dirs = await getDataLocations();
-    for(const dir of dirs) {
-        const packsPath = path.join(dir, 'development_behavior_packs');
-        const installName = await getPackageName();
-        const installPath = path.join(packsPath, installName);
-        await del(installPath, { cwd: packsPath });
-        await new Promise((resolve, reject) => {
-            gulp.src('./dist/build/behavior-pack/**/*')
-            .on("end", () => resolve())
-            .on("error", err => reject(err))
-            .pipe(gulp.dest(installPath));
-        });
-    }
-}
-
-export const behaviors = gulp.series(cleanBehaviors, versionBehaviors, buildBehaviorScripts, copyBehaviorFiles, packBehaviors);
-
-// ============================== //
 //           Resources            //
 // ============================== //
 
@@ -150,29 +58,6 @@ export const behaviors = gulp.series(cleanBehaviors, versionBehaviors, buildBeha
  */
 function cleanResources() {
     return del('./dist/build/resource-pack');
-}
-
-/**
- * Builds the resource pack UI scripts using webpack
- */
-function buildResourceUIScripts() {
-    return gulp.src([
-        './resource-pack/experimental_ui/scripts/main.ts'
-    ])
-        .pipe(webpackStream(webpackConfigResources))
-        .on('error', function handleError(this: NodeJS.EventEmitter) {
-            this.emit('end'); // Recover from errors
-        })
-        .pipe(gulp.dest('./dist/build/resource-pack/'));
-}
-
-/**
- * Builds the resource pack UI styles using sass
- */
-function buildResourceUIStyles() {
-    return gulp.src('./resource-pack/experimental_ui/styles/**/*.scss')
-        .pipe(gulp_sass().on('error', gulp_sass.logError))
-        .pipe(gulp.dest('./dist/build/resource-pack/experimental_ui/styles/'));
 }
 
 /**
@@ -199,7 +84,7 @@ function copyResourceFiles() {
  */
 async function packResources() {
 
-    const filename = `${await getPackageName()}-resources-v${await getPackageVersion()}.mcpack`;
+    const filename = `${await getPackageName()}-v${await getPackageVersion()}.mcpack`;
 
     return gulp.src('./dist/build/resource-pack/**/*')
         .pipe(gulp_zip(filename))
@@ -212,7 +97,7 @@ async function packResources() {
 export function watchResources() {
     return niceWatch(
         './resource-pack/**/*',
-        gulp.series(cleanResources, gulp.parallel(buildResourceUIScripts, buildResourceUIStyles, copyResourceFiles), installResources)
+        gulp.series(cleanResources, copyResourceFiles, installResources)
     );
 }
 
@@ -226,7 +111,7 @@ export async function installResources() {
         const installName = await getPackageName();
         const installPath = path.join(packsPath, installName);
         await del(installPath, { cwd: packsPath });
-        await new Promise((resolve, reject) => {
+        await new Promise<void>((resolve, reject) => {
             gulp.src('./dist/build/resource-pack/**/*')
             .on("end", () => resolve())
             .on("error", err => reject(err))
@@ -235,12 +120,12 @@ export async function installResources() {
     }
 }
 
-export const resources = gulp.series(cleanResources, versionResources, gulp.parallel(buildResourceUIScripts, buildResourceUIStyles, copyResourceFiles), packResources);
+export const resources = gulp.series(cleanResources, versionResources, copyResourceFiles, packResources);
 
-export const build = gulp.parallel(resources, behaviors);
+export const build = gulp.parallel(resources);
 
-export const watch = gulp.parallel(watchResources, watchBehaviors);
+export const watch = gulp.parallel(watchResources);
 
-export const install = gulp.parallel(installResources, installBehaviors);
+export const install = gulp.parallel(installResources);
 
 export default build;
