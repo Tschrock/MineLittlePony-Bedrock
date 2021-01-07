@@ -49,8 +49,6 @@
         "gulp": "^4.0.2",
         "gulp-zip": "^5.0.2",
         "jsonc-parser": "^3.0.0",
-        "minecraft-scripting-types-client": "^1.0.0",
-        "minecraft-scripting-types-server": "^1.0.0",
         "mocha": "^8.2.1",
         "semver": "^7.3.4",
         "ts-loader": "^8.0.14",
