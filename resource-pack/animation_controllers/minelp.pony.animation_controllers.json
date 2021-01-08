@@ -1,23 +1,27 @@
 {
-    "format_version": "1.8.0",
+    "format_version": "1.10.0",
     "animation_controllers": {
-        "controller.animation.minelp.pony.show_movement": {
+        "controller.animation.minelp.pony.default": {
             "states": {
                 "default": {
                     "animations": [
-                        { "legs.show_movement": [] },
-                        { "arms.show_movement": [] },
-                        { "tail.show_movement": [] }
+                        "look_at_target",
+                        { "big_head": "query.is_baby" },
+                        "default.arms",
+                        "show_movement.legs",
+                        "bob.tail",
+                        "show_movement.tail"
                     ]
                 }
             }
         },
-        "controller.animation.minelp.pony.arms.show_movement": {
+        "controller.animation.minelp.pony.default.arms": {
             "states": {
                 "default": {
                     "animations": [
-                        { "leftArm.show_movement": [] },
-                        { "rightArm.show_movement": [] }
+                        "show_attack.leftArm",
+                        "show_movement.leftArm",
+                        "show_movement.rightArm"
                     ],
                     "transitions": [
                         { "holding_left":   "variable.minelp.horn_type == 0.0 && variable.is_holding_left  && ( variable.minelp.handedness == 1.0 || !variable.is_holding_right )" },
@@ -26,7 +30,9 @@
                 },
                 "holding_left": {
                     "animations": [
-                        { "rightArm.show_movement": [] }
+                        "bob.leftArm",
+                        "show_attack.leftArm",
+                        "show_movement.rightArm"
                     ],
                     "transitions": [
                         { "default":        "variable.minelp.horn_type >  0.0 || ( !variable.is_holding_left && !variable.is_holding_right )" },
@@ -35,7 +41,9 @@
                 },
                 "holding_right": {
                     "animations": [
-                        { "leftArm.show_movement": [] }
+                        "bob.rightArm",
+                        "show_attack.rightArm",
+                        "show_movement.leftArm"
                     ],
                     "transitions": [
                         { "default":        "variable.minelp.horn_type >  0.0 || ( !variable.is_holding_left && !variable.is_holding_right )" },

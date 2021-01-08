@@ -1,38 +1,26 @@
 {
-    "format_version": "1.8.0",
+    "format_version": "1.10.0",
     "animation_controllers": {
-        "controller.animation.minelp.pony.zombie.default": {
-            "states": {
-                "default": {
-                    "animations": [
-                        { "look_at_target": [] },
-                        { "show_movement.legs": [] },
-                        { "show_movement.tail": [] },
-                        { "bob.tail": [] }
-                    ]
-                }
-            }
-        },
         "controller.animation.minelp.pony.zombie.default.arms": {
             "states": {
                 "default": {
                     "animations": [
-                        { "bob.leftArm": [] },
-                        { "show_attack.leftArm": [] },
-                        { "show_movement.rightArm": [] }
+                        "bob.rightArm",
+                        "show_attack.rightArm",
+                        "show_movement.leftArm"
                     ],
                     "transitions": [
-                        { "is_holding_right": "variable.is_holding_right == 1.0" }
+                        { "holding_left":   "variable.is_holding_left  && ( variable.minelp.handedness == 1.0 || !variable.is_holding_right )" }
                     ]
                 },
-                "is_holding_right": {
+                "holding_left": {
                     "animations": [
-                        { "bob.rightArm": [] },
-                        { "show_attack.rightArm": [] },
-                        { "show_movement.leftArm": [] }
+                        "bob.leftArm",
+                        "show_attack.leftArm",
+                        "show_movement.rightArm"
                     ],
                     "transitions": [
-                        { "default": "variable.is_holding_right != 1.0" }
+                        { "default":  "variable.is_holding_right && ( variable.minelp.handedness == 0.0 || !variable.is_holding_left  )" }
                     ]
                 }
             }
