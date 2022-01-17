@@ -2,20 +2,27 @@
     "format_version": "1.10.0",
     "minecraft:attachable": {
         "description": {
-            "identifier": "minelp:diamond_boots.pony",
-            "item": { "minecraft:diamond_boots": "variable.minelp.is_pony" },
+            "identifier": "minecraft:diamond_boots",
             "materials": {
                 "default": "armor",
                 "enchanted": "armor_enchanted"
             },
             "textures": {
+                "default": "textures/models/armor/diamond_1",
                 "enchanted": "textures/misc/enchanted_item_glint",
-                "default": "textures/models/armor/diamond_layer_outer_pony"
+                "minelp.default": "textures/models/armor/diamond_layer_outer_pony"
             },
             "geometry": {
-                "default": "geometry.minelp.pony.armor.boots"
+                "default": "geometry.humanoid.armor.boots",
+                "minelp.default": "geometry.minelp.pony.armor.boots"
             },
-            "render_controllers": [ "controller.render.minelp.pony.armor" ]
+            "scripts": {
+              "parent_setup": "variable.boot_layer_visible = 0.0;"
+            },
+            "render_controllers": [
+                { "controller.render.armor": "context.owning_entity -> variable.minelp_ispony != 1.0" },
+                { "controller.render.minelp.pony.armor": "context.owning_entity -> variable.minelp_ispony == 1.0" }
+            ]
         }
     }
 }

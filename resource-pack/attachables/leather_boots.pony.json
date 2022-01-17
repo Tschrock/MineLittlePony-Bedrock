@@ -2,20 +2,24 @@
     "format_version": "1.10.0",
     "minecraft:attachable": {
         "description": {
-            "identifier": "minelp:leather_boots.pony",
-            "item": { "minecraft:leather_boots": "variable.minelp.is_pony" },
+            "identifier": "minecraft:leather_boots",
             "materials": {
                 "default": "armor_leather",
                 "enchanted": "armor_leather_enchanted"
             },
             "textures": {
+                "default": "textures/models/armor/leather_1",
                 "enchanted": "textures/misc/enchanted_item_glint",
-                "default": "textures/models/armor/leather_layer_outer_pony"
+                "minelp.default": "textures/models/armor/leather_layer_outer_pony"
             },
             "geometry": {
-                "default": "geometry.minelp.pony.armor.boots"
+                "default": "geometry.humanoid.armor.boots",
+                "minelp.default": "geometry.minelp.pony.armor.boots"
             },
-            "render_controllers": [ "controller.render.minelp.pony.armor" ]
+            "render_controllers": [
+                { "controller.render.armor": "context.owning_entity -> variable.minelp_ispony != 1.0" },
+                { "controller.render.minelp.pony.armor": "context.owning_entity -> variable.minelp_ispony == 1.0" }
+            ]
         }
     }
 }

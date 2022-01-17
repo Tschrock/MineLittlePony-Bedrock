@@ -2,22 +2,28 @@
     "format_version": "1.10.0",
     "minecraft:attachable": {
         "description": {
-            "identifier": "minelp:diamond_chestplate.pony",
-            "item": { "minecraft:diamond_chestplate": "variable.minelp.is_pony" },
+            "identifier": "minecraft:diamond_chestplate",
             "materials": {
                 "default": "armor",
                 "enchanted": "armor_enchanted"
             },
             "textures": {
-                "default": "textures/models/armor/diamond_layer_inner_pony",
                 "enchanted": "textures/misc/enchanted_item_glint",
-                "layer2": "textures/models/armor/diamond_layer_outer_pony"
+                "minelp.default": "textures/models/armor/diamond_layer_inner_pony",
+                "minelp.layer2": "textures/models/armor/diamond_layer_outer_pony"
             },
             "geometry": {
-                "default": "geometry.minelp.pony.armor.chestplate",
-                "layer2": "geometry.minelp.pony.armor.chestplate.layer2"
+                "minelp.default": "geometry.minelp.pony.armor.chestplate",
+                "minelp.layer2": "geometry.minelp.pony.armor.chestplate.layer2"
             },
-            "render_controllers": [ "controller.render.minelp.pony.armor", "controller.render.minelp.pony.armor.layer2" ]
+            "scripts": {
+              "parent_setup": "variable.chest_layer_visible = 0.0;"
+            },
+            "render_controllers": [
+                { "controller.render.armor": "context.owning_entity -> variable.minelp_ispony != 1.0" },
+                { "controller.render.minelp.pony.armor": "context.owning_entity -> variable.minelp_ispony == 1.0" },
+                { "controller.render.minelp.pony.armor.layer2": "context.owning_entity -> variable.minelp_ispony == 1.0" }
+            ]
         }
     }
 }

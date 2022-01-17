@@ -2,20 +2,27 @@
     "format_version": "1.10.0",
     "minecraft:attachable": {
         "description": {
-            "identifier": "minelp:leather_leggings.pony",
-            "item": { "minecraft:leather_leggings": "variable.minelp.is_pony" },
+            "identifier": "minecraft:leather_leggings",
             "materials": {
                 "default": "armor_leather",
                 "enchanted": "armor_leather_enchanted"
             },
             "textures": {
+                "default": "textures/models/armor/leather_2",
                 "enchanted": "textures/misc/enchanted_item_glint",
-                "default": "textures/models/armor/leather_layer_inner_pony"
+                "minelp.default": "textures/models/armor/leather_layer_inner_pony"
             },
             "geometry": {
-                "default": "geometry.minelp.pony.armor.leggings"
+                "default": "geometry.humanoid.armor.leggings",
+                "minelp.default": "geometry.minelp.pony.armor.leggings"
             },
-            "render_controllers": [ "controller.render.minelp.pony.armor" ]
+            "scripts": {
+              "parent_setup": "variable.leg_layer_visible = 0.0;"
+            },
+            "render_controllers": [
+                { "controller.render.armor": "context.owning_entity -> variable.minelp_ispony != 1.0" },
+                { "controller.render.minelp.pony.armor": "context.owning_entity -> variable.minelp_ispony == 1.0" }
+            ]
         }
     }
 }

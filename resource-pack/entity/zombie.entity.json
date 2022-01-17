@@ -36,8 +36,14 @@
                 "texture_index": 12
             },
             "scripts": {
+                "variables": {
+                  "variable.minelp_ispony": "public"
+                },
+                "initialize": [
+                    "variable.minelp_ispony = 1;"
+                ],
                 "pre_animation": [
-                    "variable.minelp.is_pony = 1;",
+                    "variable.minelp_ispony = 1;",
                     "variable.minelp.horn_type = 0;",
                     "variable.minelp.wing_type = 0;",
                     "variable.minelp.ear_type = 0;",
@@ -69,7 +75,11 @@
                 "look_at_target": "animation.minelp.pony.look_at_target",
                 "big_head": "animation.minelp.pony.big_head"
             },
-            "render_controllers": [ "controller.render.minelp.pony" ],
+            "render_controllers": [
+                { "controller.render.zombie": "(variable.minelp_ispony ?? 0.0) != 1.0" },
+                { "controller.render.minelp.pony": "(variable.minelp_ispony ?? 0.0) == 1.0" },
+                { "controller.render.minelp.pony.magic": "(variable.minelp_ispony ?? 0.0) == 1.0 && variable.minelp.horn_type >= 1.0" }
+            ],
             "enable_attachables": true
         }
     }

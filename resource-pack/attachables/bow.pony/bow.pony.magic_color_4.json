@@ -4,7 +4,7 @@
         "description": {
             "min_engine_version": "1.10.0",
             "identifier": "minelp:bow_magic_color_4",
-            "item": { "minecraft:bow": "variable.minelp.is_pony && variable.minelp.magic_color == 4" },
+            "item": { "minecraft:bow": "variable.minelp_ispony && variable.minelp.magic_color == 4" },
             "materials": {
                 "default": "entity_alphatest",
                 "enchanted": "entity_alphatest_glint",
@@ -35,4 +35,3 @@
         }
     }
 }
-
