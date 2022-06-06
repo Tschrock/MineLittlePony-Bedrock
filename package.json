@@ -1,8 +1,15 @@
 {
     "name": "minelp-bedrock",
-    "version": "0.0.5",
+    "version": "0.0.19",
     "description": "A Minecraft: Bedrock Edition Addon that turns players and mobs into ponies.",
-    "keywords": [ "minecraft", "bedrock", "mlp", "my", "little", "pony" ],
+    "keywords": [
+        "minecraft",
+        "bedrock",
+        "mlp",
+        "my",
+        "little",
+        "pony"
+    ],
     "homepage": "https://github.com/Tschrock/MineLittlePony-Bedrock#readme",
     "bugs": {
         "url": "https://github.com/Tschrock/MineLittlePony-Bedrock/issues"
@@ -14,9 +21,13 @@
         "url": "https://cyberpon3.net"
     },
     "scripts": {
+        "clean": "gulp clean",
         "build": "gulp build",
-        "install-pack": "gulp install",
-        "version": "gulp version && git add ./resource-pack/manifest.json",
+        "manifest": "gulp manifest",
+        "pack": "gulp pack",
+        "sync": "gulp sync",
+        "launch": "gulp launch",
+        "log": "gulp log",
         "watch": "gulp watch",
         "test": "mocha -r ts-node/register tests/**/*.spec.ts --delay"
     },
@@ -25,6 +36,8 @@
         "url": "git+https://github.com/Tschrock/MineLittlePony-Bedrock.git"
     },
     "devDependencies": {
+        "@devicefarmer/adbkit": "^3.2.3",
+        "@types/bluebird": "^3.5.36",
         "@types/chai": "^4.2.14",
         "@types/gulp": "^4.0.7",
         "@types/gulp-zip": "^4.0.1",
@@ -38,11 +51,11 @@
         "chai": "^4.2.0",
         "chai-as-promised": "^7.1.1",
         "del": "^6.0.0",
-        "globby": "^12.1.0",
+        "globby": "^13.1.1",
         "gulp": "^4.0.2",
         "gulp-zip": "^5.0.2",
         "jsonc-parser": "^3.0.0",
-        "mocha": "^9.1.4",
+        "mocha": "^10.0.0",
         "semver": "^7.3.4",
         "ts-loader": "^9.2.6",
         "ts-node": "^10.4.0",

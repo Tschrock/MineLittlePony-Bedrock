@@ -1,49 +1,57 @@
 import path from 'path';
+import { promises as fs } from 'fs';
 
 import del from 'del';
 import gulp from 'gulp';
 import gulp_zip from 'gulp-zip';
 import { getDataLocations } from 'bedrock-dev-lib';
 
-import { versionManifest, getPackageVersion, getPackageName } from './tools/util';
+import { versionManifest, getPackage, niceWatch } from './tools/util';
 
-// ============================== //
-//             Utils              //
-// ============================== //
+import adbkit, { Client, Device, DeviceClient } from '@devicefarmer/adbkit'
+import type Sync from '@devicefarmer/adbkit/dist/src/adb/sync';
 
-/** Array of functions to run on quit. */
-const quitHandlers = new Set<() => Promise<void> | void>();
+const ANDROID_DATA_PATH = "/sdcard/Android/data/com.mojang.minecraftpe/files/games/com.mojang"
 
-/**
- * Registers a function to be run when the proccess is quit.
- * Usefull for stopping and cleaning up watch tasks/servers.
- * @param handler
- */
-function onQuit(handler: () => Promise<void> | void) {
-    quitHandlers.add(handler);
+let adb: Client | null = null
+let _adbDevice: Promise<Device[]> | null = null
+if (process.argv.includes("--adb")) {
+    adb = adbkit.createClient()
 }
 
-// On Ctrl-C cleanup and exit
-process.on('SIGINT', async () => {
-
-    // Give them 2 seconds before forcibly quiting
-    setTimeout(() => process.exit(130), 2000);
-
-    // Notify all handlers
-    for (const h of quitHandlers) await h();
-
-});
-
-async function niceWatch(path: string, task: gulp.TaskFunction) {
-    return new Promise((resolve) => {
-        const watcher = gulp.watch(path, task);
-        onQuit(() => resolve(watcher.close()));
-    });
+function adbDevices(): Promise<Device[]> {
+    if (!adb) throw new Error("adb not connected")
+    return _adbDevice = _adbDevice ?? adb.listDevices()
 }
 
-// ============================== //
-//           Resources            //
-// ============================== //
+async function withAdbDevices(fn: (device: DeviceClient) => void | Promise<void>) {
+    if (!adb) return
+    const devices = await adbDevices()
+    for (const d of devices) {
+        const device = adb.getDevice(d.id)
+        await fn(device)
+    }
+}
+
+async function adbSyncFile(syncService: Sync, src: string, dest: string) {
+    return new Promise((resolve, reject) => {
+        const transfer = syncService.pushFile(src, dest)
+        transfer.on('error', reject)
+        transfer.on('end', resolve)
+    })
+}
+
+async function adbSyncDirs(device: DeviceClient, syncService: Sync, src: string, dest: string) {
+    await device.shell(`mkdir -p '${dest}'`)
+    const children = await fs.readdir(src, { withFileTypes: true })
+    for (const child of children) {
+        if (child.isFile()) {
+            await adbSyncFile(syncService, path.join(src, child.name), path.join(dest, child.name))
+        } else if (child.isDirectory()) {
+            await adbSyncDirs(device, syncService, path.join(src, child.name), path.join(dest, child.name))
+        }
+    }
+}
 
 /**
  * Cleans the build directory
@@ -53,68 +61,101 @@ export function clean() {
 }
 clean.description = 'Cleans the build directory';
 
-/**
- * Updates the pack's manifest version to match the project's version
- */
-export async function version() {
-    await versionManifest('./resource-pack/manifest.json', await getPackageVersion());
-}
-version.description = `Updates the pack's manifest version to match the project's version`;
 
 /**
- * Copies the resource pack files
+ * Builds the addon
  */
-export function copy() {
-    return gulp.src(['./resource-pack/**/*'], { since: gulp.lastRun(copy) })
+export function build() {
+    return gulp.src(['./resource-pack/**/*'], { since: gulp.lastRun(build) })
         .pipe(gulp.dest('./dist/build/resource-pack/'))
 }
-copy.description = 'Copies the resource pack files';
+build.description = "Builds the addon"
+
 
 /**
- * Packs the built resources into an mcpack file
+ * Syncs the addon manifest with the project's package.json
+ */
+export async function manifest() {
+    const packageJson = await getPackage()
+    await versionManifest('./resource-pack/manifest.json', packageJson.version);
+}
+manifest.description = `Syncs the addon manifest with the project's package.json`;
+
+/**
+ * Packs the addon into a sharable addon file
  */
 export async function pack() {
-
-    const filename = `${await getPackageName()}-v${await getPackageVersion()}.mcpack`;
+    const packageJson = await getPackage();
+    const filename = `${packageJson.name}-v${packageJson.version}.mcpack`;
 
     return gulp.src('./dist/build/resource-pack/**/*')
         .pipe(gulp_zip(filename))
         .pipe(gulp.dest('./dist'))
 }
-pack.description = 'Packs the built resources into an mcpack file';
+pack.description = "Packs the addon into a sharable addon file"
 
 /**
- * Watches resource files
+ * Syncs the addon to the game
  */
-export const watch = gulp.series(clean, version, copy, () => {
-    return niceWatch(
-        './resource-pack/**/*',
-        gulp.series(copy, install)
-        );
-    });
-watch.description = 'Watches resource files';
-
-
-/**
- * Installs resource files
- */
-export async function install() {
-    const dirs = await getDataLocations();
-    for (const dir of dirs) {
-        const packsPath = path.join(dir, 'development_resource_packs');
-        const installName = await getPackageName();
-        const installPath = path.join(packsPath, installName);
-        await del(installPath, { cwd: packsPath });
-        await new Promise<void>((resolve, reject) => {
-            gulp.src('./dist/build/resource-pack/**/*')
-                .on("end", () => resolve())
-                .on("error", err => reject(err))
-                .pipe(gulp.dest(installPath));
-        });
+export async function sync() {
+    const packageJson = await getPackage()
+    if (adb) {
+        const packPath = path.join(ANDROID_DATA_PATH, 'development_resource_packs', packageJson.name)
+        return withAdbDevices(async device => {
+            await device.shell(`rm -rf '${packPath}'`)
+            const syncService = await device.syncService()
+            await adbSyncDirs(device, syncService, './dist/build/resource-pack', packPath)
+            syncService.end()
+        })
+    } else {
+        const dirs = await getDataLocations();
+        for (const dir of dirs) {
+            const packsPath = path.join(dir, 'development_resource_packs');
+            const installPath = path.join(packsPath, packageJson.name);
+            await del(installPath, { cwd: packsPath }).catch(e => console.log(e));
+            await new Promise<void>((resolve, reject) => {
+                gulp.src('./dist/build/resource-pack/**/*')
+                    .on("end", () => resolve())
+                    .on("error", err => reject(err))
+                    .pipe(gulp.dest(installPath));
+            });
+        }
     }
 }
-install.description = 'Installs resource files';
+sync.description = "Syncs the addon to the game"
 
-export const build = gulp.series(clean, version, copy, pack);
+/**
+ * Launches the game
+ */
+export async function launch() {
+    if (adb) {
+        return withAdbDevices(async device => {
+            await device.startActivity({ action: "android.intent.action.VIEW", data: 'minecraft://' })
+        })
+    } else {
+        // TODO: launch game
+    }
+}
+launch.description = "Launches the game"
 
-export default build;
+/**
+ * Outputs the content log
+ */
+export async function log() {
+    // TODO: tail content log
+}
+log.description = "Outputs the content log"
+
+/**
+ * Watches the addon source for changes
+ */
+export async function watch() {
+    return niceWatch('./resource-pack/**/*', gulp.series(build, sync))
+}
+watch.description = "Watches the addon source for changes"
+
+/**
+ * Runs a full development environment
+ */
+export const dev = gulp.series(clean, manifest, build, sync, launch, log, watch)
+dev.description = "Runs a full development environment"

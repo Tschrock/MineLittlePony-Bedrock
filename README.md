@@ -81,25 +81,31 @@ https://minelittlepony-mod.com
 ## Development
 We use [Node.js](https://nodejs.org/) to build the different components of the addon and bundle them together.
 
-### Building
-To build the project and bundle it into an add-on file:
+First, install all the needed development tools with
 ```bash
 npm install
-npm run build
-```
-The bundled add-on files can be found in `./dist/`
-
-### Local install
-To install the plugin as a local development pack for testing:
-```bash
-npm run install-pack
 ```
 
-### Watching for changes
-To watch the project for changes and automatically build and install:
+### Live Development
+This will sync all addon files, start the game, and show the content log.
 ```bash
-npm run watch
+npm run dev
 ```
+
+If you want to run the game on an android device instead of your computer, you can use the `--adb` flag. Note: you will need to have ADB set up and connected to your device already.
+```bash
+npm run dev -- --adb
+```
+
+### Other
+- `npm run clean` - Cleans the build directory
+- `npm run build` - builds the addon
+- `npm run manifest` - Syncs the addon manifest wilth the package.json file
+- `npm run pack` - Packs the addon
+- `npm run sync` - Syncs the addon files to the game
+- `npm run launch` - Launches the game
+- `npm run log` - Displays the content log from the game
+- `npm run watch` - Watches the addon files and syncs them to the game when they change.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
