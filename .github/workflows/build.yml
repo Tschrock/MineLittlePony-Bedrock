@@ -19,12 +19,15 @@ jobs:
       run: npm ci
       env:
         CI: true
-    - name: npm build
+    - name: npm run build
       run: npm run build
+      env:
+        CI: true
+    - name: npm run pack
+      run: npm run pack
       env:
         CI: true
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v2.2.0
       with:
         path: ${{ github.workspace }}/dist/*.mcpack
-
