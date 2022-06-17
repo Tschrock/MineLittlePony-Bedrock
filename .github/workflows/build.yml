@@ -19,12 +19,12 @@ jobs:
       run: npm ci
       env:
         CI: true
-    - name: npm run build
-      run: npm run build
+    - name: gulp build
+      run: npx gulp build
       env:
         CI: true
-    - name: npm run pack
-      run: npm run pack
+    - name: gulp pack
+      run: npx gulp pack
       env:
         CI: true
     - name: Upload Build Artifact
