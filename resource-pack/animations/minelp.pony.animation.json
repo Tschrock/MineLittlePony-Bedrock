@@ -117,6 +117,17 @@
                 }
             },
             "loop": true
+        },
+        "animation.minelp.pony.long_neck": {
+            "loop": true,
+            "bones": {
+                "neck": {
+                    "scale": [ 1, 1.4, 1 ]
+                },
+                "neckFix": {
+                    "scale": [ 1, 0.71428571428, 1 ]
+                }
+            }
         }
     }
 }

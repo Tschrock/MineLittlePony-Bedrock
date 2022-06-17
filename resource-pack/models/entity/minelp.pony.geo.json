@@ -16,6 +16,11 @@
                     "pivot": [ 0, 0, 0 ]
                 },
                 {
+                    "name": "waist",
+                    "parent": "root",
+                    "pivot": [ 0, 12, 0 ]
+                },
+                {
                     "name": "body",
                     "parent": "waist",
                     "pivot": [ 0, 16, 0 ],
@@ -115,15 +120,10 @@
                     ]
                 },
                 {
-                    "name": "waist",
-                    "parent": "root",
-                    "pivot": [ 0, 12, 0 ]
-                },
-                {
                     "name": "neck",
                     "parent": "body",
                     "pivot": [ 0, 17.75, -5.75 ],
-                    "rotation": [ 10, 0, 0 ],
+                    "rotation": [ 9, 0, 0 ],
                     "cubes": [
                         {
                             "origin": [ -2, 18.8, -7.8 ],
@@ -145,14 +145,6 @@
                                 "west": {
                                     "uv": [ 0, 16 ],
                                     "uv_size": [ 4, 4 ]
-                                },
-                                "up": {
-                                    "uv": [ 4, 20 ],
-                                    "uv_size": [ -4, -4 ]
-                                },
-                                "down": {
-                                    "uv": [ 0, 16 ],
-                                    "uv_size": [ 4, 4 ]
                                 }
                             }
                         }
@@ -161,12 +153,17 @@
                 {
                     "name": "neckFix",
                     "parent": "neck",
+                    "pivot": [ 0, 23, -6 ]
+                },
+                {
+                    "name": "neckFix2",
+                    "parent": "neckFix",
                     "pivot": [ 0, 23, -6 ],
-                    "rotation": [ -10, 0, 0 ]
+                    "rotation": [ -9, 0, 0 ]
                 },
                 {
                     "name": "head",
-                    "parent": "neckFix",
+                    "parent": "neckFix2",
                     "pivot": [ 0, 23, -6 ],
                     "cubes": [
                         {
@@ -271,6 +268,46 @@
                                     "uv_size": [ -8, 8 ]
                                 }
                             }
+                        }
+                    ]
+                },
+                {
+                    "name": "bristles",
+                    "parent": "head",
+                    "pivot": [ 0, 23, -6 ],
+                    "rotation": [ 17, 0, 0 ],
+                    "cubes": [
+                        {
+                            "origin": [ -1, 28, -6 ],
+                            "size": [ 2, 6, 2 ],
+                            "uv": [56, 32]
+                        },
+                        {
+                            "origin": [ -1, 26, -4 ],
+                            "size": [ 2, 8, 2 ],
+                            "uv": [56, 32]
+                        },
+                        {
+                            "origin": [ -1, 26, -2 ],
+                            "size": [ 2, 6, 2 ],
+                            "uv": [56, 32]
+                        }
+                    ]
+                },
+                {
+                    "name": "bristles2",
+                    "parent": "bristles",
+                    "pivot": [ 0, 23, -6 ],
+                    "cubes": [
+                        {
+                            "origin": [ -1, 20, -6 ],
+                            "size": [ 2, 8, 2 ],
+                            "uv": [56, 32]
+                        },
+                        {
+                            "origin": [ -1, 22, -4 ],
+                            "size": [ 2, 6, 2 ],
+                            "uv": [56, 32]
                         }
                     ]
                 },

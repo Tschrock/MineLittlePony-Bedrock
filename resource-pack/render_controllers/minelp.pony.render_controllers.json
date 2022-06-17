@@ -6,6 +6,8 @@
             "part_visibility": [
                 { "*": 1 },
                 { "horn": "variable.minelp.horn_type > 0" },
+                { "bristles": "variable.minelp.zebra_mane == 1" },
+                { "bristles2": "variable.minelp.zebra_mane == 1" },
                 { "hornGlow": 0 }
             ],
             "materials": [
