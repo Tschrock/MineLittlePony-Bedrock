@@ -7,7 +7,7 @@
         "version": [
             0,
             0,
-            5
+            6
         ],
         "min_engine_version": [
             1,
@@ -23,16 +23,17 @@
             "version": [
                 0,
                 0,
-                5
+                6
             ]
         }
     ],
     "metadata": {
         "authors": [
-            "CyberPon3"
+            "CyberPon3",
+            "Langtanium"
         ],
         "license": "MIT",
-        "url": "https://minelittlepony-mod.com"
+        "url": "https://github.com/Tschrock/MineLittlePony-Bedrock"
     },
     "capabilities": []
 }
