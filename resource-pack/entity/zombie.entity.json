@@ -12,20 +12,7 @@
             "textures": {
                 "default": "textures/entity/zombie/zombie",
                 "minelp.default": "textures/entity/zombie/minelp.pony.zombie",
-                "minelp.magic_color_0":  "textures/magic/0",
-                "minelp.magic_color_1":  "textures/magic/1",
-                "minelp.magic_color_2":  "textures/magic/2",
-                "minelp.magic_color_3":  "textures/magic/3",
-                "minelp.magic_color_4":  "textures/magic/4",
-                "minelp.magic_color_5":  "textures/magic/5",
-                "minelp.magic_color_6":  "textures/magic/6",
-                "minelp.magic_color_7":  "textures/magic/7",
-                "minelp.magic_color_8":  "textures/magic/8",
-                "minelp.magic_color_9":  "textures/magic/9",
-                "minelp.magic_color_10": "textures/magic/10",
-                "minelp.magic_color_11": "textures/magic/11",
-                "minelp.magic_color_12": "textures/magic/12",
-                "minelp.magic_color_13": "textures/magic/13"
+                "minelp.magic": "textures/white"
             },
             "geometry": {
                 "default": "geometry.zombie.v1.8",
@@ -37,17 +24,17 @@
             },
             "scripts": {
                 "variables": {
-                  "variable.minelp_ispony": "public"
+                    "variable.minelp_ispony": "public"
                 },
                 "initialize": [
                     "variable.minelp_ispony = 1;"
                 ],
                 "pre_animation": [
-                    "variable.minelp_ispony = 1;",
                     "variable.minelp.horn_type = 0;",
                     "variable.minelp.wing_type = 0;",
                     "variable.minelp.ear_type = 0;",
                     "variable.minelp.muzzle_type = 0;",
+                    "variable.minelp.zebra_mane = 1;",
                     "variable.minelp.magic_color = 0;",
                     "variable.minelp.handedness = 0;",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
@@ -56,9 +43,7 @@
                     "variable.attack = Math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3;",
                     "variable.attack2 = Math.sin(variable.attack_time * 180.0) * 57.3;"
                 ],
-                "animate": [
-                    "default"
-                ]
+                "animate": [ "default" ]
             },
             "animations": {
                 "default": "controller.animation.minelp.pony.default",

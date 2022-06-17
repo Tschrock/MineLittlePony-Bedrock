@@ -33,6 +33,7 @@
                     "variable.minelp.wing_type = 0;",
                     "variable.minelp.ear_type = 0;",
                     "variable.minelp.muzzle_type = 0;",
+                    "variable.minelp.zebra_mane = 1;",
                     "variable.minelp.magic_color = 6;",
                     "variable.minelp.handedness = 0;",
                     "variable.helmet_layer_visible = 1.0;",

@@ -8,7 +8,9 @@
                 { "horn": "variable.minelp.horn_type > 0" },
                 { "bristles": "variable.minelp.zebra_mane == 1" },
                 { "bristles2": "variable.minelp.zebra_mane == 1" },
-                { "hornGlow": 0 }
+                { "hornGlow": 0 },
+                { "leftItemMagic": 0 },
+                { "rightItemMagic": 0 }
             ],
             "materials": [
                 { "*": "Material.minelp.default" }

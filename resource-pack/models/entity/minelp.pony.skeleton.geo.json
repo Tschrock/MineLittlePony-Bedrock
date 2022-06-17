@@ -417,6 +417,18 @@
                     "pivot": [ -5, 13, -14 ]
                 },
                 {
+                    "name": "rightItemMagic",
+                    "parent": "rightItem",
+                    "pivot": [ -5, 13, -14 ],
+                    "cubes": [
+                        {
+                            "origin": [ -5, 12, -14 ],
+                            "size": [ 4, 4, 4 ],
+                            "uv": [ 0, 0 ]
+                        }
+                    ]
+                },
+                {
                     "name": "leftArm",
                     "parent": "body",
                     "pivot": [ 2, 13, -5 ],
@@ -431,6 +443,18 @@
                 {
                     "name": "leftItem",
                     "pivot": [ 5, 13, -14 ]
+                },
+                {
+                    "name": "leftItemMagic",
+                    "parent": "leftItem",
+                    "pivot": [ 5, 13, -14 ],
+                    "cubes": [
+                        {
+                            "origin": [ 5, 12, -14 ],
+                            "size": [ 4, 4, 4 ],
+                            "uv": [ 0, 0 ]
+                        }
+                    ]
                 },
                 {
                     "name": "tail",

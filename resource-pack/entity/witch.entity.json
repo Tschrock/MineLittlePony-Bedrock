@@ -12,21 +12,7 @@
             "textures": {
                 "default": "textures/entity/witch",
                 "minelp.default": "textures/entity/minelp.pony.witch",
-                "minelp.magic_color_0": "textures/magic/0",
-                "minelp.magic_color_1": "textures/magic/1",
-                "minelp.magic_color_2": "textures/magic/2",
-                "minelp.magic_color_3": "textures/magic/3",
-                "minelp.magic_color_4": "textures/magic/4",
-                "minelp.magic_color_5": "textures/magic/5",
-                "minelp.magic_color_6": "textures/magic/6",
-                "minelp.magic_color_7": "textures/magic/7",
-                "minelp.magic_color_8": "textures/magic/8",
-                "minelp.magic_color_9": "textures/magic/9",
-                "minelp.magic_color_10": "textures/magic/10",
-                "minelp.magic_color_11": "textures/magic/11",
-                "minelp.magic_color_12": "textures/magic/12",
-                "minelp.magic_color_13": "textures/magic/13",
-                "minelp.magic_color_14": "textures/magic/14"
+                "minelp.magic": "textures/white"
             },
             "geometry": {
                 "default": "geometry.villager.witch.v1.8",
@@ -37,9 +23,10 @@
                 "variables": {
                     "variable.minelp_ispony": "public"
                 },
-                "initialize": [ "variable.minelp_ispony = 1;" ],
+                "initialize": [
+                    "variable.minelp_ispony = 1;"
+                ],
                 "pre_animation": [
-                    "variable.minelp_ispony = 1;",
                     "variable.minelp.horn_type = 0;",
                     "variable.minelp.wing_type = 0;",
                     "variable.minelp.ear_type = 0;",
