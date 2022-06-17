@@ -89,23 +89,23 @@ npm install
 ### Live Development
 This will sync all addon files, start the game, and show the content log.
 ```bash
-npm run dev
+npx gulp dev
 ```
 
 If you want to run the game on an android device instead of your computer, you can use the `--adb` flag. Note: you will need to have ADB set up and connected to your device already.
 ```bash
-npm run dev -- --adb
+npx gulp dev --adb
 ```
 
 ### Other
-- `npm run clean` - Cleans the build directory
-- `npm run build` - builds the addon
-- `npm run manifest` - Syncs the addon manifest wilth the package.json file
-- `npm run pack` - Packs the addon
-- `npm run sync` - Syncs the addon files to the game
-- `npm run launch` - Launches the game
-- `npm run log` - Displays the content log from the game
-- `npm run watch` - Watches the addon files and syncs them to the game when they change.
+- `npx gulp clean` - Cleans the build directory
+- `npx gulp build` - builds the addon
+- `npx gulp manifest` - Syncs the addon manifest wilth the package.json file
+- `npx gulp pack` - Packs the addon
+- `npx gulp sync` - Syncs the addon files to the game
+- `npx gulp launch` - Launches the game
+- `npx gulp log` - Displays the content log from the game
+- `npx gulp watch` - Watches the addon files and syncs them to the game when they change.
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.

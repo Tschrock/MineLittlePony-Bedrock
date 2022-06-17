@@ -1,6 +1,6 @@
 {
     "name": "minelp-bedrock",
-    "version": "0.0.19",
+    "version": "0.0.6",
     "description": "A Minecraft: Bedrock Edition Addon that turns players and mobs into ponies.",
     "keywords": [
         "minecraft",
@@ -21,14 +21,6 @@
         "url": "https://cyberpon3.net"
     },
     "scripts": {
-        "clean": "gulp clean",
-        "build": "gulp build",
-        "manifest": "gulp manifest",
-        "pack": "gulp pack",
-        "sync": "gulp sync",
-        "launch": "gulp launch",
-        "log": "gulp log",
-        "watch": "gulp watch",
         "test": "mocha -r ts-node/register tests/**/*.spec.ts --delay"
     },
     "repository": {
