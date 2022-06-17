@@ -1,0 +1,60 @@
+
+Molang Variables
+- `variable.minelp_ispony`
+  - Renders the entity as a pony
+  - Values:
+    - `1`: true
+    - `0`: false
+  - Default Values:
+    - For Players: `0`
+    - For Mobs: `1`
+- `variable.minelp_ear_type`
+  - The type of ears to show
+  - Values:
+    - `0`: Pony ears
+    - `1`: Bat pony ears
+- `variable.minelp_handedness`
+  - Determins if the pony is left handed or right handed
+  - Values:
+    - `0`: Right handed
+    - `1`: Left handed
+- `variable.minelp_horn_type`
+  - The type of horn to show
+  - Values:
+    - `0`: No horn
+    - `1`: Unicorn horn
+- `variable.minelp_magic_r`
+  - The red component of the pony's magic color
+  - Value: a float between `0.0` and `1.0`
+- `variable.minelp_magic_g`
+  - The green component of the pony's magic color
+  - Value: a float between `0.0` and `1.0`
+- `variable.minelp_magic_b`
+  - The blue component of the pony's magic color
+  - Value: a float between `0.0` and `1.0`
+- `variable.minelp_muzzle_type`
+  - The type of muzzle to show
+  - Values:
+    - `0`: No muzzle
+    - `1`: Female muzzle
+    - `2`: Male muzzle
+- `variable.minelp_tail_length`
+  - The length of the pony's tail
+  - Values:
+    - `0`: Stub
+    - `1`: 1/4 length
+    - `2`: Half length
+    - `3`: 3/4 length
+    - `4`: Full length
+- `variable.minelp_wing_type`
+  - The type of wing to show
+  - Values:
+    - `0`: No wings
+    - `1`: Pegasus wings
+    - `2`: Bat wings
+    - `3`: Bug wings
+- `variable.minelp_zebra_mane`
+  - Shows the zebra mane
+  - Values:
+    - `0`: No mane
+    - `1`: Zebra mane

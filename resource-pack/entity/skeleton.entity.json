@@ -31,18 +31,18 @@
                 },
                 "initialize": [
                     "variable.minelp_ispony = 1;",
-                    "variable.minelp_magic_r = math.random(0, 0.5);",
-                    "variable.minelp_magic_g = math.random(0, 0.5);",
-                    "variable.minelp_magic_b = math.random(0, 0.5);"
+                    "variable.minelp_ear_type = 0;",
+                    "variable.minelp_handedness = 0;",
+                    "variable.minelp_horn_type = 1;",
+                    "variable.minelp_magic_r = math.random(0, 0.8);",
+                    "variable.minelp_magic_g = math.random(0, 0.8);",
+                    "variable.minelp_magic_b = math.random(0, 0.8);",
+                    "variable.minelp_muzzle_type = 1;",
+                    "variable.minelp_tail_length = 4;",
+                    "variable.minelp_wing_type = 0;",
+                    "variable.minelp_zebra_mane = 0;"
                 ],
                 "pre_animation": [
-                    "variable.minelp.horn_type = 1;",
-                    "variable.minelp.wing_type = 0;",
-                    "variable.minelp.ear_type = 0;",
-                    "variable.minelp.muzzle_type = 0;",
-                    "variable.minelp.zebra_mane = 1;",
-                    "variable.minelp.magic_color = 2;",
-                    "variable.minelp.handedness = 0;",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
                     "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",
@@ -72,7 +72,7 @@
             "render_controllers": [
                 { "controller.render.skeleton": "variable.minelp_ispony != 1.0" },
                 { "controller.render.minelp.pony": "variable.minelp_ispony == 1.0" },
-                { "controller.render.minelp.pony.magic": "variable.minelp_ispony == 1.0 && variable.minelp.horn_type >= 1.0" }
+                { "controller.render.minelp.pony.magic": "variable.minelp_ispony == 1.0 && variable.minelp_horn_type >= 1.0" }
             ],
             "enable_attachables": true
         }
