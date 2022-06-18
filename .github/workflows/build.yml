@@ -6,10 +6,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Setup Node.js 12.x
+    - name: Setup Node.js 18.x
       uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: '18.x'
     - name: Setup node cache
       uses: actions/cache@v1
       with:
@@ -30,4 +30,6 @@ jobs:
     - name: Upload Build Artifact
       uses: actions/upload-artifact@v2.2.0
       with:
-        path: ${{ github.workspace }}/dist/*.mcpack
+        path: |
+            ${{ github.workspace }}/dist/**/*.mcpack
+            ${{ github.workspace }}/dist/**/*.mcaddon
