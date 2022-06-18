@@ -179,7 +179,7 @@ export async function pack_addon() {
         `${packageJson.name}-v${packageJson.version}.mcaddon`,
     )
 }
-pack_addon.displayName = "pack"
+pack_addon.displayName = "pack:addon"
 pack_addon.description = "Packs the addon into an installable .mcaddon file"
 
 /**

@@ -2,7 +2,7 @@ import { promises as fs } from 'node:fs'
 import path from 'node:path'
 
 import gulp from 'gulp'
-import jsonc from 'jsonc-parser'
+import * as jsonc from 'jsonc-parser'
 import semver from 'semver'
 
 import { Manifest, Package, Person } from './interfaces'
@@ -34,12 +34,12 @@ export async function readJsonFile<T>(path: string): Promise<T> {
     const content = await fs.readFile(path, { encoding: 'utf8' })
     const errors: jsonc.ParseError[] = []
     const data: T = jsonc.parse(content, errors)
-    if (errors) throw new Error(errors.map(getParseErrorMessage).join("\n"))
+    if (errors.length) throw new Error(errors.map(getParseErrorMessage).join("\n"))
     return data
 }
 
 export async function writeJsonFile<T>(path: string, data: T): Promise<void> {
-    const content = JSON.stringify(data)
+    const content = JSON.stringify(data, undefined, "    ")
     await fs.writeFile(path, content, { encoding: 'utf8' })
 }
 
