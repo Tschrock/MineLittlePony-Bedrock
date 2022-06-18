@@ -1,76 +1,92 @@
-import { promises as fs } from 'fs'
-import { parse as parseSemver } from 'semver'
-import { parse as parseJson } from 'jsonc-parser'
+import { promises as fs } from 'node:fs'
+import path from 'node:path'
+
 import gulp from 'gulp'
+import jsonc from 'jsonc-parser'
+import semver from 'semver'
 
-export async function readJson<T>(path: string): Promise<T> {
-    return parseJson(await fs.readFile(path, "utf-8")) as T
-}
+import { Manifest, Package, Person } from './interfaces'
 
-export async function writeJson<T>(path: string, data: T): Promise<void> {
-    return await fs.writeFile(path, JSON.stringify(data, null, 4) + "\n", "utf-8")
-}
+type QuitHandler = () => Promise<void> | void
 
-interface Package {
-    name: string
-    version: string
-}
-
-let packageJson: Package | null = null
-
-export async function getPackage(): Promise<Package> {
-    if (packageJson === null) packageJson = await readJson<Package>('./package.json')
-    return packageJson
-}
-
-interface PackManifest {
-    header: { version: [number, number, number] }
-    modules: Array<{ version: [number, number, number] }>
-}
-
-export async function versionManifest(path: string, version: string | [number, number, number]) {
-    // If we were passed a string, parse it with semver
-    if (typeof version === 'string') {
-        var semver = parseSemver(version)
-        if (semver === null) throw new Error(`Invalid version '${version}'`)
-        version = [semver.major, semver.minor, semver.patch]
-    }
-
-    // Read the manifest
-    const manifest = await readJson<PackManifest>(path)
-
-    // Update the version numbers
-    manifest.header.version = version
-    for (const m of manifest.modules) m.version = version
-
-    // Write the manifest
-    await writeJson(path, manifest)
-}
-
-/** Array of functions to run on quit. */
-const quitHandlers = new Set<() => Promise<void> | void>()
-
-/**
- * Registers a function to be run when the proccess is quit.
- * Usefull for stopping and cleaning up watch tasks/servers.
- * @param handler
- */
-function onQuit(handler: () => Promise<void> | void) {
-    quitHandlers.add(handler)
-}
-
-// On Ctrl-C cleanup and exit
+const quitHandlers = new Set<QuitHandler>()
 process.on('SIGINT', async () => {
-    // Give them 2 seconds before forcibly quiting
     setTimeout(() => process.exit(130), 2000)
-
-    // Notify all handlers
     for (const h of quitHandlers) await h()
 })
 
-export async function niceWatch(path: string, task: gulp.TaskFunction) {
-    return new Promise((resolve) => {
+export function onQuit(handler: () => Promise<void> | void) {
+    quitHandlers.add(handler)
+}
+
+export async function niceWatch(path: gulp.Globs, task: gulp.TaskFunction) {
+    return new Promise(resolve => {
         const watcher = gulp.watch(path, task)
         onQuit(() => resolve(watcher.close()))
     })
+}
+
+function getParseErrorMessage({ error, offset, length }: jsonc.ParseError): string {
+    return `JSON parse error: ${jsonc.printParseErrorCode(error)} Offset: ${offset} Length: ${length}`
+}
+
+export async function readJsonFile<T>(path: string): Promise<T> {
+    const content = await fs.readFile(path, { encoding: 'utf8' })
+    const errors: jsonc.ParseError[] = []
+    const data: T = jsonc.parse(content, errors)
+    if (errors) throw new Error(errors.map(getParseErrorMessage).join("\n"))
+    return data
+}
+
+export async function writeJsonFile<T>(path: string, data: T): Promise<void> {
+    const content = JSON.stringify(data)
+    await fs.writeFile(path, content, { encoding: 'utf8' })
+}
+
+export function parseVersion(version: string): [number, number, number] | null {
+    const parts = semver.parse(version)
+    return parts && [parts.major, parts.minor, parts.patch]
+}
+
+function personString(person: string | Person): string {
+    return typeof person !== 'string' ? person.name : person
+}
+
+const packagePath = path.join(__dirname, '..', 'package.json')
+
+let packageData: Package | undefined
+export async function getPackage(): Promise<Package> {
+    if(packageData) return packageData
+    return packageData = await readJsonFile<Package>(packagePath)
+}
+
+export async function syncManifest(manifestPath: string) {
+    const packageData = await getPackage()
+    const manifestData = await readJsonFile<Manifest>(manifestPath)
+    const version = parseVersion(packageData.version)
+    if (version) {
+        if (manifestData.header) {
+            manifestData.header.version = version
+        }
+        if (manifestData.modules) {
+            manifestData.modules.forEach(m => m.version = version)
+        }
+    }
+    if(manifestData.metadata) {
+        const authors: string[] = []
+        if(packageData.author) {
+            authors.push(personString(packageData.author))
+        }
+        if(packageData.contributors) {
+            authors.push(...packageData.contributors.map(personString))
+        }
+        manifestData.metadata.authors = authors
+        if(packageData.license) {
+            manifestData.metadata.license = packageData.license
+        }
+        if(packageData.homepage) {
+            manifestData.metadata.url = packageData.homepage
+        }
+    }
+    await writeJsonFile(manifestPath, manifestData)
 }

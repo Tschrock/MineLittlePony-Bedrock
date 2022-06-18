@@ -6,7 +6,7 @@ import addFormats from "ajv-formats"
 
 import glob from 'globby';
 
-import { readJson } from '../tools/util';
+import { readJsonFile } from '../tools/util';
 
 
 interface Settings {
@@ -50,12 +50,12 @@ async function validateFiles() {
 
     // Read the vscode settings json. This way we don't have to repeat ourselves
     // and can ensure we have consistent validation between the editor and tests
-    const settingsJSON = await readJson<Settings>('./.vscode/settings.json');
+    const settingsJSON = await readJsonFile<Settings>('./.vscode/settings.json');
 
     // For each schema
     for (const schema of settingsJSON["json.schemas"]) {
 
-        const validator = await buildValidator(schema.url, readJson).catch(e => {
+        const validator = await buildValidator(schema.url, readJsonFile).catch(e => {
             console.error(`Error building validator for '${schema.url}':`);
             console.error(e);
         });
@@ -67,7 +67,7 @@ async function validateFiles() {
 
             // Build the test
             for (const file of filesToValidate) {
-                const fileData = await readJson(file);
+                const fileData = await readJsonFile(file);
                 describe(file, () => {
                     it('should validate', () => {
                         if(!validator(fileData)) {
