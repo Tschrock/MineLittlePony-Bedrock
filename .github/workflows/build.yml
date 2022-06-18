@@ -28,7 +28,7 @@ jobs:
       env:
         CI: true
     - name: Upload Build Artifact
-      uses: actions/upload-artifact@v2.2.0
+      uses: actions/upload-artifact@v3
       with:
         path: |
             ${{ github.workspace }}/dist/**/*.mcpack
