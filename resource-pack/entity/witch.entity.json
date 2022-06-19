@@ -6,17 +6,17 @@
             "min_engine_version": "1.8.0",
             "materials": {
                 "default": "witch",
-                "minelp.default": "witch",
-                "minelp.magic": "pony_magic"
+                "minelp_default": "witch",
+                "minelp_magic": "pony_magic"
             },
             "textures": {
                 "default": "textures/entity/witch",
-                "minelp.default": "textures/entity/minelp.pony.witch",
-                "minelp.magic": "textures/white"
+                "minelp_default": "textures/entity/minelp.pony.witch",
+                "minelp_magic": "textures/white"
             },
             "geometry": {
                 "default": "geometry.villager.witch.v1.8",
-                "minelp.default": "geometry.minelp.pony"
+                "minelp_default": "geometry.minelp.pony"
             },
             "scripts": {
                 "scale": "0.9375",
@@ -37,6 +37,8 @@
                     "variable.minelp_zebra_mane = 1;"
                 ],
                 "pre_animation": [
+                    "variable.is_holding_right = query.is_item_equipped('main_hand');",
+                    "variable.is_holding_left = query.is_item_equipped('off_hand');",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
                     "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",

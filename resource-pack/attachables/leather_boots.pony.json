@@ -10,15 +10,15 @@
             "textures": {
                 "default": "textures/models/armor/leather_1",
                 "enchanted": "textures/misc/enchanted_item_glint",
-                "minelp.default": "textures/models/armor/leather_layer_outer_pony"
+                "minelp_default": "textures/models/armor/leather_layer_outer_pony"
             },
             "geometry": {
                 "default": "geometry.humanoid.armor.boots",
-                "minelp.default": "geometry.minelp.pony.armor.boots"
+                "minelp_default": "geometry.minelp.pony.armor.boots"
             },
             "render_controllers": [
-                { "controller.render.armor": "context.owning_entity -> variable.minelp_ispony != 1.0" },
-                { "controller.render.minelp.pony.armor": "context.owning_entity -> variable.minelp_ispony == 1.0" }
+                { "controller.render.armor": "context.owning_entity->variable.minelp_ispony != 1.0" },
+                { "controller.render.minelp.pony.armor": "context.owning_entity->variable.minelp_ispony == 1.0" }
             ]
         }
     }

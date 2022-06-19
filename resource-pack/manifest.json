@@ -20,13 +20,12 @@
             "CyberPon3",
             "Langtanium"
         ],
-        "license": "MIT",
-        "url": "https://github.com/Tschrock/MineLittlePony-Bedrock"
+        "license": "MPL-2.0",
+        "url": "https://github.com/Tschrock/MineLittlePony-Bedrock#readme"
     },
     "capabilities": [],
     "dependencies": [
         {
-            // Mine Little Pony Behavior Pack
             "version": [0, 0, 6],
             "uuid": "31115598-d97a-4610-a845-1e000c497505"
         }

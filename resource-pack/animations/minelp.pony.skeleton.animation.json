@@ -4,32 +4,24 @@
         "animation.minelp.pony.skeleton.riding": {
             "bones": {
                 "leftArm": {
-                    "rotation": [ 0, 0, "variable.is_holding_left ? 0.0 : -10.0" ]
+                    "rotation": [0, 0, "variable.is_holding_left ? 0.0 : -10.0"]
                 },
                 "rightArm": {
-                    "rotation": [ 0, 0, "variable.is_holding_right ? 0.0 : 10.0" ]
+                    "rotation": [0, 0, "variable.is_holding_right ? 0.0 : 10.0"]
                 },
                 "leftLeg": {
-                    "rotation": [
-                        "-42.0 - this",
-                        "-28.0 - this",
-                        "-this"
-                    ],
-                    "position": [ 1, 0, 5 ]
+                    "rotation": ["-42.0 - this", "-28.0 - this", "-this"],
+                    "position": [1, 0, 5]
                 },
                 "rightLeg": {
-                    "rotation": [
-                        "-42.0 - this",
-                        "28.0 - this",
-                        "-this"
-                    ],
-                    "position": [ -1, 0, 5 ]
+                    "rotation": ["-42.0 - this", "28.0 - this", "-this"],
+                    "position": [-1, 0, 5]
                 },
                 "body": {
-                    "rotation": [ -40, 0, 0 ]
+                    "rotation": [-40, 0, 0]
                 },
                 "neck": {
-                    "rotation": [ 45, 0, 0 ]
+                    "rotation": [45, 0, 0]
                 }
             },
             "loop": true

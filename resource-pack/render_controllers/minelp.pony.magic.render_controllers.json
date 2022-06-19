@@ -2,7 +2,7 @@
     "format_version": "1.8.0",
     "render_controllers": {
         "controller.render.minelp.pony.magic": {
-            "geometry": "Geometry.minelp.default",
+            "geometry": "Geometry.minelp_default",
             "part_visibility": [
                 { "*": 0 },
                 { "hornGlow": "variable.minelp_horn_type > 0 && (variable.is_holding_left || variable.is_holding_right)" },
@@ -10,9 +10,9 @@
                 { "rightItemMagic": "variable.minelp_horn_type > 0 && variable.is_holding_right" }
             ],
             "materials": [
-                { "*": "Material.minelp.magic" }
+                { "*": "Material.minelp_magic" }
             ],
-            "textures": [ "Texture.minelp.magic" ],
+            "textures": ["Texture.minelp_magic"],
             "overlay_color": {
                 "r": "variable.minelp_magic_r",
                 "g": "variable.minelp_magic_g",

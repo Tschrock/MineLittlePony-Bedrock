@@ -6,7 +6,7 @@
             "materials": [
                 { "*": "variable.is_enchanted ? Material.enchanted : Material.default" }
             ],
-            "textures": [ "Texture.minelp.layer2", "Texture.enchanted" ]
+            "textures": ["Texture.minelp.layer2", "Texture.enchanted"]
         }
     }
 }

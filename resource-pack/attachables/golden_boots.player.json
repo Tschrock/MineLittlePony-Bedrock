@@ -3,7 +3,7 @@
     "minecraft:attachable": {
         "description": {
             "identifier": "minecraft:golden_boots.player",
-            "item": { "minecraft:golden_boots": "query.owner_identifier == 'minecraft:player'" },
+            "item": { "minecraft:golden_boots": "query.is_owner_identifier_any('minecraft:player')" },
             "materials": {
                 "default": "armor",
                 "enchanted": "armor_enchanted"
@@ -11,24 +11,24 @@
             "textures": {
                 "default": "textures/models/armor/gold_1",
                 "enchanted": "textures/misc/enchanted_item_glint",
-                "minelp.default": "textures/models/armor/gold_layer_outer_pony"
+                "minelp_default": "textures/models/armor/gold_layer_outer_pony"
             },
             "geometry": {
                 "default": "geometry.player.armor.boots",
-                "minelp.default": "geometry.minelp.pony.armor.boots"
+                "minelp_default": "geometry.minelp.pony.armor.boots"
             },
             "scripts": {
-              "parent_setup": "variable.boot_layer_visible = 0.0;",
-              "animate": [
-                "offset"
-              ]
+                "parent_setup": "variable.boot_layer_visible = 0.0;",
+                "animate": [
+                    "offset"
+                ]
             },
             "animations": {
-              "offset": "animation.armor.boots.offset"
+                "offset": "animation.armor.boots.offset"
             },
             "render_controllers": [
-                { "controller.render.armor": "context.owning_entity -> variable.minelp_ispony != 1.0" },
-                { "controller.render.minelp.pony.armor": "context.owning_entity -> variable.minelp_ispony == 1.0" }
+                { "controller.render.armor": "context.owning_entity->variable.minelp_ispony != 1.0" },
+                { "controller.render.minelp.pony.armor": "context.owning_entity->variable.minelp_ispony == 1.0" }
             ]
         }
     }

@@ -5,10 +5,10 @@
             "states": {
                 "default": {
                     "animations": [
-                        { "look_at_target": [] },
-                        { "show_movement": [] },
-                        { "show_movement.tail": [] },
-                        { "bob.tail": [] }
+                        "look_at_target",
+                        "show_movement",
+                        "show_movement.tail",
+                        "bob.tail"
                     ]
                 }
             }

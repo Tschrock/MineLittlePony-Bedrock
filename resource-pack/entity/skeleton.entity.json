@@ -6,17 +6,17 @@
             "min_engine_version": "1.12.0",
             "materials": {
                 "default": "skeleton",
-                "minelp.default": "skeleton",
-                "minelp.magic": "pony_magic"
+                "minelp_default": "skeleton",
+                "minelp_magic": "pony_magic"
             },
             "textures": {
                 "default": "textures/entity/skeleton/skeleton",
-                "minelp.default": "textures/entity/skeleton/minelp.pony.skeleton",
-                "minelp.magic": "textures/white"
+                "minelp_default": "textures/entity/skeleton/minelp.pony.skeleton",
+                "minelp_magic": "textures/white"
             },
             "geometry": {
                 "default": "geometry.skeleton.v1.8",
-                "minelp.default": "geometry.minelp.pony.skeleton"
+                "minelp_default": "geometry.minelp.pony.skeleton"
             },
             "spawn_egg": {
                 "texture": "spawn_egg",
@@ -43,6 +43,8 @@
                     "variable.minelp_zebra_mane = 0;"
                 ],
                 "pre_animation": [
+                    "variable.is_holding_right = query.is_item_equipped('main_hand');",
+                    "variable.is_holding_left = query.is_item_equipped('off_hand');",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
                     "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",
@@ -56,7 +58,6 @@
             "animations": {
                 "default": "controller.animation.minelp.pony.default",
                 "default.arms": "controller.animation.minelp.pony.default.arms",
-                "show_movement": "controller.animation.minelp.pony.show_movement",
                 "show_movement.leftArm": "animation.minelp.pony.show_movement.leftArm",
                 "show_movement.rightArm": "animation.minelp.pony.show_movement.rightArm",
                 "show_movement.legs": "animation.minelp.pony.show_movement.legs",

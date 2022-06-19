@@ -6,17 +6,17 @@
             "identifier": "minecraft:zombie",
             "materials": {
                 "default": "zombie",
-                "minelp.default": "zombie",
-                "minelp.magic": "pony_magic"
+                "minelp_default": "zombie",
+                "minelp_magic": "pony_magic"
             },
             "textures": {
                 "default": "textures/entity/zombie/zombie",
-                "minelp.default": "textures/entity/zombie/minelp.pony.zombie",
-                "minelp.magic": "textures/white"
+                "minelp_default": "textures/entity/zombie/minelp.pony.zombie",
+                "minelp_magic": "textures/white"
             },
             "geometry": {
                 "default": "geometry.zombie.v1.8",
-                "minelp.default": "geometry.minelp.pony"
+                "minelp_default": "geometry.minelp.pony"
             },
             "spawn_egg": {
                 "texture": "spawn_egg",
@@ -40,13 +40,17 @@
                     "variable.minelp_zebra_mane = 0;"
                 ],
                 "pre_animation": [
+                    "variable.is_holding_right = query.is_item_equipped('main_hand');",
+                    "variable.is_holding_left = query.is_item_equipped('off_hand');",
                     "variable.movement_leg_angle = (Math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed / variable.gliding_speed_value) * 20;",
                     "variable.x_bob = Math.sin(query.life_time * 76.776372) * 5.865;",
                     "variable.z_bob = Math.cos(query.life_time * 93.13244) * 2.865 + 2.865;",
                     "variable.attack = Math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3;",
                     "variable.attack2 = Math.sin(variable.attack_time * 180.0) * 57.3;"
                 ],
-                "animate": [ "default" ]
+                "animate": [
+                    "default"
+                ]
             },
             "animations": {
                 "default": "controller.animation.minelp.pony.default",

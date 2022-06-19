@@ -2,7 +2,7 @@
     "format_version": "1.8.0",
     "render_controllers": {
         "controller.render.minelp.pony": {
-            "geometry": "Geometry.minelp.default",
+            "geometry": "Geometry.minelp_default",
             "part_visibility": [
                 { "*": 1 },
                 { "bristles": "variable.minelp_zebra_mane == 1" },
@@ -27,9 +27,9 @@
                 { "rightItemMagic": 0 }
             ],
             "materials": [
-                { "*": "Material.minelp.default" }
+                { "*": "Material.minelp_default" }
             ],
-            "textures": [ "Texture.minelp.default" ]
+            "textures": ["Texture.minelp_default"]
         }
     }
 }

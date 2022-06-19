@@ -20,7 +20,11 @@
         "animation.minelp.pony.look_at_target": {
             "bones": {
                 "head": {
-                    "rotation": [ "query.log(query.target_x_rotation)", "query.target_y_rotation", 0 ]
+                    "rotation": [
+                        "query.log(query.target_x_rotation)",
+                        "query.target_y_rotation",
+                        0
+                    ]
                 }
             },
             "loop": true
@@ -28,7 +32,7 @@
         "animation.minelp.pony.show_movement.leftArm": {
             "bones": {
                 "leftArm": {
-                    "rotation": [ "variable.movement_leg_angle", 0, 0 ]
+                    "rotation": ["variable.movement_leg_angle", 0, 0]
                 }
             },
             "loop": true
@@ -36,7 +40,7 @@
         "animation.minelp.pony.show_movement.rightArm": {
             "bones": {
                 "rightArm": {
-                    "rotation": [ "-variable.movement_leg_angle", 0, 0 ]
+                    "rotation": ["-variable.movement_leg_angle", 0, 0]
                 }
             },
             "loop": true
@@ -44,10 +48,10 @@
         "animation.minelp.pony.show_movement.legs": {
             "bones": {
                 "leftLeg": {
-                    "rotation": [ "-variable.movement_leg_angle", 0, 0 ]
+                    "rotation": ["-variable.movement_leg_angle", 0, 0]
                 },
                 "rightLeg": {
-                    "rotation": [ "variable.movement_leg_angle", 0, 0 ]
+                    "rotation": ["variable.movement_leg_angle", 0, 0]
                 }
             },
             "loop": true
@@ -55,7 +59,7 @@
         "animation.minelp.pony.show_movement.tail": {
             "bones": {
                 "tailBody": {
-                    "rotation": [ "query.modified_move_speed * 30", 0, 0 ]
+                    "rotation": ["query.modified_move_speed * 30", 0, 0]
                 }
             },
             "loop": true
@@ -63,12 +67,8 @@
         "animation.minelp.pony.bob.leftArm": {
             "bones": {
                 "leftArm": {
-                    "rotation": [
-                        "-variable.x_bob - 90",
-                        0,
-                        "variable.z_bob"
-                    ],
-                    "position": [ -0.5, 2.5, 0.5 ]
+                    "rotation": ["-variable.x_bob - 90", 0, "variable.z_bob"],
+                    "position": [-0.5, 2.5, 0.5]
                 }
             },
             "loop": true
@@ -76,12 +76,8 @@
         "animation.minelp.pony.bob.rightArm": {
             "bones": {
                 "rightArm": {
-                    "rotation": [
-                        "-variable.x_bob - 90",
-                        0,
-                        "variable.z_bob"
-                    ],
-                    "position": [ 0.5, 2.5, 0.5 ]
+                    "rotation": ["-variable.x_bob - 90", 0, "variable.z_bob"],
+                    "position": [0.5, 2.5, 0.5]
                 }
             },
             "loop": true
@@ -89,7 +85,7 @@
         "animation.minelp.pony.bob.tail": {
             "bones": {
                 "tailBody": {
-                    "rotation": [ "-variable.x_bob / 3", 0, 0 ]
+                    "rotation": ["-variable.x_bob / 3", 0, 0]
                 }
             },
             "loop": true
@@ -122,11 +118,11 @@
             "loop": true,
             "bones": {
                 "neck": {
-                    "position": [0, 1, 0],
-                    "scale": [ 1, 1.4, 1 ]
+                    "position": [0.0, 1.0, 0.0],
+                    "scale": [1.0, 1.4, 1.0]
                 },
                 "neckFix": {
-                    "scale": [ 1, 0.71428571428, 1 ]
+                    "scale": [1, 0.71428571428, 1]
                 }
             }
         }
