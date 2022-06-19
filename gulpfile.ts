@@ -11,6 +11,7 @@ import type Sync from '@devicefarmer/adbkit/dist/src/adb/sync';
 
 import { getDataLocations } from 'bedrock-dev-lib';
 import { getPackage, niceWatch, syncManifest } from './tools/util';
+import { formatFolder } from './tools/format-json-v3';
 
 const ANDROID_DATA_PATH = "/sdcard/Android/data/com.mojang.minecraftpe/files/games/com.mojang"
 
@@ -292,6 +293,27 @@ watch_resources.description = "Watches the resource pack source for changes"
  */
 export const watch = gulp.parallel(watch_behaviors, watch_resources)
 watch.description = "Watches the addon source for changes"
+
+/**
+ * Formats the behavior pack files
+ */
+export function format_behaviors() {
+    return formatFolder('./behavior-pack')
+}
+format_behaviors.displayName = "format:behaviors"
+format_behaviors.description = "Formats the behavior pack files"
+
+/**
+ * Formats the resource pack files
+ */
+export function format_resources() {
+    return formatFolder('./resource-pack')
+}
+format_resources.displayName = "format:resources"
+format_resources.description = "Formats the resource pack files"
+
+export const format = gulp.parallel(format_behaviors, format_resources)
+format.description = "Formats the addon files"
 
 /**
  * Runs a full development environment
