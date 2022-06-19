@@ -10,7 +10,7 @@ import adbkit, { Device, DeviceClient } from '@devicefarmer/adbkit'
 import type Sync from '@devicefarmer/adbkit/dist/src/adb/sync';
 
 import { getDataLocations } from 'bedrock-dev-lib';
-import { getPackage, niceWatch, syncManifest } from './tools/util';
+import { getPackage, niceWatch, syncManifest, syncManifestDependencies } from './tools/util';
 import { formatFolder } from './tools/format-json-v3';
 
 const ANDROID_DATA_PATH = "/sdcard/Android/data/com.mojang.minecraftpe/files/games/com.mojang"
@@ -117,7 +117,9 @@ build.description = "Builds the addon"
  * Syncs the behavior pack's manifest with the project's package.json
  */
 export async function manifest_behaviors() {
-    return syncManifest('./behavior-pack/manifest.json')
+    await syncManifest('./behavior-pack/manifest.json')
+    await syncManifestDependencies('./behavior-pack/manifest.json', ['./resource-pack/manifest.json'])
+    await syncManifestDependencies('./resource-pack/manifest.json', ['./behavior-pack/manifest.json'])
 }
 manifest_behaviors.displayName = "manifest:behaviors"
 manifest_behaviors.description = `Syncs the behavior pack's manifest with the project's package.json`;
@@ -126,7 +128,9 @@ manifest_behaviors.description = `Syncs the behavior pack's manifest with the pr
  * Syncs the resource pack's manifest with the project's package.json
  */
 export async function manifest_resources() {
-    return syncManifest('./resource-pack/manifest.json')
+    await syncManifest('./resource-pack/manifest.json')
+    await syncManifestDependencies('./behavior-pack/manifest.json', ['./resource-pack/manifest.json'])
+    await syncManifestDependencies('./resource-pack/manifest.json', ['./behavior-pack/manifest.json'])
 }
 manifest_resources.displayName = "manifest:resources"
 manifest_resources.description = `Syncs the resource pack's manifest with the project's package.json`;
@@ -134,7 +138,7 @@ manifest_resources.description = `Syncs the resource pack's manifest with the pr
 /**
  * Syncs the addon manifest with the project's package.json
  */
-export const manifest = gulp.parallel(manifest_behaviors, manifest_resources)
+export const manifest = gulp.series(manifest_behaviors, manifest_resources)
 manifest.description = `Syncs the addon manifests with the project's package.json`;
 
 /**

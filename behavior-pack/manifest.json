@@ -1,19 +1,25 @@
 {
     "format_version": 2,
     "header": {
-        "description": "Turns players into ponies!",
         "name": "Mine Little Pony",
+        "description": "Turns players into ponies!",
         "uuid": "31115598-d97a-4610-a845-1e000c497505",
-        "version": [0, 6, 0],
-        "min_engine_version": [1, 19, 40]
+        "version": [1, 0, 0],
+        "min_engine_version": [1, 19, 0]
     },
     "modules": [
         {
-            "description": "Script that allows players to turn into ponies.",
+            "description": "Mine Little Pony - Behaviors",
+            "type": "data",
+            "uuid": "fa6e90c8-c925-460f-8155-c8a60b753caa",
+            "version": [1, 0, 0]
+        },
+        {
+            "description": "Mine Little Pony - Scripts",
             "type": "script",
             "language": "javascript",
             "uuid": "3f890c7d-66df-46d5-973e-29ed948ebad6",
-            "version": [0, 0, 6],
+            "version": [1, 0, 0],
             "entry": "scripts/index.js"
         }
     ],
@@ -28,23 +34,23 @@
     "dependencies": [
         {
             // Mine Little Pony Resource Pack
-            "version": [0, 0, 6],
+            "version": [1, 0, 0],
             "uuid": "571ec626-7915-4b36-8897-47f793a77643"
         },
         {
             // mojang-minecraft
             "uuid": "b26a4d4c-afdf-4690-88f8-931846312678",
-            "version": [ 0, 1, 0 ]
+            "version": [0, 1, 0]
         },
         {
             // mojang-gametest
             "uuid": "6f4b6893-1bb6-42fd-b458-7fa3d0c89616",
-            "version": [ 0, 1, 0 ]
+            "version": [0, 1, 0]
         },
         {
             // mojang-minecraft-ui
             "uuid": "2bd50a27-ab5f-4f40-a596-3641627c635e",
-            "version": [ 0, 1, 0 ]
+            "version": [0, 1, 0]
         }
     ]
 }

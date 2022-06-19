@@ -1,6 +1,6 @@
 {
     "name": "minelp-bedrock",
-    "version": "0.0.6",
+    "version": "1.0.0",
     "description": "A Minecraft: Bedrock Edition Addon that turns players and mobs into ponies.",
     "keywords": [
         "minecraft",
@@ -61,5 +61,8 @@
         "ts-loader": "^9.2.6",
         "ts-node": "^10.4.0",
         "typescript": "^4.7.4"
+    },
+    "engines": {
+        "mcpe": "1.19.0"
     }
 }

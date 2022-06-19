@@ -11,6 +11,7 @@
 import { promises as fs } from 'node:fs'
 import { createScanner, parse, ScanError, SyntaxKind } from "jsonc-parser"
 import { walk } from './walk'
+import { JsonArray, JsonObject, JsonValue } from './json'
 // import path from 'node:path'
 
 interface ObjectNode {
@@ -63,11 +64,6 @@ interface RootNode {
 }
 
 const errorStrings = ['None', 'Unexpected End Of Comment', 'Unexpected End Of String', 'Unexpected End Of Number', 'Invalid Unicode', 'Invalid Escape Character', 'Invalid Character']
-
-type JsonPrimitive = string | boolean | number | null | undefined
-type JsonArray = JsonValue[]
-type JsonObject = { [key: string]: JsonValue }
-type JsonValue = JsonObject | JsonArray | JsonPrimitive
 
 function getJsPath<T extends JsonValue>(value: JsonValue, path: readonly string[]): T | undefined {
     const [part, ...rest] = path
