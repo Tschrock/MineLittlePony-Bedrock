@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "jkillian.custom-local-formatters",
+        "BlockceptionLtd.blockceptionvscodeminecraftbedrockdevelopmentextension",
+        "EditorConfig.EditorConfig",
+        "eamodio.gitlens"
+    ],
+    "unwantedRecommendations": []
+}

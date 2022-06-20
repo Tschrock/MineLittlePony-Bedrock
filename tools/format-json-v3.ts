@@ -9,6 +9,7 @@
  */
 
 import { promises as fs } from 'node:fs'
+import assert from 'node:assert'
 import { createScanner, parse, ScanError, SyntaxKind } from "jsonc-parser"
 import { walk } from './walk'
 import { JsonArray, JsonObject, JsonValue } from './json'
@@ -487,25 +488,16 @@ function formatTree(root: RootNode, indent: string, jsValue: JsonValue): string 
     return result
 }
 
-function sanityCheck(oldJson: string, newJson: string) {
-    const oldClean = JSON.stringify(parse(oldJson))
-    const newClean = JSON.stringify(parse(newJson))
-    if (oldClean !== newClean) {
-        throw new Error("Old and new JSON values differ")
-    }
-}
-
-function formatJsonString(data: string) {
-    return formatTree(parseTree(data), '    ', parse(data))
+export function formatJsonString(data: string, indent = '    ') {
+    const formatted = formatTree(parseTree(data), indent, parse(data))
+    assert.deepStrictEqual(parse(data), parse(formatted), "Old and new JSON values differ")
+    return formatted
 }
 
 async function formatJsonFile(filePath: string): Promise<void> {
     try {
         const content = await fs.readFile(filePath, "utf8")
         const formatted = formatJsonString(content)
-
-        sanityCheck(content, formatted)
-
         await fs.writeFile(filePath, formatted, 'utf8')
     } catch (e) {
         console.log(`Could not format '${filePath}': ${(e as Error).message}`)

@@ -73,6 +73,18 @@ export function clean() {
 clean.description = 'Cleans the build directory';
 
 /**
+ * Builds the tools scripts
+ */
+export function build_tools() {
+    const tsProject = ts.createProject('tsconfig.json');
+    return gulp.src('./tools/**/*.ts')
+        .pipe(tsProject())
+        .pipe(gulp.dest('./dist/build/tools/'));
+}
+build_tools.displayName = "build:tools"
+build_tools.description = "Builds the dev tools"
+
+/**
  * Copies the behavior pack files
  */
 function copy_behavior_files() {
@@ -110,7 +122,7 @@ build_resources.description = "Builds the resource pack"
 /**
  * Builds the addon
  */
-export const build = gulp.parallel(build_behaviors, build_resources)
+export const build = gulp.parallel(build_behaviors, build_resources, build_tools)
 build.description = "Builds the addon"
 
 /**

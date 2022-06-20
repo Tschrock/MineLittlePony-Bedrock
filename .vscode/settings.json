@@ -5,5 +5,17 @@
     "files.associations": {
         "**/behavior-pack/**/*.json": "jsonc",
         "**/resource-pack/**/*.json": "jsonc"
+    },
+    "customLocalFormatters.formatters": [
+        {
+            // Note: Run `npx gulp build:tools` to build the dev tools for a significant speed up
+            "command": "node ./tools/vscode-format-bootstrap.js",
+            "languages": [
+                "jsonc"
+            ]
+        }
+    ],
+    "[jsonc]": {
+        "editor.defaultFormatter": "jkillian.custom-local-formatters"
     }
 }
