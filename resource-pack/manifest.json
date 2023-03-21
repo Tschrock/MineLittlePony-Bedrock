@@ -4,15 +4,15 @@
         "name": "Mine Little Pony",
         "description": "Turns mobs into ponies!",
         "uuid": "571ec626-7915-4b36-8897-47f793a77643",
-        "version": [1, 0, 0],
-        "min_engine_version": [1, 19, 0]
+        "version": [1, 1, 0],
+        "min_engine_version": [1, 19, 70]
     },
     "modules": [
         {
             "description": "Turns mobs into ponies!",
             "type": "resources",
             "uuid": "b81d5c84-a207-4025-a522-daa2caa26156",
-            "version": [1, 0, 0]
+            "version": [1, 1, 0]
         }
     ],
     "metadata": {
@@ -22,12 +22,12 @@
         ],
         "license": "MPL-2.0",
         "url": "https://github.com/Tschrock/MineLittlePony-Bedrock#readme"
-    },
-    "dependencies": [
-        {
-            // Mine Little Pony Behavior Pack
-            "version": [1, 0, 0],
-            "uuid": "31115598-d97a-4610-a845-1e000c497505"
-        }
-    ]
+    }//,
+    // "dependencies": [
+    //     {
+    //         // Mine Little Pony Behavior Pack
+    //         "version": [1, 0, 0],
+    //         "uuid": "31115598-d97a-4610-a845-1e000c497505"
+    //     }
+    // ]
 }
