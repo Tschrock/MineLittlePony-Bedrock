@@ -1,5 +1,5 @@
-import { world } from "mojang-minecraft"
+import { world } from "@minecraft/server"
 
-world.events.playerJoin.subscribe(event => {
+world.events.playerSpawn.subscribe(event => {
     event.player.dimension.runCommand(`say Welcome ${event.player.name}!` )
 })
