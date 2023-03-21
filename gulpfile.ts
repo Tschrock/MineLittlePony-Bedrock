@@ -15,6 +15,7 @@ import { formatFolder } from './tools/format-json-v3';
 
 const ANDROID_DATA_PATH = "/sdcard/Android/data/com.mojang.minecraftpe/files/games/com.mojang"
 
+const verify = true // process.argv.includes("--verify")
 const useAdb = process.argv.includes("--adb")
 const adb = useAdb ? adbkit.createClient() : null
 const adbDevices = adb ? adb.listDevices() : Promise.resolve<Device[]>([])
@@ -35,13 +36,19 @@ async function adbSyncFile(syncService: Sync, src: string, dest: string) {
 }
 
 async function adbSyncDirs(device: DeviceClient, syncService: Sync, src: string, dest: string) {
-    await device.shell(`mkdir -p '${dest}'`)
+    const outStream = await device.shell(`mkdir -p '${dest}'`)
+    await adbkit.util.readAll(outStream)
+    verify && await syncService.stat(dest)
     const children = await fs.readdir(src, { withFileTypes: true })
     for (const child of children) {
+        const srcPath = path.join(src, child.name)
+        const destPath = path.join(dest, child.name)
         if (child.isFile()) {
-            await adbSyncFile(syncService, path.join(src, child.name), path.join(dest, child.name))
+            // console.log("Syncing file " + srcPath + " to " + destPath)
+            await adbSyncFile(syncService, srcPath, destPath)
+            verify && await syncService.stat(destPath)
         } else if (child.isDirectory()) {
-            await adbSyncDirs(device, syncService, path.join(src, child.name), path.join(dest, child.name))
+            await adbSyncDirs(device, syncService, srcPath, destPath)
         }
     }
 }
@@ -210,6 +217,7 @@ async function syncDevelopmentPack(src: string, dest: string) {
     if (adb) {
         const packPath = path.join(ANDROID_DATA_PATH, dest, packageJson.name)
         return withAdbDevices(async device => {
+            console.log("Syncing to adb device " + device.serial)
             await device.shell(`rm -rf '${packPath}'`)
             const syncService = await device.syncService()
             await adbSyncDirs(device, syncService, src, packPath)
