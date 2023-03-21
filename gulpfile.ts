@@ -35,10 +35,32 @@ async function adbSyncFile(syncService: Sync, src: string, dest: string) {
     })
 }
 
+
+function sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
+
+async function retry<T>(fn: () => PromiseLike<T>, tries: number, wait: number): Promise<T> {
+    while (true) {
+        try {
+            return await fn()
+        } catch (e) {
+            if (tries--) {
+                console.log(`Got error, trying again (${(e as Error).message})`)
+                await sleep(wait)
+            } else {
+                throw e
+            }
+        }
+    }
+}
+
 async function adbSyncDirs(device: DeviceClient, syncService: Sync, src: string, dest: string) {
-    const outStream = await device.shell(`mkdir -p '${dest}'`)
-    await adbkit.util.readAll(outStream)
-    verify && await syncService.stat(dest)
+    await retry(async () => {
+        // This sometimes fails, so retry a few times
+        await adbkit.util.readAll(await device.shell(`mkdir -p '${dest}'`))
+        await retry(() => syncService.stat(dest), 4, 200)
+    }, 4, 200)
     const children = await fs.readdir(src, { withFileTypes: true })
     for (const child of children) {
         const srcPath = path.join(src, child.name)
@@ -218,7 +240,7 @@ async function syncDevelopmentPack(src: string, dest: string) {
         const packPath = path.join(ANDROID_DATA_PATH, dest, packageJson.name)
         return withAdbDevices(async device => {
             console.log("Syncing to adb device " + device.serial)
-            await device.shell(`rm -rf '${packPath}'`)
+            await adbkit.util.readAll(await device.shell(`rm -rf '${packPath}'`))
             const syncService = await device.syncService()
             await adbSyncDirs(device, syncService, src, packPath)
             syncService.end()
