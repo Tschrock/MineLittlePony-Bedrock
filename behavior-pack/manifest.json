@@ -39,14 +39,23 @@
         },
         {
             "module_name": "@minecraft/server",
-            "version": "1.1.0"
+            // Available versions (as of 1.19.70):
+            // @minecraft/server - 0.1.0
+            // @minecraft/server - 1.0.0
+            // @minecraft/server - 1.1.0-beta
+            "version": "1.1.0-beta"
         },
         {
             "module_name": "@minecraft/server-gametest",
+            // Available versions (as of 1.19.70):
+            // @minecraft/server-gametest - 1.0.0-beta
             "version": "1.0.0-beta"
         },
         {
             "module_name": "@minecraft/server-ui",
+            // Available versions (as of 1.19.70):
+            // @minecraft/server-ui - 0.1.0
+            // @minecraft/server-ui - 1.0.0-beta
             "version": "1.0.0-beta"
         }
     ]

@@ -64,5 +64,8 @@
     },
     "engines": {
         "mcpe": "1.19.70"
+    },
+    "dependencies": {
+        "@minecraft/server": "^1.2.0-beta.1.19.80-preview.21"
     }
 }
