@@ -309,14 +309,6 @@ export async function launch() {
 launch.description = "Launches the game"
 
 /**
- * Outputs the content log
- */
-export async function log() {
-    // TODO: tail content log
-}
-log.description = "Outputs the content log"
-
-/**
  * Watches the behavior pack source for changes
  */
 export async function watch_behaviors() {
@@ -364,5 +356,5 @@ format.description = "Formats the addon files"
 /**
  * Runs a full development environment
  */
-export const dev = gulp.series(clean, manifest, build, sync, launch, log, watch)
+export const dev = gulp.series(clean, manifest, build, sync, launch, watch)
 dev.description = "Runs a full development environment"
