@@ -46,6 +46,7 @@
         "@types/mojang-minecraft-ui": "^0.1.0",
         "@types/node": "^18.15.10",
         "@types/semver": "^7.3.4",
+        "@types/yauzl": "^2.10.0",
         "ajv": "^8.9.0",
         "ajv-formats": "^2.1.1",
         "bedrock-dev-lib": "https://git@github.com/bedrock-studio/bedrock-dev-lib",
@@ -61,7 +62,8 @@
         "semver": "^7.3.4",
         "ts-loader": "^9.2.6",
         "ts-node": "^10.4.0",
-        "typescript": "^5.0.2"
+        "typescript": "^5.0.2",
+        "yauzl": "^2.10.0"
     },
     "engines": {
         "mcpe": "1.19.70"

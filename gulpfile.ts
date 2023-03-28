@@ -11,6 +11,7 @@ import { getDataLocations } from 'bedrock-dev-lib';
 import { getPackage, niceWatch, syncManifest, syncManifestDependencies } from './tools/util';
 import { formatFolder } from './tools/format-json-v3';
 import { SyncClient } from './tools/adb';
+import { mergeVanillaBehaviors } from './tools/merge';
 import { minifyJson } from './tools/minify-json';
 
 const ANDROID_DATA_PATH = "/sdcard/Android/data/com.mojang.minecraftpe/files/games/com.mojang"
@@ -85,6 +86,7 @@ async function copy_behavior_files() {
  */
 async function process_behavior_json() {
     return gulp.src(['./src/behavior-pack/**/*.json'], { since: gulp.lastRun(process_behavior_json) })
+        .pipe(await mergeVanillaBehaviors())
         .pipe(minifyJson())
         .pipe(gulp.dest('./dist/build/behavior-pack/'))
 }
