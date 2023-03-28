@@ -1,6 +1,6 @@
 {
     "format_version": "1.18.20",
-    "minecraft:entity":{
+    "minecraft:entity": {
         "description": {
             "identifier": "minecraft:skeleton",
             "properties": {

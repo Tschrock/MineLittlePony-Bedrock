@@ -117,7 +117,7 @@ build_tools.description = "Builds the dev tools"
  * Copies the behavior pack files
  */
 function copy_behavior_files() {
-    return gulp.src(['./behavior-pack/**/*', "!**/*.ts"], { since: gulp.lastRun(copy_behavior_files) })
+    return gulp.src(['./src/behavior-pack/**/*', "!**/*.ts"], { since: gulp.lastRun(copy_behavior_files) })
         .pipe(gulp.dest('./dist/build/behavior-pack/'))
 }
 
@@ -126,7 +126,7 @@ function copy_behavior_files() {
  */
 function build_behavior_scripts() {
     const tsProject = ts.createProject('tsconfig.build.json');
-    return gulp.src('./behavior-pack/**/*.ts')
+    return gulp.src('./src/behavior-pack/**/*.ts')
         .pipe(tsProject())
         .pipe(gulp.dest('./dist/build/behavior-pack/'));
 }
@@ -142,7 +142,7 @@ build_behaviors.description = "Builds the behavior pack"
  * Builds the resource pack
  */
 export function build_resources() {
-    return gulp.src(['./resource-pack/**/*'], { since: gulp.lastRun(build_resources) })
+    return gulp.src(['./src/resource-pack/**/*'], { since: gulp.lastRun(build_resources) })
         .pipe(gulp.dest('./dist/build/resource-pack/'))
 }
 build_resources.displayName = "build:resources"
@@ -158,9 +158,9 @@ build.description = "Builds the addon"
  * Syncs the behavior pack's manifest with the project's package.json
  */
 export async function manifest_behaviors() {
-    await syncManifest('./behavior-pack/manifest.json')
-    await syncManifestDependencies('./behavior-pack/manifest.json', ['./resource-pack/manifest.json'])
-    await syncManifestDependencies('./resource-pack/manifest.json', ['./behavior-pack/manifest.json'])
+    await syncManifest('./src/behavior-pack/manifest.json')
+    await syncManifestDependencies('./src/behavior-pack/manifest.json', ['./src/resource-pack/manifest.json'])
+    await syncManifestDependencies('./src/resource-pack/manifest.json', ['./src/behavior-pack/manifest.json'])
 }
 manifest_behaviors.displayName = "manifest:behaviors"
 manifest_behaviors.description = `Syncs the behavior pack's manifest with the project's package.json`;
@@ -169,9 +169,9 @@ manifest_behaviors.description = `Syncs the behavior pack's manifest with the pr
  * Syncs the resource pack's manifest with the project's package.json
  */
 export async function manifest_resources() {
-    await syncManifest('./resource-pack/manifest.json')
-    await syncManifestDependencies('./behavior-pack/manifest.json', ['./resource-pack/manifest.json'])
-    await syncManifestDependencies('./resource-pack/manifest.json', ['./behavior-pack/manifest.json'])
+    await syncManifest('./src/resource-pack/manifest.json')
+    await syncManifestDependencies('./src/behavior-pack/manifest.json', ['./src/resource-pack/manifest.json'])
+    await syncManifestDependencies('./src/resource-pack/manifest.json', ['./src/behavior-pack/manifest.json'])
 }
 manifest_resources.displayName = "manifest:resources"
 manifest_resources.description = `Syncs the resource pack's manifest with the project's package.json`;
@@ -320,7 +320,7 @@ log.description = "Outputs the content log"
  * Watches the behavior pack source for changes
  */
 export async function watch_behaviors() {
-    return niceWatch('./behavior-pack/**/*', gulp.series(build_behaviors, sync_behaviors))
+    return niceWatch('./src/behavior-pack/**/*', gulp.series(build_behaviors, sync_behaviors))
 }
 watch_behaviors.displayName = "watch:behaviors"
 watch_behaviors.description = "Watches the behavior pack source for changes"
@@ -329,7 +329,7 @@ watch_behaviors.description = "Watches the behavior pack source for changes"
  * Watches the resource pack source for changes
  */
 export async function watch_resources() {
-    return niceWatch('./resource-pack/**/*', gulp.series(build_resources, sync_resources))
+    return niceWatch('./src/resource-pack/**/*', gulp.series(build_resources, sync_resources))
 }
 watch_resources.displayName = "watch:resources"
 watch_resources.description = "Watches the resource pack source for changes"
@@ -344,7 +344,7 @@ watch.description = "Watches the addon source for changes"
  * Formats the behavior pack files
  */
 export function format_behaviors() {
-    return formatFolder('./behavior-pack')
+    return formatFolder('./src/behavior-pack')
 }
 format_behaviors.displayName = "format:behaviors"
 format_behaviors.description = "Formats the behavior pack files"
@@ -353,7 +353,7 @@ format_behaviors.description = "Formats the behavior pack files"
  * Formats the resource pack files
  */
 export function format_resources() {
-    return formatFolder('./resource-pack')
+    return formatFolder('./src/resource-pack')
 }
 format_resources.displayName = "format:resources"
 format_resources.description = "Formats the resource pack files"
