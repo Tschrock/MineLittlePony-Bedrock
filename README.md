@@ -122,8 +122,8 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 [discord-badge]: https://img.shields.io/discord/182490536119107584?color=blueviolet&logo=discord&logoColor=white
 [discord-link]: https://discord.gg/HbJSFyu
 
-[build-badge]: https://img.shields.io/github/workflow/status/Tschrock/MineLittlePony-Bedrock/build
+[build-badge]: https://img.shields.io/github/actions/workflow/status/Tschrock/MineLittlePony-Bedrock/build.yml?branch=main
 [build-link]: https://github.com/Tschrock/MineLittlePony-Bedrock/actions
 
-[tests-badge]: https://img.shields.io/github/workflow/status/Tschrock/MineLittlePony-Bedrock/test?label=tests
+[tests-badge]: https://img.shields.io/github/actions/workflow/status/Tschrock/MineLittlePony-Bedrock/test.yml?branch=main&label=tests
 [tests-link]: https://github.com/Tschrock/MineLittlePony-Bedrock/actions
