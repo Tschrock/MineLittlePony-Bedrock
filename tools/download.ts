@@ -5,7 +5,7 @@ import type { ReadableStream } from 'node:stream/web';
 import { TransformCallback } from 'stream';
 
 export async function fetchToFile(input: URL, destination: string, init?: RequestInit | undefined): Promise<void> {
-    console.log(`Downloading ${input}`)
+    console.log(`Downloading ${input.href}`)
     const response = await fetch(input, init)
     if (!response.ok) throw new Error(`Bad response: ${response.status} ${response.statusText}`)
     if (!response.body) throw new Error(`Response has no body? ${response.status} ${response.statusText}`)
@@ -15,7 +15,7 @@ export async function fetchToFile(input: URL, destination: string, init?: Reques
         new ProgressReporter(response),
         file.createWriteStream({ autoClose: true })
     )
-    console.log(`Download complete`)
+    console.log('Download complete')
 }
 
 class ProgressReporter extends Transform {
@@ -28,7 +28,7 @@ class ProgressReporter extends Transform {
         const length = response.headers.get('content-length')
         this.contentLength = length ? Number.parseInt(length) : undefined
     }
-    override _transform(chunk: any, _: BufferEncoding, callback: TransformCallback): void {
+    override _transform(chunk: Buffer, _: BufferEncoding, callback: TransformCallback): void {
         const now = performance.now()
         this.bytes += chunk.length
         this.lastAverageTotal += chunk.length
@@ -36,7 +36,7 @@ class ProgressReporter extends Transform {
             const average = this.lastAverageTotal / 2
             this.lastPrint = now
             this.lastAverageTotal = 0
-            console.log(`Downloading ${prefix(this.bytes)}${this.contentLength ? ` of ${prefix(this.contentLength)}` : ""} (${prefix(average)}/sec)...`)
+            console.log(`Downloading ${prefix(this.bytes)}${this.contentLength ? ` of ${prefix(this.contentLength)}` : ''} (${prefix(average)}/sec)...`)
         }
         callback(null, chunk)
     }
@@ -44,6 +44,6 @@ class ProgressReporter extends Transform {
 
 const sizes = [[1000000000, 'GB'], [1000000, 'MB'], [1000, 'KB'], [1, 'B']] as const
 function prefix(size: number): string {
-    const [mag, prefix] = sizes.find(s => size > s[0])!
+    const [mag, prefix] = sizes.find(s => size > s[0]) ?? [1, 'B']
     return `${(size / mag).toFixed(size > mag * 10 ? 0 : 1)} ${prefix}`
 }

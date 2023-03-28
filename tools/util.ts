@@ -10,10 +10,13 @@ import { modifyJsonFile } from './json2'
 type QuitHandler = () => Promise<void> | void
 
 const quitHandlers = new Set<QuitHandler>()
-process.on('SIGINT', async () => {
+async function runQuit() {
     setTimeout(() => process.exit(130), 2000)
-    for (const h of quitHandlers) await h()
-})
+    for (const h of quitHandlers) try {
+        await h()
+    } catch (e) { console.error(e) }
+}
+process.on('SIGINT', () => { runQuit().catch(console.error) })
 
 export function onQuit(handler: () => Promise<void> | void) {
     quitHandlers.add(handler)

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { formatJsonString } from "./format-json-v3"
+import { formatJsonString } from './format-json-v3'
 
 async function readTillEnd(stream: NodeJS.ReadStream, encoding = 'utf-8'): Promise<string> {
     return new Promise((resolve, reject) => {

@@ -1,7 +1,7 @@
 import assert from 'node:assert'
 import { promises as fs } from 'node:fs'
 import * as jsonc from 'jsonc-parser'
-import { JsonValue, parseJson } from "./json"
+import { JsonValue, parseJson } from './json'
 
 /**
  * Modifies a JSON file, attempting to preserve comments and formatting.

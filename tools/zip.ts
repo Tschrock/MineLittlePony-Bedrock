@@ -1,6 +1,6 @@
-import { Readable } from "node:stream"
+import { Readable } from 'node:stream'
 
-import yauzl, { Entry, Options, ZipFile } from "yauzl"
+import yauzl, { Entry, Options, ZipFile } from 'yauzl'
 
 export function openZip(path: string, options: Options): Promise<ZipFile> {
     return new Promise((resolve, reject) => yauzl.open(path, options,

@@ -1,5 +1,5 @@
-import { world } from "@minecraft/server"
+import { world } from '@minecraft/server'
 
 world.events.playerSpawn.subscribe(event => {
-    event.player.dimension.runCommandAsync(`say Welcome ${event.player.name}!` )
+    event.player.dimension.runCommandAsync(`say Welcome ${event.player.name}!` ).catch(() => { /* Ignore */})
 })

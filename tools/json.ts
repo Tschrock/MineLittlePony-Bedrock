@@ -26,7 +26,7 @@ export class MultiError extends Error {
 
 export function parseJson<T = JsonValue>(content: string): T & JsonValue {
     const errors: jsonc.ParseError[] = []
-    const data: T & JsonValue = jsonc.parse(content, errors)
+    const data = jsonc.parse(content, errors) as T & JsonValue
     if (errors.length === 1) throw new JsonError(errors[0])
     if (errors.length > 1) throw new MultiError(errors.map(e => new JsonError(e)))
     return data

@@ -1,11 +1,11 @@
 import path from 'node:path';
 import { Dirent, promises as fs, Stats } from 'node:fs';
 
-import adbkit, { DeviceClient } from "@devicefarmer/adbkit"
+import adbkit, { DeviceClient } from '@devicefarmer/adbkit'
 import type Sync from '@devicefarmer/adbkit/dist/src/adb/sync'
 
 const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-const reverse = <T>(p: Promise<T>) => new Promise((resolve, reject) => p.then(reject, resolve))
+const reverse = <T>(p: Promise<T>) => new Promise((resolve, reject) => { p.then(reject, resolve) })
 
 async function retry<T>(action: () => PromiseLike<T>, maxRetries: number, retryDelay: number): Promise<T> {
     while (true) try {
@@ -19,14 +19,14 @@ async function retry<T>(action: () => PromiseLike<T>, maxRetries: number, retryD
 type Ent = Dirent | Stats
 
 function getFileEntryType(file: Ent) {
-    if (file.isDirectory()) return "Directory"
-    if (file.isFile()) return "File"
-    if (file.isSymbolicLink()) return "Symbolic Link"
-    if (file.isBlockDevice()) return "Block Device"
-    if (file.isCharacterDevice()) return "Character Device"
-    if (file.isFIFO()) return "FIFO"
-    if (file.isSocket()) return "Socket"
-    return "unknown"
+    if (file.isDirectory()) return 'Directory'
+    if (file.isFile()) return 'File'
+    if (file.isSymbolicLink()) return 'Symbolic Link'
+    if (file.isBlockDevice()) return 'Block Device'
+    if (file.isCharacterDevice()) return 'Character Device'
+    if (file.isFIFO()) return 'FIFO'
+    if (file.isSocket()) return 'Socket'
+    return 'unknown'
 }
 
 export class SyncClient {
@@ -85,7 +85,7 @@ export class SyncClient {
             for (const [name, child] of srcChildren) {
                 const srcChildPath = path.join(src, name)
                 const destChildPath = path.join(dest, name)
-                this.syncEnt(srcChildPath, child, destChildPath, destChildren.get(name))
+                await this.syncEnt(srcChildPath, child, destChildPath, destChildren.get(name))
             }
         }
         else {
@@ -97,7 +97,7 @@ export class SyncClient {
         return await adbkit.util.readAll(await this.device.shell(command))
     }
 
-    private async robustShell(command: string, check: () => Promise<any>): Promise<Buffer> {
+    private async robustShell(command: string, check: () => Promise<unknown>): Promise<Buffer> {
         return await retry(async () => {
             const result = await this.shell(command)
             await retry(check, 4, 200)

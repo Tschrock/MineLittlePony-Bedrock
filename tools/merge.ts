@@ -11,9 +11,9 @@ import { JsonArray, JsonObject, JsonValue, parseJson } from './json';
 import { JSONPath } from 'jsonc-parser';
 
 const DEFAULT_PACK: PackDetails = {
-    url: new URL("https://github.com/Mojang/bedrock-samples/archive/refs/tags/v1.19.70.2.zip"),
-    behaviors: "bedrock-samples-1.19.70.2/behavior_pack/",
-    resources: "bedrock-samples-1.19.70.2/resource_pack/"
+    url: new URL('https://github.com/Mojang/bedrock-samples/archive/refs/tags/v1.19.70.2.zip'),
+    behaviors: 'bedrock-samples-1.19.70.2/behavior_pack/',
+    resources: 'bedrock-samples-1.19.70.2/resource_pack/'
 }
 
 async function tryStat(path: string): Promise<Stats | false> {
@@ -21,7 +21,7 @@ async function tryStat(path: string): Promise<Stats | false> {
         return await fs.stat(path)
     } catch (e) {
         const error = e as NodeJS.ErrnoException
-        if (error.code === "ENOENT") {
+        if (error.code === 'ENOENT') {
             return false
         } else {
             throw e
@@ -98,13 +98,13 @@ class PackTransform extends Transform {
     }
     private async _transformAsync(file: Vinyl, _: BufferEncoding): Promise<Vinyl> {
         if (file.isBuffer()) {
-            if (file.relative.startsWith("entities/") || file.basename.includes('.merge.')) {
+            if (file.relative.startsWith('entities/') || file.basename.includes('.merge.')) {
                 file.basename = file.basename.replace('.merge.', '.')
                 const vanillaContent = await this.tryGetVanilla(file.relative)
                 if (vanillaContent) {
                     const fileContent = file.contents.toString('utf-8')
                     const mergedData = mergeEntities(parseJson(vanillaContent), parseJson(fileContent))
-                    file.contents = Buffer.from(JSON.stringify(mergedData), "utf-8")
+                    file.contents = Buffer.from(JSON.stringify(mergedData), 'utf-8')
                 }
             }
         }

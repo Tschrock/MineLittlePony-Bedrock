@@ -10,7 +10,7 @@
 
 import { promises as fs } from 'node:fs'
 import assert from 'node:assert'
-import { createScanner, parse, ScanError, SyntaxKind } from "jsonc-parser"
+import { createScanner, parse, ScanError, SyntaxKind } from 'jsonc-parser'
 import { walk } from './walk'
 import { JsonArray, JsonObject, JsonValue } from './json'
 // import path from 'node:path'
@@ -140,7 +140,7 @@ export function parseTree(data: string): RootNode {
             }
             if (currentToken === SyntaxKind.CommaToken) {
                 if (firstItem) {
-                    throw new Error("Expected value or closing bracket")
+                    throw new Error('Expected value or closing bracket')
                 } else {
                     nextToken()
                     children.push(...readTrivia())
@@ -155,7 +155,7 @@ export function parseTree(data: string): RootNode {
         const key = readString()
         const afterKey = readTrivia()
         if (currentToken !== SyntaxKind.ColonToken) {
-            throw new Error("Expected token")
+            throw new Error('Expected token')
         }
         nextToken()
         const beforeValue = readTrivia()
@@ -176,14 +176,14 @@ export function parseTree(data: string): RootNode {
             }
             if (currentToken === SyntaxKind.CommaToken) {
                 if (firstItem) {
-                    throw new Error("Expected property or closing brace")
+                    throw new Error('Expected property or closing brace')
                 } else {
                     nextToken()
                     children.push(...readTrivia())
                 }
             }
             if (currentToken !== SyntaxKind.StringLiteral) {
-                throw new Error("Expected property or closing brace")
+                throw new Error('Expected property or closing brace')
             }
             children.push(readProperty())
             firstItem = false
@@ -223,7 +223,7 @@ export function parseTree(data: string): RootNode {
                 nextToken()
                 return { type: 'literal', value: false }
             default:
-                throw new Error("Expected JSON Value")
+                throw new Error('Expected JSON Value')
         }
     }
 
@@ -297,7 +297,7 @@ class Stack<T> {
 
 function formatTree(root: RootNode, indent: string, jsValue: JsonValue): string {
     const path = new Stack<string>()
-    let result = ""
+    let result = ''
     let depth = 0
 
     function formatComments(compact: boolean, trivia: Array<NewLineNode | CommentNode>, noPadStart = false): NewLineNode | CommentNode | undefined {
@@ -335,7 +335,7 @@ function formatTree(root: RootNode, indent: string, jsValue: JsonValue): string 
     }
 
     function formatObject(compact: boolean, node: ObjectNode) {
-        result += "{"
+        result += '{'
         compact = compact || matchAny(path.data, objectCompact)
         path.push('{}')
         if (!compact) {
@@ -397,7 +397,7 @@ function formatTree(root: RootNode, indent: string, jsValue: JsonValue): string 
             result += indent.repeat(depth)
         }
         path.pop()
-        result += "}"
+        result += '}'
     }
 
     function formatArray(compact: boolean, node: ArrayNode) {
@@ -411,7 +411,7 @@ function formatTree(root: RootNode, indent: string, jsValue: JsonValue): string 
                 compact = false
             }
         }
-        result += "["
+        result += '['
         path.push('[]')
         if (!compact) {
             depth += 1
@@ -459,7 +459,7 @@ function formatTree(root: RootNode, indent: string, jsValue: JsonValue): string 
             result += indent.repeat(depth)
         }
         path.pop()
-        result += "]"
+        result += ']'
     }
 
     function formatLiteral(node: LiteralNode) {
@@ -491,14 +491,14 @@ function formatTree(root: RootNode, indent: string, jsValue: JsonValue): string 
 }
 
 export function formatJsonString(data: string, indent = '    ') {
-    const formatted = formatTree(parseTree(data), indent, parse(data))
-    assert.deepStrictEqual(parse(data), parse(formatted), "Old and new JSON values differ")
+    const formatted = formatTree(parseTree(data), indent, parse(data) as JsonValue)
+    assert.deepStrictEqual(parse(data), parse(formatted), 'Old and new JSON values differ')
     return formatted
 }
 
 async function formatJsonFile(filePath: string): Promise<void> {
     try {
-        const content = await fs.readFile(filePath, "utf8")
+        const content = await fs.readFile(filePath, 'utf8')
         const formatted = formatJsonString(content)
         await fs.writeFile(filePath, formatted, 'utf8')
     } catch (e) {
