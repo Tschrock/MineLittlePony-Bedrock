@@ -1,7 +1,6 @@
 import path from 'node:path';
 import { promises as fs } from 'node:fs';
 
-import del from 'del';
 import gulp from 'gulp';
 import gulp_zip from 'gulp-zip';
 import ts from 'gulp-typescript';
@@ -79,7 +78,7 @@ async function adbSyncDirs(device: DeviceClient, syncService: Sync, src: string,
  * Cleans the behavior pack build directory
  */
 export function clean_behaviors() {
-    return del('./dist/build/behavior-pack');
+    return fs.rm('./dist/build/behavior-pack', { force: true, recursive: true })
 }
 clean_behaviors.displayName = "clean:behaviors"
 clean_behaviors.description = 'Cleans the behavior pack build directory';
@@ -88,7 +87,7 @@ clean_behaviors.description = 'Cleans the behavior pack build directory';
  * Cleans the resource pack build directory
  */
 export function clean_resources() {
-    return del('./dist/build/resource-pack');
+    return fs.rm('./dist/build/resource-pack', { force: true, recursive: true })
 }
 clean_resources.displayName = "clean:resources"
 clean_resources.description = 'Cleans the resource pack build directory';
@@ -97,7 +96,7 @@ clean_resources.description = 'Cleans the resource pack build directory';
  * Cleans the build directory
  */
 export function clean() {
-    return del('./dist/build');
+    return fs.rm('./dist/build', { force: true, recursive: true })
 }
 clean.description = 'Cleans the build directory';
 
@@ -250,7 +249,8 @@ async function syncDevelopmentPack(src: string, dest: string) {
         for (const dir of dirs) {
             const packsPath = path.join(dir, dest);
             const installPath = path.join(packsPath, packageJson.name);
-            await del(installPath, { cwd: packsPath }).catch(e => console.log(e));
+
+            await fs.rm(installPath, { force: true, recursive: true }).catch(e => console.log(e));
             await fs.cp(src, installPath, { force: true, recursive: true })
         }
     }
