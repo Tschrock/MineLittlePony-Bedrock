@@ -1,3 +1,4 @@
+import path from 'node:path'
 import { promises as fs } from 'node:fs';
 import { Readable, Transform } from 'node:stream';
 import { pipeline } from 'node:stream/promises';
@@ -9,6 +10,8 @@ export async function fetchToFile(input: URL, destination: string, init?: Reques
     const response = await fetch(input, init)
     if (!response.ok) throw new Error(`Bad response: ${response.status} ${response.statusText}`)
     if (!response.body) throw new Error(`Response has no body? ${response.status} ${response.statusText}`)
+    const destDir = path.dirname(destination)
+    await fs.mkdir(destDir, { recursive: true })
     const file = await fs.open(destination, 'w')
     await pipeline(
         Readable.fromWeb(response.body as ReadableStream),
