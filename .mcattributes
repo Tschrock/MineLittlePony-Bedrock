@@ -1,2 +1,1 @@
-diagnostic.disable.molang.context.item.unknown=true
-diagnostic.disable.minecraft.manifest.version.minimum=true
+diagnostic.disable.molang.context.missing=true
