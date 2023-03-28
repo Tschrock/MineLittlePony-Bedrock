@@ -27,7 +27,9 @@
         }
     ],
     "scripts": {
-        "test": "mocha -r ts-node/register tests/**/*.spec.ts --delay"
+        "test": "mocha",
+        "build": "gulp build",
+        "dev": "gulp dev"
     },
     "repository": {
         "type": "git",
