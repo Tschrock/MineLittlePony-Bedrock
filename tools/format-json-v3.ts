@@ -257,6 +257,8 @@ const arrayCompact = [
     ['minecraft:geometry', '*', 'bones', '*', 'cubes', '*', 'size'],
     ['render_controllers', '*', 'textures'],
     ['minecraft:geometry', '*', 'bones', '*', 'cubes', '*', 'uv'],
+    ['minecraft:entity', 'description', 'properties', '*', 'values'],
+    ['minecraft:entity', 'description', 'properties', '*', 'range'],
 ]
 
 const objectCompact = [
@@ -401,11 +403,11 @@ function formatTree(root: RootNode, indent: string, jsValue: JsonValue): string 
     function formatArray(compact: boolean, node: ArrayNode) {
         compact = compact || matchAny(path.data, arrayCompact)
         const values = getJsPath<JsonArray>(jsValue, path.data)
-        if(values && Array.isArray(values)) {
-            if(values.some(v => typeof v === 'string' && [';', '='].some(s => v.includes(s)))) {
+        if (values && Array.isArray(values)) {
+            if (values.some(v => typeof v === 'string' && [';', '='].some(s => v.includes(s)))) {
                 compact = false
             }
-            if(values.reduce<number>((pv, cv) => typeof cv === 'string' ? pv + cv.length : pv, 0) > 50) {
+            if (values.reduce<number>((pv, cv) => typeof cv === 'string' ? pv + cv.length : pv, 0) > 50) {
                 compact = false
             }
         }
