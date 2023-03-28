@@ -11,6 +11,7 @@ import { getDataLocations } from 'bedrock-dev-lib';
 import { getPackage, niceWatch, syncManifest, syncManifestDependencies } from './tools/util';
 import { formatFolder } from './tools/format-json-v3';
 import { SyncClient } from './tools/adb';
+import { minifyJson } from './tools/minify-json';
 
 const ANDROID_DATA_PATH = "/sdcard/Android/data/com.mojang.minecraftpe/files/games/com.mojang"
 
@@ -74,8 +75,17 @@ build_tools.description = "Builds the dev tools"
 /**
  * Copies the behavior pack files
  */
-function copy_behavior_files() {
-    return gulp.src(['./src/behavior-pack/**/*', "!**/*.ts"], { since: gulp.lastRun(copy_behavior_files) })
+async function copy_behavior_files() {
+    return gulp.src(['./src/behavior-pack/**/*', "!**/*.ts", "!**/*.json"], { since: gulp.lastRun(copy_behavior_files) })
+        .pipe(gulp.dest('./dist/build/behavior-pack/'))
+}
+
+/**
+ * Processes the behavior pack json files
+ */
+async function process_behavior_json() {
+    return gulp.src(['./src/behavior-pack/**/*.json'], { since: gulp.lastRun(process_behavior_json) })
+        .pipe(minifyJson())
         .pipe(gulp.dest('./dist/build/behavior-pack/'))
 }
 
@@ -92,17 +102,30 @@ function build_behavior_scripts() {
 /**
  * Builds the behavior pack
  */
-export const build_behaviors = gulp.parallel(copy_behavior_files, build_behavior_scripts)
+export const build_behaviors = gulp.parallel(copy_behavior_files, process_behavior_json, build_behavior_scripts)
 build_behaviors.displayName = "build:behaviors"
 build_behaviors.description = "Builds the behavior pack"
 
 /**
- * Builds the resource pack
+ * Copies the resource pack files
  */
-export function build_resources() {
-    return gulp.src(['./src/resource-pack/**/*'], { since: gulp.lastRun(build_resources) })
+function copy_resource_files() {
+    return gulp.src(['./src/resource-pack/**/*', '!**/*.json'], { since: gulp.lastRun(copy_resource_files) })
         .pipe(gulp.dest('./dist/build/resource-pack/'))
 }
+/**
+ * Processes the resource pack json files
+ */
+async function process_resource_json() {
+    return gulp.src(['./src/resource-pack/**/*.json'], { since: gulp.lastRun(process_resource_json) })
+        .pipe(minifyJson())
+        .pipe(gulp.dest('./dist/build/resource-pack/'))
+}
+
+/**
+ * Builds the resource pack
+ */
+export const build_resources = gulp.parallel(copy_resource_files, process_resource_json)
 build_resources.displayName = "build:resources"
 build_resources.description = "Builds the resource pack"
 
