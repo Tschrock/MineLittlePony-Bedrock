@@ -6,15 +6,14 @@ import gulp_zip from 'gulp-zip';
 import ts from 'gulp-typescript';
 
 import adbkit, { Device, DeviceClient } from '@devicefarmer/adbkit'
-import type Sync from '@devicefarmer/adbkit/dist/src/adb/sync';
 
 import { getDataLocations } from 'bedrock-dev-lib';
 import { getPackage, niceWatch, syncManifest, syncManifestDependencies } from './tools/util';
 import { formatFolder } from './tools/format-json-v3';
+import { SyncClient } from './tools/adb';
 
 const ANDROID_DATA_PATH = "/sdcard/Android/data/com.mojang.minecraftpe/files/games/com.mojang"
 
-const verify = true // process.argv.includes("--verify")
 const useAdb = process.argv.includes("--adb")
 const adb = useAdb ? adbkit.createClient() : null
 const adbDevices = adb ? adb.listDevices() : Promise.resolve<Device[]>([])
@@ -26,53 +25,9 @@ async function withAdbDevices(fn: (device: DeviceClient) => void | Promise<void>
     }
 }
 
-async function adbSyncFile(syncService: Sync, src: string, dest: string) {
-    return new Promise((resolve, reject) => {
-        const transfer = syncService.pushFile(src, dest)
-        transfer.on('error', reject)
-        transfer.on('end', resolve)
-    })
-}
-
-
-function sleep(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms))
-}
-
-async function retry<T>(fn: () => PromiseLike<T>, tries: number, wait: number): Promise<T> {
-    while (true) {
-        try {
-            return await fn()
-        } catch (e) {
-            if (tries--) {
-                console.log(`Got error, trying again (${(e as Error).message})`)
-                await sleep(wait)
-            } else {
-                throw e
-            }
-        }
-    }
-}
-
-async function adbSyncDirs(device: DeviceClient, syncService: Sync, src: string, dest: string) {
-    await retry(async () => {
-        // This sometimes fails, so retry a few times
-        await adbkit.util.readAll(await device.shell(`mkdir -p '${dest}'`))
-        await retry(() => syncService.stat(dest), 4, 200)
-    }, 4, 200)
-    const children = await fs.readdir(src, { withFileTypes: true })
-    for (const child of children) {
-        const srcPath = path.join(src, child.name)
-        const destPath = path.join(dest, child.name)
-        if (child.isFile()) {
-            // console.log("Syncing file " + srcPath + " to " + destPath)
-            await adbSyncFile(syncService, srcPath, destPath)
-            verify && await syncService.stat(destPath)
-        } else if (child.isDirectory()) {
-            await adbSyncDirs(device, syncService, srcPath, destPath)
-        }
-    }
-}
+// ================ //
+//      Clean       //
+// ================ //
 
 /**
  * Cleans the behavior pack build directory
@@ -99,6 +54,10 @@ export function clean() {
     return fs.rm('./dist/build', { force: true, recursive: true })
 }
 clean.description = 'Cleans the build directory';
+
+// ================ //
+//      Build       //
+// ================ //
 
 /**
  * Builds the tools scripts
@@ -181,6 +140,10 @@ manifest_resources.description = `Syncs the resource pack's manifest with the pr
 export const manifest = gulp.series(manifest_behaviors, manifest_resources)
 manifest.description = `Syncs the addon manifests with the project's package.json`;
 
+// ================ //
+//       Pack       //
+// ================ //
+
 /**
  * Packs the behavior pack into an installable .mcpack file
  */
@@ -233,16 +196,20 @@ pack_addon.description = "Packs the addon into an installable .mcaddon file"
 export const pack = gulp.series(gulp.parallel(pack_behaviors, pack_resources), pack_addon)
 pack.description = "Packs the addon into an installable .mcaddon file"
 
+
+// ================ //
+//       Dev        //
+// ================ //
+
 async function syncDevelopmentPack(src: string, dest: string) {
     const packageJson = await getPackage()
     if (adb) {
         const packPath = path.join(ANDROID_DATA_PATH, dest, packageJson.name)
         return withAdbDevices(async device => {
             console.log("Syncing to adb device " + device.serial)
-            await adbkit.util.readAll(await device.shell(`rm -rf '${packPath}'`))
-            const syncService = await device.syncService()
-            await adbSyncDirs(device, syncService, src, packPath)
-            syncService.end()
+            const client = await SyncClient.init(device)
+            await client.sync(src, packPath)
+            client.end()
         })
     } else {
         const dirs = await getDataLocations();
