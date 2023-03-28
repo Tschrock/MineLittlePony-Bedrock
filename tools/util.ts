@@ -7,6 +7,8 @@ import { Manifest, ManifestDependency, Package, Person } from './interfaces'
 import { readJson } from './json'
 import { modifyJsonFile } from './json2'
 
+export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
+
 type QuitHandler = () => Promise<void> | void
 
 const quitHandlers = new Set<QuitHandler>()

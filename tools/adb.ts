@@ -3,8 +3,8 @@ import { Dirent, promises as fs, Stats } from 'node:fs';
 
 import adbkit, { DeviceClient } from '@devicefarmer/adbkit'
 import type Sync from '@devicefarmer/adbkit/dist/src/adb/sync'
+import { sleep } from './util';
 
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
 const reverse = <T>(p: Promise<T>) => new Promise((resolve, reject) => { p.then(reject, resolve) })
 
 async function retry<T>(action: () => PromiseLike<T>, maxRetries: number, retryDelay: number): Promise<T> {

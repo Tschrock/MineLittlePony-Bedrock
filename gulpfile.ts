@@ -8,7 +8,7 @@ import ts from 'gulp-typescript';
 import adbkit, { Device, DeviceClient } from '@devicefarmer/adbkit'
 
 import { getDataLocations } from 'bedrock-dev-lib';
-import { getPackage, niceWatch, syncManifest, syncManifestDependencies } from './tools/util';
+import { getPackage, niceWatch, sleep, syncManifest, syncManifestDependencies } from './tools/util';
 import { formatFolder } from './tools/format-json-v3';
 import { SyncClient } from './tools/adb';
 import { mergeVanillaBehaviors } from './tools/merge';
@@ -205,6 +205,7 @@ pack_resources.description = 'Packs the resource pack into an installable .mcpac
  * Packs the addon into an installable .mcaddon file
  */
 export async function pack_addon() {
+    await sleep(400) // Workaround unknown timing bug
     const packageJson = await getPackage();
     return zipFiles(
         `./dist/packed/${packageJson.name}-v${packageJson.version}/**/*.mcpack`,
