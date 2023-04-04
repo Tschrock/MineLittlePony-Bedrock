@@ -87,6 +87,10 @@ class PackTransform extends Transform {
             callback
         )
     }
+    _destroy(_: Error | null, callback: (error: Error | null) => void): void {
+        this.file.close()
+        callback(null)
+    }
     private async tryGetVanilla(filePath: string): Promise<string | undefined> {
         const vanillaFile = this.entries.get(path.join(this.prefix, filePath))
         if (vanillaFile) {
