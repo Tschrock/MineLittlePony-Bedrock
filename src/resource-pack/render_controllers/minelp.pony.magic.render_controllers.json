@@ -5,9 +5,9 @@
             "geometry": "Geometry.minelp_default",
             "part_visibility": [
                 { "*": 0 },
-                { "hornGlow": "variable.minelp_horn_type > 0 && (variable.is_holding_left || variable.is_holding_right)" },
-                { "leftItemMagic": "variable.minelp_horn_type > 0 && variable.is_holding_left" },
-                { "rightItemMagic": "variable.minelp_horn_type > 0 && variable.is_holding_right" }
+                { "hornGlow": "variable.minelp_horn_type != 'NONE' && (variable.is_holding_left || variable.is_holding_right)" },
+                { "leftItemMagic": "variable.minelp_horn_type != 'NONE' && variable.is_holding_left" },
+                { "rightItemMagic": "variable.minelp_horn_type != 'NONE' && variable.is_holding_right" }
             ],
             "materials": [
                 { "*": "Material.minelp_magic" }
