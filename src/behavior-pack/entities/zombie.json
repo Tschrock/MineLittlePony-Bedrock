@@ -1,0 +1,62 @@
+{
+    "format_version": "1.18.20",
+    "minecraft:entity": {
+        "description": {
+            "identifier": "minecraft:zombie",
+            "properties": {
+                "minelp:is_pony": {
+                    "type": "bool",
+                    "default": false,
+                    "client_sync": true
+                },
+                "minelp:ear_type": {
+                    "type": "enum",
+                    "values": ["PONY", "BAT"],
+                    "default": "PONY",
+                    "client_sync": true
+                },
+                "minelp:handedness": {
+                    "type": "enum",
+                    "values": ["LEFT", "RIGHT"],
+                    "default": "RIGHT",
+                    "client_sync": true
+                },
+                "minelp:horn_type": {
+                    "type": "enum",
+                    "values": ["NONE", "UNICORN"],
+                    "default": "NONE",
+                    "client_sync": true
+                },
+                "minelp:magic_color": {
+                    "type": "int",
+                    "range": [0, 16777215],
+                    "default": 16711680,
+                    "client_sync": true
+                },
+                "minelp:muzzle_type": {
+                    "type": "enum",
+                    "values": ["NONE", "FEMALE", "MALE"],
+                    "default": "FEMALE",
+                    "client_sync": true
+                },
+                "minelp:tail_length": {
+                    "type": "enum",
+                    "values": ["STUB", "SHORT", "HALF", "LONG", "FULL"],
+                    "default": "FULL",
+                    "client_sync": true
+                },
+                "minelp:wing_type": {
+                    "type": "enum",
+                    "values": ["NONE", "PEGASUS", "BAT", "BUG"],
+                    "default": "NONE",
+                    "client_sync": true
+                },
+                "minelp:zebra_mane": {
+                    "type": "bool",
+                    "default": false,
+                    "client_sync": true
+                }
+            }
+        }
+    }
+}
