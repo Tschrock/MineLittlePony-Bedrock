@@ -21,8 +21,8 @@
                 "parent_setup": "variable.helmet_layer_visible = 0.0;"
             },
             "render_controllers": [
-                { "controller.render.armor": "context.owning_entity->variable.minelp_ispony != 1.0" },
-                { "controller.render.minelp.pony.armor": "context.owning_entity->variable.minelp_ispony == 1.0" }
+                { "controller.render.armor": "context.owning_entity->variable.minelp_is_pony != 1.0" },
+                { "controller.render.minelp.pony.armor": "context.owning_entity->variable.minelp_is_pony == 1.0" }
             ]
         }
     }

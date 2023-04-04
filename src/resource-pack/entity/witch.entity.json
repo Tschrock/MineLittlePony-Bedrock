@@ -21,10 +21,10 @@
             "scripts": {
                 "scale": "0.9375",
                 "variables": {
-                    "variable.minelp_ispony": "public"
+                    "variable.minelp_is_pony": "public"
                 },
                 "initialize": [
-                    "variable.minelp_ispony = 1;",
+                    "variable.minelp_is_pony = 1;",
                     "variable.minelp_ear_type = 0;",
                     "variable.minelp_handedness = 0;",
                     "variable.minelp_horn_type = 0;",
@@ -67,9 +67,9 @@
                 "big_head": "animation.minelp.pony.big_head"
             },
             "render_controllers": [
-                { "controller.render.witch": "(variable.minelp_ispony ?? 0.0) == 0.0" },
-                { "controller.render.minelp.pony": "(variable.minelp_ispony ?? 0.0) == 1.0" },
-                { "controller.render.minelp.pony.magic": "(variable.minelp_ispony ?? 0.0) == 1.0 && variable.minelp_horn_type >= 1.0" }
+                { "controller.render.witch": "(variable.minelp_is_pony ?? 0.0) == 0.0" },
+                { "controller.render.minelp.pony": "(variable.minelp_is_pony ?? 0.0) == 1.0" },
+                { "controller.render.minelp.pony.magic": "(variable.minelp_is_pony ?? 0.0) == 1.0 && variable.minelp_horn_type >= 1.0" }
             ],
             "spawn_egg": {
                 "texture": "spawn_egg",

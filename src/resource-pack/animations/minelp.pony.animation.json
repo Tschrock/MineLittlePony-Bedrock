@@ -6,7 +6,7 @@
             "loop": true,
             "override_previous_animation": true,
             "timeline": {
-                "0.0": "variable.minelp_ispony = 1;"
+                "0.0": "variable.minelp_is_pony = 1;"
             }
         },
         "animation.minelp.pony.big_head": {

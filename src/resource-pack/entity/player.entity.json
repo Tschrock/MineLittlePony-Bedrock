@@ -18,11 +18,11 @@
             },
             "scripts": {
                 "variables": {
-                    "variable.minelp_ispony": "public"
+                    "variable.minelp_is_pony": "public"
                 },
                 "scale": "0.9375",
                 "initialize": [
-                    "variable.minelp_ispony = 1;",
+                    "variable.minelp_is_pony = 1;",
                     "variable.minelp_ear_type = 0;",
                     "variable.minelp_handedness = 0;",
                     "variable.minelp_horn_type = 1;",
