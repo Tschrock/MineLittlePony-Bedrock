@@ -1,0 +1,108 @@
+{
+    "format_version": "1.8.0",
+    "render_controllers": {
+        "controller.render.player.first_person": {
+            "geometry": "Geometry.default",
+            "materials": [
+                { "*": "Material.default" }
+            ],
+            "textures": ["Texture.default"],
+            "part_visibility": [
+                { "*": false },
+                { "rightArm": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'filled_map'" },
+                { "rightSleeve": "query.get_equipped_item_name(0, 1) == '' || query.get_equipped_item_name(0, 1) == 'filled_map'" },
+                { "leftArm": "(query.get_equipped_item_name(0, 1) == 'filled_map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'filled_map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0))" },
+                { "leftSleeve": "(query.get_equipped_item_name(0, 1) == 'filled_map' && query.get_equipped_item_name('off_hand') != 'shield') || (query.get_equipped_item_name('off_hand') == 'filled_map' && !query.item_is_charged) || (!query.item_is_charged && (variable.item_use_normalized > 0 && variable.item_use_normalized < 1.0))" }
+            ]
+        },
+        "controller.render.player.third_person": {
+            "geometry": "variable.minelp_is_pony ? Geometry.minelp_default : Geometry.default",
+            "materials": [
+                { "*": "Material.default" }
+            ],
+            "textures": ["Texture.default"],
+            "part_visibility": [
+                { "*": true },
+                { "helmet": "variable.helmet_layer_visible" },
+                { "leftLegging": "variable.leg_layer_visible" },
+                { "rightLegging": "variable.leg_layer_visible" },
+                { "leftBoot": "variable.boot_layer_visible" },
+                { "rightBoot": "variable.boot_layer_visible" },
+                { "leftSock": "variable.boot_layer_visible && variable.leg_layer_visible" },
+                { "rightSock": "variable.boot_layer_visible && variable.leg_layer_visible" },
+                { "bodyArmor": "variable.chest_layer_visible && !query.has_cape" },
+                { "leftArmArmor": "variable.chest_layer_visible && !query.has_cape" },
+                { "rightArmArmor": "variable.chest_layer_visible && !query.has_cape" },
+                { "belt": "variable.chest_layer_visible && variable.leg_layer_visible" },
+                { "bristles": "variable.minelp_zebra_mane" },
+                { "bristles2": "variable.minelp_zebra_mane" },
+                { "horn": "variable.minelp_horn_type != 'NONE'" },
+                { "hornGlow": 0 },
+                { "leftItemMagic": 0 },
+                { "leftWingClosed": "variable.minelp_wing_type == 'PEGASUS'" },
+                { "leftBatWingClosed": "variable.minelp_wing_type == 'BAT'" },
+                { "leftBugWing": "variable.minelp_wing_type == 'BUG'" },
+                { "leftBugWingSecondary": "variable.minelp_wing_type == 'BUG'" },
+                { "rightWingClosed": "variable.minelp_wing_type == 'PEGASUS'" },
+                { "rightBugWing": "variable.minelp_wing_type == 'BUG'" },
+                { "rightBugWingSecondary": "variable.minelp_wing_type == 'BUG'" },
+                { "rightBatWingClosed": "variable.minelp_wing_type == 'BAT'" },
+                { "snoutFemale": "variable.minelp_muzzle_type == 'FEMALE'" },
+                { "snoutMale": "variable.minelp_muzzle_type == 'MALE'" },
+                { "tailBody": "variable.minelp_tail_length == 'SHORT'" },
+                { "tailBody": "variable.minelp_tail_length == 'HALF'" },
+                { "tailBody": "variable.minelp_tail_length == 'LONG'" },
+                { "tailBody": "variable.minelp_tail_length == 'FULL'" },
+                { "tail2": "variable.minelp_tail_length == 'HALF'" },
+                { "tail2": "variable.minelp_tail_length == 'LONG'" },
+                { "tail2": "variable.minelp_tail_length == 'FULL'" },
+                { "tail3": "variable.minelp_tail_length == 'LONG'" },
+                { "tail3": "variable.minelp_tail_length == 'FULL'" },
+                { "tail4": "variable.minelp_tail_length == 'FULL'" },
+                { "rightItemMagic": 0 }
+            ]
+        },
+        "controller.render.player.first_person_spectator": {
+            "geometry": "Geometry.default",
+            "materials": [
+                { "*": "Material.default" }
+            ],
+            "textures": ["Texture.default"],
+            "part_visibility": [
+                { "*": false }
+            ]
+        },
+        "controller.render.player.third_person_spectator": {
+            "geometry": "Geometry.default",
+            "materials": [
+                { "*": "Material.spectator" }
+            ],
+            "textures": ["Texture.default"],
+            "part_visibility": [
+                { "*": false },
+                { "head": true },
+                { "hat": true },
+                { "helmet": "variable.helmet_layer_visible" }
+            ],
+            "color": {
+                "r": "1.0f",
+                "g": "1.0f",
+                "b": "1.0f",
+                "a": "0.3f"
+            }
+        },
+        "controller.render.player.map": {
+            "geometry": "Geometry.default",
+            "materials": [
+                { "*": "Material.default" }
+            ],
+            "textures": ["Texture.default"],
+            "part_visibility": [
+                { "*": false },
+                { "head": true },
+                { "hat": true },
+                { "helmet": true }
+            ]
+        }
+    }
+}

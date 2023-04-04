@@ -6,35 +6,65 @@
             "materials": {
                 "default": "entity_alphatest",
                 "cape": "entity_alphatest",
-                "animated": "player_animated"
+                "animated": "player_animated",
+                "spectator": "player_spectator",
+                "minelp_magic": "pony_magic"
             },
             "textures": {
                 "default": "textures/entity/steve",
-                "cape": "textures/entity/cape_invisible"
+                "cape": "textures/entity/cape_invisible",
+                "minelp_magic": "textures/white"
             },
             "geometry": {
                 "default": "geometry.humanoid.custom",
-                "cape": "geometry.cape"
+                "cape": "geometry.cape",
+                "minelp_default": "geometry.minelp.pony"
             },
             "scripts": {
-                "variables": {
-                    "variable.minelp_is_pony": "public"
-                },
                 "scale": "0.9375",
+                "variables": {
+                    // Start MineLP variables
+                    "variable.minelp_is_pony": "public",
+                    "variable.minelp_magic_r": "public",
+                    "variable.minelp_magic_g": "public",
+                    "variable.minelp_magic_b": "public"
+                    // End MineLP variables
+                },
                 "initialize": [
-                    "variable.minelp_is_pony = 1;",
-                    "variable.minelp_ear_type = 0;",
-                    "variable.minelp_handedness = 0;",
-                    "variable.minelp_horn_type = 1;",
-                    "variable.minelp_magic_r = math.random(0, 0.8);",
-                    "variable.minelp_magic_g = math.random(0, 0.8);",
-                    "variable.minelp_magic_b = math.random(0, 0.8);",
-                    "variable.minelp_muzzle_type = 1;",
-                    "variable.minelp_tail_length = 4;",
-                    "variable.minelp_wing_type = 0;",
-                    "variable.minelp_zebra_mane = 0;"
+                    // Start MineLP initialize
+                    "variable.minelp_is_pony = false;",
+                    "variable.minelp_ear_type = 'PONY';",
+                    "variable.minelp_handedness = 'RIGHT';",
+                    "variable.minelp_horn_type = 'NONE';",
+                    "variable.minelp_magic_color = math.random(0, 16777215);",
+                    "variable.minelp_magic_r = 0;",
+                    "variable.minelp_magic_g = 0;",
+                    "variable.minelp_magic_b = 0;",
+                    "variable.minelp_muzzle_type = 'FEMALE';",
+                    "variable.minelp_tail_length = 'FULL';",
+                    "variable.minelp_wing_type = 'NONE';",
+                    "variable.minelp_zebra_mane = false;",
+                    // End MineLP initialize
+                    "variable.is_holding_right = 0.0;",
+                    "variable.is_blinking = 0.0;",
+                    "variable.last_blink_time = 0.0;",
+                    "variable.hand_bob = 0.0;"
                 ],
                 "pre_animation": [
+                    // Start MineLP pre_animation
+                    "variable.minelp_is_pony = query.has_property('minelp:is_pony') ? query.property('minelp:is_pony') ? 1 : 0 : variable.minelp_is_pony;",
+                    "variable.minelp_ear_type = query.has_property('minelp:ear_type') ? query.property('minelp:ear_type') : variable.minelp_ear_type;",
+                    "variable.minelp_handedness = query.has_property('minelp:handedness') ? query.property('minelp:handedness') : variable.minelp_handedness;",
+                    "variable.minelp_horn_type = query.has_property('minelp:horn_type') ? query.property('minelp:horn_type') : variable.minelp_horn_type;",
+                    "variable.minelp_magic = query.has_property('minelp:magic_color') ? query.property('minelp:magic_color') : variable.minelp_magic;",
+                    "variable.minelp_magic_r = math.trunc(math.mod(variable.minelp_magic_color / 256 / 256, 256)) / 256;",
+                    "variable.minelp_magic_g = math.trunc(math.mod(variable.minelp_magic_color / 256, 256)) / 256;",
+                    "variable.minelp_magic_b = math.trunc(math.mod(variable.minelp_magic_color, 256)) / 256;",
+                    "variable.minelp_muzzle_type = query.has_property('minelp:muzzle_type') ? query.property('minelp:muzzle_type') : variable.minelp_muzzle_type;",
+                    "variable.minelp_tail_length = query.has_property('minelp:tail_length') ? query.property('minelp:tail_length') : variable.minelp_tail_length;",
+                    "variable.minelp_wing_type = query.has_property('minelp:wing_type') ? query.property('minelp:wing_type') : variable.minelp_wing_type;",
+                    "variable.minelp_zebra_mane = query.has_property('minelp:zebra_mane') ? query.property('minelp:zebra_mane') : variable.minelp_zebra_mane;",
+                    // End MineLP pre_animation
                     "variable.helmet_layer_visible = 1.0;",
                     "variable.leg_layer_visible = 1.0;",
                     "variable.boot_layer_visible = 1.0;",
@@ -101,11 +131,15 @@
                 "crossbow_controller": "controller.animation.player.crossbow",
                 "shield_block_main_hand": "animation.player.shield_block_main_hand",
                 "shield_block_off_hand": "animation.player.shield_block_off_hand",
-                "blink": "controller.animation.persona.blink"
+                "blink": "controller.animation.persona.blink",
+                "tooting_goat_horn": "animation.humanoid.tooting_goat_horn"
             },
             "render_controllers": [
-                { "controller.render.player.first_person": "variable.is_first_person" },
-                { "controller.render.player.third_person": "!variable.is_first_person && !variable.map_face_icon" },
+                { "controller.render.player.first_person_spectator": "variable.is_first_person && query.is_spectator" },
+                { "controller.render.player.third_person_spectator": "!variable.is_first_person && !variable.map_face_icon && query.is_spectator" },
+                { "controller.render.player.first_person": "variable.is_first_person && !query.is_spectator" },
+                { "controller.render.player.third_person": "!variable.is_first_person && !variable.map_face_icon && !query.is_spectator" },
+                // { "controller.render.minelp.pony": "variable.minelp_is_pony && !variable.is_first_person && !variable.map_face_icon && !query.is_spectator" },
                 { "controller.render.player.map": "variable.map_face_icon" }
             ],
             "enable_attachables": true
