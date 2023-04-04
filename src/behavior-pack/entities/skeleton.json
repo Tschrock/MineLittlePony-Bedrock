@@ -6,7 +6,7 @@
             "properties": {
                 "minelp:is_pony": {
                     "type": "bool",
-                    "default": false,
+                    "default": true,
                     "client_sync": true
                 },
                 "minelp:ear_type": {
@@ -17,14 +17,14 @@
                 },
                 "minelp:handedness": {
                     "type": "enum",
-                    "values": ["LEFT", "RIGHT"],
+                    "values": ["RIGHT", "LEFT"],
                     "default": "RIGHT",
                     "client_sync": true
                 },
                 "minelp:horn_type": {
                     "type": "enum",
                     "values": ["NONE", "UNICORN"],
-                    "default": "NONE",
+                    "default": "UNICORN",
                     "client_sync": true
                 },
                 "minelp:magic_color": {
